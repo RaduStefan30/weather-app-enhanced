@@ -1,7 +1,9 @@
 import axios from 'axios';
-import { Weather } from '../types';
+import { WeatherData } from '../types';
 
-export const fetchWeatherData = async (location: string): Promise<Weather> => {
+export const fetchWeatherData = async (
+  location: string
+): Promise<WeatherData> => {
   const response = await axios.get(
     `https://api.weatherapi.com/v1/forecast.json?key=${
       import.meta.env.VITE_SECRET_KEY

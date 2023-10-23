@@ -4,10 +4,10 @@ import Hamburger from '../Hamburger/Hamburger';
 
 const Header = () => {
   return (
-    <div className="header">
+    <header className="header">
       <Logo />
       <Hamburger />
-    </div>
+    </header>
   );
 };
 
