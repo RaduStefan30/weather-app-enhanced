@@ -1,0 +1,40 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.hamburger {
+  &:before,
+  &:after,
+  & {
+    position: relative;
+    width: 3.2rem;
+    height: 0.4rem;
+    background: $primary-gradient;
+    border-radius: 0.5rem;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+  }
+
+  &:before {
+    top: -1rem; // Height of the element + 1rem space
+  }
+
+  &:after {
+    bottom: -1rem; // Height of the element + 1rem space
+  }
+
+  &__container {
+    position: relative;
+    width: 3.2rem;
+    height: 3.2rem;
+    @include center-items;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

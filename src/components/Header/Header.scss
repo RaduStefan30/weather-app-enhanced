@@ -1,0 +1,9 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.header {
+  background-color: $primary-dark;
+  width: 100vw;
+  padding: $padding-wide-medium;
+  @include center-items;
+}

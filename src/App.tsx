@@ -1,5 +1,4 @@
 import { useEffect, useReducer } from 'react';
-import './styles/main.scss';
 import {
   WeatherStateContext,
   WeatherDispatchContext,
@@ -7,6 +6,7 @@ import {
   weatherReducer,
 } from './contexts/WeatherContext/WeatherContext';
 import { fetchWeatherData } from './api/fetchWeather';
+import Header from './components/Header/Header';
 
 const App = () => {
   const [state, dispatch] = useReducer(weatherReducer, initialState);
@@ -28,7 +28,7 @@ const App = () => {
   return (
     <WeatherStateContext.Provider value={state}>
       <WeatherDispatchContext.Provider value={dispatch}>
-        Mare app
+        <Header />
       </WeatherDispatchContext.Provider>
     </WeatherStateContext.Provider>
   );
