@@ -19,4 +19,5 @@ export type WeatherState = {
 export type WeatherAction =
   | { type: 'FETCH_INIT' }
   | { type: 'FETCH_SUCCESS'; payload: WeatherData }
-  | { type: 'FETCH_FAILURE'; payload: string };
+  | { type: 'FETCH_FAILURE'; payload: string }
+  | { type: 'UPDATE_LOCATION'; payload: string };

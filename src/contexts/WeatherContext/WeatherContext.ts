@@ -10,10 +10,8 @@ const initialState: WeatherState = {
   error: '',
 };
 
-const WeatherStateContext = createContext<WeatherState | undefined>(undefined);
-const WeatherDispatchContext = createContext<
-  Dispatch<WeatherAction> | undefined
->(undefined);
+const WeatherStateContext = createContext<WeatherState>(initialState);
+const WeatherDispatchContext = createContext<Dispatch<WeatherAction>>(() => {});
 
 const weatherReducer = (
   state: WeatherState,
@@ -26,6 +24,8 @@ const weatherReducer = (
       return { ...state, loading: false, data: action.payload };
     case 'FETCH_FAILURE':
       return { ...state, loading: false, error: action.payload };
+    case 'UPDATE_LOCATION':
+      return { ...state, location: action.payload };
     default:
       return state;
   }

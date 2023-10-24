@@ -8,7 +8,7 @@ const RecentCard = (props: WeatherData) => {
   return (
     <div
       className="recent-card"
-      onClick={() => navigate(`forecast/${location.name}`)}
+      onClick={() => navigate(`details/${location.name}`)}
     >
       <div className="recent-card__location">
         {location.name}, {location.country}

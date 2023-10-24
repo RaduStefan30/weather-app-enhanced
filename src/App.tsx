@@ -5,10 +5,11 @@ import {
   initialState,
   weatherReducer,
 } from './contexts/WeatherContext/WeatherContext';
-import { fetchWeatherData } from './api/fetchWeather';
 import Header from './components/Header/Header';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
+import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
+import { fetchWeatherData } from './api/fetchWeather';
 
 const router = createBrowserRouter([
   {
@@ -25,8 +26,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/forecast/:city',
-        element: <div>Mare forecast</div>,
+        path: '/details/:city',
+        element: <WeatherDetails />,
       },
     ],
   },

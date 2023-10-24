@@ -11,7 +11,7 @@ const Search = () => {
   const handleSearch = () => {
     if (searchTerm) {
       updateLocalStorage();
-      navigate(`forecast/${searchTerm}`);
+      navigate(`details/${searchTerm}`);
     }
   };
 
