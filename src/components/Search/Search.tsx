@@ -8,25 +8,38 @@ const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
+  const handleSearch = () => {
+    if (searchTerm) {
+      updateLocalStorage();
+      navigate(`forecast/${searchTerm}`);
+    }
+  };
+
+  const updateLocalStorage = () => {
+    const maxItems = 5;
+    const searches = JSON.parse(localStorage.getItem('searches') || '[]');
+    if (!searches.includes(searchTerm)) {
+      searches.unshift(searchTerm);
+      if (searches.length > maxItems) {
+        searches.pop();
+      }
+      localStorage.setItem('searches', JSON.stringify(searches));
+    }
+  };
+
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
   const handleInputKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
-    if (searchTerm && event.key === 'Enter') {
-      navigate(`forecast/${searchTerm}`);
-    }
-  };
-
-  const handleButtonClick = () => {
-    if (searchTerm) {
-      navigate(`forecast/${searchTerm}`);
+    if (event.key === 'Enter') {
+      handleSearch();
     }
   };
 
   return (
     <div className="search-container">
-      <button onClick={handleButtonClick} className="search-button">
+      <button onClick={handleSearch} className="search-button">
         <LiaSearchSolid />
       </button>
       <input

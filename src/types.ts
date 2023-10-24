@@ -1,7 +1,12 @@
 export type WeatherData = {
-  current: object;
+  current: {
+    temp_c: string;
+    condition: {
+      icon: string;
+    };
+  };
   forecast: object;
-  location: object;
+  location: { name: string; country: string };
 };
 
 export type WeatherState = {

@@ -1,0 +1,6 @@
+@import '../../styles/abstracts/variables';
+.recent-container {
+  display: flex;
+  padding: $padding-wide-small;
+  flex-direction: column;
+}
