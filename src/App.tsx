@@ -7,6 +7,19 @@ import {
 } from './contexts/WeatherContext/WeatherContext';
 import { fetchWeatherData } from './api/fetchWeather';
 import Header from './components/Header/Header';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './pages/Home/Home';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/forecast/:city',
+    element: <div>Mare forecast</div>,
+  },
+]);
 
 const App = () => {
   const [state, dispatch] = useReducer(weatherReducer, initialState);
@@ -29,6 +42,7 @@ const App = () => {
     <WeatherStateContext.Provider value={state}>
       <WeatherDispatchContext.Provider value={dispatch}>
         <Header />
+        <RouterProvider router={router} />
       </WeatherDispatchContext.Provider>
     </WeatherStateContext.Provider>
   );
