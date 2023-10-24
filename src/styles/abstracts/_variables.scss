@@ -1,5 +1,8 @@
 //Colors
 $primary-dark: #1b1212;
+$primary-dark-half: rgba(27, 18, 18, 0.5);
+$primary-color-1: #79beee;
+$primary-color-2: #8a84e2;
 $primary-gradient: linear-gradient(
   90deg,
   rgba(109, 226, 245, 1) 0%,
@@ -7,4 +10,15 @@ $primary-gradient: linear-gradient(
 );
 
 //Padding
+$padding-wide-small: 1rem 2rem;
 $padding-wide-medium: 2rem 4rem;
+$padding-wide-large: 4rem 8rem;
+
+//Border Radius
+$border-radius-small: 0.5rem;
+
+//Font Size
+
+$font-size-medium: 2rem;
+$font-size-large: 2.4rem;
+$font-size-extra-large: 3.2rem;
