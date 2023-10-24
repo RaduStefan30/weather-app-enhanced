@@ -5,7 +5,13 @@ export type WeatherData = {
       icon: string;
     };
   };
-  forecast: object;
+  forecast: {
+    forecastday: Array<{
+      date: string;
+      astro: object;
+      day: object;
+    }>;
+  };
   location: { name: string; country: string };
 };
 
