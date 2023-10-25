@@ -73,7 +73,7 @@ const WeatherDetails = () => {
   if (!data) return <div>No weather data available</div>;
 
   return (
-    <>
+    <div className="weather-details-container">
       <h1 className="weather-details-title">{data.location.name}</h1>
       <div className="swiper1">
         <div className="swiper-wrapper">
@@ -92,6 +92,7 @@ const WeatherDetails = () => {
                 ? 'weather-details-date active'
                 : 'weather-details-date'
             }
+            onClick={() => setActiveIndex(index)}
             key={day.date}
           >
             {formattedDate(day.date)}
@@ -118,7 +119,7 @@ const WeatherDetails = () => {
           })}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
