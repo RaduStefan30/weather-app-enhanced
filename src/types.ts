@@ -6,11 +6,7 @@ export type WeatherData = {
     };
   };
   forecast: {
-    forecastday: Array<{
-      date: string;
-      astro: object;
-      day: object;
-    }>;
+    forecastday: [ForecastDay];
   };
   location: { name: string; country: string };
 };
@@ -27,3 +23,24 @@ export type WeatherAction =
   | { type: 'FETCH_SUCCESS'; payload: WeatherData }
   | { type: 'FETCH_FAILURE'; payload: string }
   | { type: 'UPDATE_LOCATION'; payload: string };
+
+export type Condition = {
+  icon: string;
+  text: string;
+};
+
+export type Hour = {
+  condition: Condition;
+  time: string;
+  temp_c: number;
+};
+
+export type ForecastDay = {
+  date: string;
+  astro: object;
+  hour: [Hour];
+  day: {
+    condition: Condition;
+    avgtemp_c: number;
+  };
+};

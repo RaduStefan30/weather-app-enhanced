@@ -1,4 +1,54 @@
+@import '../../styles/abstracts/animations';
+@import '../../styles/abstracts/variables';
+
 .weather-details {
-  height: 10rem;
-  background-color: red;
+  &-title {
+    font-size: $font-size-extra-large;
+    text-align: center;
+    margin-top: $margin-large;
+  }
+
+  &-hourly {
+    gap: $margin-medium;
+    margin: $margin-large;
+    height: 15rem;
+
+    &-card {
+      background-color: $primary-dark-transparent;
+      border-radius: $border-radius-small;
+    }
+  }
+
+  &-date {
+    font-size: $font-size-tiny;
+    font-weight: $font-weight-normal;
+
+    &__container {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      gap: $margin-large;
+    }
+    &.active {
+      color: $primary-dark;
+      font-weight: $font-weight-bold;
+      transition: color 0.3s ease;
+    }
+  }
+}
+
+.animate-out .swiper-slide {
+  opacity: 0;
+}
+
+.animate-in .swiper-slide {
+  opacity: 0;
+  transform: translateY(100%);
+  animation: slideUp 0.3s ease forwards;
+
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: 0.1s * $i;
+    }
+  }
 }

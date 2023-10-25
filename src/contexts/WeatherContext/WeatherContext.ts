@@ -3,9 +3,12 @@
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
 
+const lastSearch =
+  JSON.parse(localStorage.getItem('searches') || '[]')[0] || 'london';
+
 const initialState: WeatherState = {
   data: null,
-  location: 'london',
+  location: lastSearch,
   loading: false,
   error: '',
 };

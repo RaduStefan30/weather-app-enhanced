@@ -1,0 +1,22 @@
+@import '../../../styles/abstracts/variables';
+
+.weather-detail-card {
+  height: 40vh;
+  min-height: 35rem;
+  margin-top: $margin-large;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  &__image {
+    height: 15rem;
+  }
+
+  &__text {
+    font-size: $font-size-medium;
+  }
+
+  &__temp {
+    font-size: $font-size-extra-large;
+  }
+}
