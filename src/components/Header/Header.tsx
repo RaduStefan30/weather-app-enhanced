@@ -9,9 +9,9 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const toggleMenu = (close: boolean = false) => {
+  const toggleMenu = (close: boolean) => {
     if (close) {
-      setIsMenuOpen(false);
+      return setIsMenuOpen(false);
     }
     if (!isAnimating) {
       setIsMenuOpen(!isMenuOpen);

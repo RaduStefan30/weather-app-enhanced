@@ -2,14 +2,8 @@ import { ReactElement, useEffect, useState } from 'react';
 import './Toggle.scss';
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
 
-const Toggle = ({
-  unit,
-  reversedTheme,
-}: {
-  unit: string;
-  reversedTheme: boolean;
-}) => {
-  const [isDefaultUnit, setIsDefaultUnit] = useState(false);
+const Toggle = ({ unit }: { unit: string }) => {
+  const [isDefaultUnit, setIsDefaultUnit] = useState(true);
   const [units, setUnits] = useState<Array<ReactElement | string>>([]);
 
   useEffect(() => {
@@ -19,6 +13,9 @@ const Toggle = ({
         break;
       case 'distance':
         setUnits(['km', 'mi']);
+        break;
+      case 'quantity':
+        setUnits(['mm', 'in']);
         break;
       default:
         break;
@@ -31,14 +28,9 @@ const Toggle = ({
 
   const togglePosition = isDefaultUnit ? 'first' : 'second';
 
-  const themeClass = reversedTheme ? 'reversed' : 'normal';
-
   return (
-    <div
-      className={`toggle ${togglePosition} ${themeClass}`}
-      onClick={toggleUnit}
-    >
-      <div className={`slider ${togglePosition} ${themeClass}`}>
+    <div className={`toggle ${togglePosition} `} onClick={toggleUnit}>
+      <div className={`slider ${togglePosition} `}>
         <p className="toggle-unit">{isDefaultUnit ? units[0] : units[1]}</p>
       </div>
     </div>

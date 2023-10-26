@@ -24,6 +24,7 @@
     font-size: $font-size-tiny;
     font-weight: $font-weight-normal;
     cursor: pointer;
+    color: #e3e1f8;
 
     &__container {
       display: flex;
@@ -33,7 +34,7 @@
       margin-bottom: $margin-large;
     }
     &.active {
-      color: $primary-dark;
+      color: $primary-light;
       font-weight: $font-weight-bold;
       transition: color 0.3s ease;
     }
@@ -42,16 +43,18 @@
 
 .animate-out .swiper-slide {
   opacity: 0;
+  transform: translateY(-100%);
+  animation: slideDown 0.4s ease forwards;
 }
 
 .animate-in .swiper-slide {
   opacity: 0;
   transform: translateY(100%);
-  animation: slideUp 0.3s ease forwards;
+  animation: slideUp 0.4s ease forwards;
 
   @for $i from 1 through 10 {
     &:nth-child(#{$i}) {
-      animation-delay: 0.12s * $i;
+      animation-delay: 0.1s * $i;
     }
   }
 }

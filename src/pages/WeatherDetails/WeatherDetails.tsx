@@ -30,7 +30,7 @@ const WeatherDetails = () => {
         swiperRef2.current!.slideTo(0);
         swiperRef2.current!.update();
         setAnimationTrigger(false);
-      }, 100);
+      }, 500);
     }
 
     swiperRef1.current = new Swiper('.swiper1', {

@@ -27,6 +27,17 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
 @keyframes expand {
   0% {
     width: 0;
@@ -34,15 +45,15 @@
     opacity: 0.2;
   }
   100% {
-    width: 200vw;
-    height: 200vh;
+    width: 150vw;
+    height: 150vh;
     opacity: 1;
   }
 }
 @keyframes shrink {
   0% {
-    width: 200vw;
-    height: 200vh;
+    width: 150vw;
+    height: 150vh;
     opacity: 1;
   }
   100% {
