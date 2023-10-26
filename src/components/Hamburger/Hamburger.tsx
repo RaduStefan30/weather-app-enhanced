@@ -1,10 +1,20 @@
 import './Hamburger.scss';
 
-const Hamburger = () => {
+const Hamburger = ({
+  toggleMenu,
+  isAnimating,
+}: {
+  toggleMenu: () => void;
+  isAnimating: boolean;
+}) => {
   return (
-    <div className="hamburger__container">
+    <button
+      disabled={isAnimating}
+      className="hamburger__container"
+      onClick={toggleMenu}
+    >
       <div className="hamburger"></div>
-    </div>
+    </button>
   );
 };
 

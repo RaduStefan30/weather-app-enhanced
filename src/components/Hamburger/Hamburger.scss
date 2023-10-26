@@ -10,6 +10,7 @@
     height: 0.4rem;
     background: $primary-gradient;
     border-radius: $border-radius-small;
+    transition: filter 0.2s ease;
   }
 
   &:before,
@@ -28,13 +29,20 @@
   }
 
   &__container {
+    background: none;
+    border: none;
     position: relative;
     width: 3.2rem;
     height: 3.2rem;
     @include center-items;
+    z-index: 101;
 
     &:hover {
       cursor: pointer;
+    }
+
+    &:disabled * {
+      filter: brightness(0.5);
     }
   }
 }

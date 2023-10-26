@@ -9,6 +9,7 @@
   padding: $padding-wide-medium;
   @include center-items;
   justify-content: space-between;
+  z-index: 100;
 
   &::before {
     content: '';

@@ -46,7 +46,10 @@ const WeatherDetails = () => {
     });
 
     swiperRef2.current = new Swiper('.swiper2', {
-      slidesPerView: 4,
+      slidesPerView: 3,
+      slidesOffsetBefore: 25,
+      slidesOffsetAfter: 25,
+      spaceBetween: 20,
       on: {
         init(swiper) {
           swiper.slideTo(0);

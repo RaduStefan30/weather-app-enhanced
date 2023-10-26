@@ -1,0 +1,42 @@
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+
+.header-menu {
+  &__overlay {
+    position: fixed;
+    top: -30vh;
+    right: -30vw;
+    height: 0;
+    width: 0;
+    background: $primary-gradient;
+    z-index: -2;
+    transform-origin: top right;
+    border-radius: 100%;
+
+    &.open {
+      animation: expand 0.6s ease-out forwards;
+    }
+
+    &.closed {
+      animation: shrink 0.6s ease-out forwards;
+    }
+  }
+
+  &__items {
+    position: absolute;
+    top: 45vh;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.4s 0.6s;
+
+    &.open {
+      transition: opacity 0.4s 0.3s;
+      opacity: 1;
+    }
+
+    &.closed {
+      transition: opacity 0.4s;
+      opacity: 0;
+    }
+  }
+}

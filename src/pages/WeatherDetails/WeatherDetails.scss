@@ -12,8 +12,6 @@
   }
 
   &-hourly {
-    gap: $margin-medium;
-    margin: $margin-large;
     height: 16rem;
 
     &-card {
@@ -32,6 +30,7 @@
       width: 100%;
       justify-content: center;
       gap: $margin-large;
+      margin-bottom: $margin-large;
     }
     &.active {
       color: $primary-dark;
