@@ -1,0 +1,84 @@
+@import '../../styles/abstracts/variables';
+.temperature {
+  &-labels {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 12px;
+    pointer-events: none;
+  }
+}
+
+.toggle {
+  &.first {
+    &.normal {
+      background-color: $primary-color-1-washed;
+    }
+    &.reversed {
+      background-color: $primary-color-2-washed;
+    }
+  }
+  &.second {
+    &.normal {
+      background-color: $primary-color-2-washed;
+    }
+    &.reversed {
+      background-color: $primary-color-1-washed;
+    }
+  }
+}
+
+.slider {
+  &.first {
+    &.normal {
+      background-color: $primary-color-1;
+    }
+    &.reversed {
+      background-color: $primary-color-2;
+    }
+    transform: translateX(4rem);
+  }
+  &.second {
+    &.normal {
+      background-color: $primary-color-2;
+    }
+    &.reversed {
+      background-color: $primary-color-1;
+    }
+    transform: translateX(0);
+  }
+}
+
+.toggle {
+  position: relative;
+  width: 10rem;
+  height: 5.5rem;
+  border-radius: $border-radius-large;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $padding-small;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+
+  &-unit {
+    font-size: $font-size-small;
+    font-weight: $font-weight-smallest;
+  }
+}
+
+.slider {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  border-radius: $border-radius-large;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+  font-weight: bold;
+  font-size: 16px;
+}

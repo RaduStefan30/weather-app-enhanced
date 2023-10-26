@@ -1,5 +1,6 @@
 import { RefObject } from 'react';
 import './HeaderMenu.scss';
+import Toggle from '../../Toggle/Toggle';
 
 const HeaderMenu = ({
   isFirstRender,
@@ -20,7 +21,10 @@ const HeaderMenu = ({
         }}
       ></div>
       <div className={`header-menu__items ${isMenuOpen ? 'open' : 'closed'}`}>
-        Menu item
+        <div className="header-menu__toggle-container">
+          <Toggle unit={'temp'} reversedTheme={true} />
+          <Toggle unit={'distance'} reversedTheme={false} />
+        </div>
       </div>
     </>
   );

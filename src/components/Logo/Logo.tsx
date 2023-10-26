@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import './Logo.scss';
 
-const Logo = () => {
+const Logo = ({ toggleMenu }: { toggleMenu: (close: boolean) => void }) => {
   const navigate = useNavigate();
   return (
     <img
       className="logo"
       src="/logo.png"
       alt="Logo"
-      onClick={() => navigate('')}
+      onClick={() => {
+        toggleMenu(true);
+        navigate('');
+      }}
     />
   );
 };

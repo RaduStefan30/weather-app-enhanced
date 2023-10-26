@@ -9,7 +9,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const toggleMenu = () => {
+  const toggleMenu = (close: boolean = false) => {
+    if (close) {
+      setIsMenuOpen(false);
+    }
     if (!isAnimating) {
       setIsMenuOpen(!isMenuOpen);
       setIsAnimating(true);
@@ -25,7 +28,7 @@ const Header = () => {
 
   return (
     <header className="header">
-      <Logo />
+      <Logo toggleMenu={toggleMenu} />
       <Hamburger toggleMenu={toggleMenu} isAnimating={isAnimating} />
       <HeaderMenu isFirstRender={isFirstRender} isMenuOpen={isMenuOpen} />
     </header>
