@@ -1,9 +1,7 @@
 export type WeatherData = {
   current: {
-    temp_c: string;
-    condition: {
-      icon: string;
-    };
+    temp_c: number;
+    condition: Condition;
   };
   forecast: {
     forecastday: [ForecastDay];

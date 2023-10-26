@@ -3,6 +3,7 @@ import './Search.scss';
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { LiaSearchSolid } from 'react-icons/lia';
 import { AiOutlineClose } from 'react-icons/ai';
+import { updateSearchesFromLocalStorage } from '../../utils/utils';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -10,20 +11,8 @@ const Search = () => {
 
   const handleSearch = () => {
     if (searchTerm) {
-      updateLocalStorage();
+      updateSearchesFromLocalStorage(searchTerm);
       navigate(`details/${searchTerm}`);
-    }
-  };
-
-  const updateLocalStorage = () => {
-    const maxItems = 5;
-    const searches = JSON.parse(localStorage.getItem('searches') || '[]');
-    if (!searches.includes(searchTerm)) {
-      searches.unshift(searchTerm);
-      if (searches.length > maxItems) {
-        searches.pop();
-      }
-      localStorage.setItem('searches', JSON.stringify(searches));
     }
   };
 

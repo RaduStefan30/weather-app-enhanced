@@ -9,7 +9,7 @@
     width: 3.2rem;
     height: 0.4rem;
     background: $primary-gradient;
-    border-radius: 0.5rem;
+    border-radius: $border-radius-small;
   }
 
   &:before,
@@ -20,11 +20,11 @@
   }
 
   &:before {
-    top: -1rem; // Height of the element + 1rem space
+    top: -1rem;
   }
 
   &:after {
-    bottom: -1rem; // Height of the element + 1rem space
+    bottom: -1rem;
   }
 
   &__container {

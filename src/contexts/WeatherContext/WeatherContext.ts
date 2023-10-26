@@ -2,9 +2,9 @@
 
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
+import { getSearchesFromLocalStorage } from '../../utils/utils';
 
-const lastSearch =
-  JSON.parse(localStorage.getItem('searches') || '[]')[0] || 'london';
+const lastSearch = getSearchesFromLocalStorage()[0] || 'london';
 
 const initialState: WeatherState = {
   data: null,

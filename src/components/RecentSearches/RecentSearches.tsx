@@ -1,17 +1,18 @@
 import { useEffect, useState, ReactElement } from 'react';
-import { fetchWeatherData } from '../../api/fetchWeather';
+import { fetchWeather } from '../../api/api';
 import './RecentSearches.scss';
 import RecentCard from './RecentCard/RecentCard';
+import { getSearchesFromLocalStorage } from '../../utils/utils';
 
 const Recent = () => {
   const [recentSearches, setRecentSearches] = useState<ReactElement[]>([]);
   useEffect(() => {
-    const searches = JSON.parse(localStorage.getItem('searches') || '[]');
+    const searches = getSearchesFromLocalStorage();
 
     const fetchData = async () => {
       const searchResults = await Promise.all(
         searches.map(async (search: string) => {
-          const data = await fetchWeatherData(search);
+          const data = await fetchWeather(search);
           return (
             <RecentCard
               key={search}

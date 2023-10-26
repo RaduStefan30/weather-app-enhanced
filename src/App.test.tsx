@@ -1,12 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
-import { fetchWeatherData } from './api/fetchWeather';
+import { fetchWeather } from './api/api';
 import { weatherDataMock } from './__mocks__/weatherDataMock';
 
 jest.mock('./api/fetchWeather');
-const mockFetchWeatherData = fetchWeatherData as jest.MockedFunction<
-  typeof fetchWeatherData
+const mockFetchWeatherData = fetchWeather as jest.MockedFunction<
+  typeof fetchWeather
 >;
 
 describe('App Component', () => {

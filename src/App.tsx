@@ -9,7 +9,7 @@ import Header from './components/Header/Header';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
-import { fetchWeatherData } from './api/fetchWeather';
+import { fetchWeather } from './api/api';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const App = () => {
   useEffect(() => {
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
-      const data = await fetchWeatherData(state.location);
+      const data = await fetchWeather(state.location);
       if (!data)
         return dispatch({
           type: 'FETCH_FAILURE',

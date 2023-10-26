@@ -10,6 +10,7 @@ import './WeatherDetails.scss';
 import WeatherDetail from './WeatherDetail/WeatherDetail';
 import { ForecastDay } from '../../types';
 import { WeatherHourly } from './WeatherHourly/WeatherHourly';
+import { formatDate } from '../../utils/utils';
 
 const WeatherDetails = () => {
   const { data, loading, error, location } = useContext(WeatherStateContext);
@@ -21,18 +22,8 @@ const WeatherDetails = () => {
   const swiperRef1 = useRef<Swiper | null>(null);
   const swiperRef2 = useRef<Swiper | null>(null);
 
-  const formattedDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-GB', {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-    });
-  };
-
   useEffect(() => {
     if (swiperRef2.current && data) {
-      // Trigger the "going down" animation
       setAnimationTrigger(true);
 
       setTimeout(() => {
@@ -64,6 +55,7 @@ const WeatherDetails = () => {
       },
     });
   }, [data, activeIndex]);
+
   useEffect(() => {
     if (city && dispatch) dispatch({ type: 'UPDATE_LOCATION', payload: city });
   }, [city, dispatch, location]);
@@ -95,7 +87,7 @@ const WeatherDetails = () => {
             onClick={() => setActiveIndex(index)}
             key={day.date}
           >
-            {formattedDate(day.date)}
+            {formatDate(day.date)}
           </div>
         ))}
       </div>
