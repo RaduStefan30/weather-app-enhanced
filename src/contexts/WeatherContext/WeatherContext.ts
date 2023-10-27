@@ -11,6 +11,11 @@ const initialState: WeatherState = {
   location: lastSearch,
   loading: false,
   error: '',
+  units: {
+    temp: 'celsius',
+    distance: 'km',
+    quantity: 'mm',
+  },
 };
 
 const WeatherStateContext = createContext<WeatherState>(initialState);
@@ -29,6 +34,8 @@ const weatherReducer = (
       return { ...state, loading: false, error: action.payload };
     case 'UPDATE_LOCATION':
       return { ...state, location: action.payload };
+    case 'UPDATE_UNITS':
+      return { ...state, units: { ...action.payload } };
     default:
       return state;
   }

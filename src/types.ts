@@ -14,13 +14,22 @@ export type WeatherState = {
   loading: boolean;
   location: string;
   error: string | null;
+  units: {
+    temp: string;
+    distance: string;
+    quantity: string;
+  };
 };
 
 export type WeatherAction =
   | { type: 'FETCH_INIT' }
   | { type: 'FETCH_SUCCESS'; payload: WeatherData }
   | { type: 'FETCH_FAILURE'; payload: string }
-  | { type: 'UPDATE_LOCATION'; payload: string };
+  | { type: 'UPDATE_LOCATION'; payload: string }
+  | {
+      type: 'UPDATE_UNITS';
+      payload: { temp: string; distance: string; quantity: string };
+    };
 
 export type Condition = {
   icon: string;
