@@ -29,7 +29,11 @@ const Header = () => {
   return (
     <header className="header">
       <Logo toggleMenu={toggleMenu} />
-      <Hamburger toggleMenu={toggleMenu} isAnimating={isAnimating} />
+      <Hamburger
+        toggleMenu={toggleMenu}
+        isMenuOpen={isMenuOpen}
+        isAnimating={isAnimating}
+      />
       <HeaderMenu isFirstRender={isFirstRender} isMenuOpen={isMenuOpen} />
     </header>
   );

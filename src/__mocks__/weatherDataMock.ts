@@ -33,8 +33,6 @@ export const weatherDataMock: WeatherData = {
           },
           avgtemp_c: 12,
           avgtemp_f: 30,
-          temp_c: 0,
-          temp_f: 0,
         },
       },
     ],

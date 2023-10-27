@@ -5,6 +5,9 @@ import { WeatherAction, WeatherState } from '../../types';
 import { getSearchesFromLocalStorage } from '../../utils/utils';
 
 const lastSearch = getSearchesFromLocalStorage()[0] || 'london';
+const tempUnit = localStorage.getItem('temp') || 'celsius';
+const distanceUnit = localStorage.getItem('distance') || 'km';
+const quantityUnit = localStorage.getItem('quantity') || 'mm';
 
 const initialState: WeatherState = {
   data: null,
@@ -12,9 +15,9 @@ const initialState: WeatherState = {
   loading: false,
   error: '',
   units: {
-    temp: 'celsius',
-    distance: 'km',
-    quantity: 'mm',
+    temp: tempUnit,
+    distance: distanceUnit,
+    quantity: quantityUnit,
   },
 };
 

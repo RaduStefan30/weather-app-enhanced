@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import './Toggle.scss';
 import { RiCelsiusLine, RiFahrenheitLine } from 'react-icons/ri';
 import {
@@ -14,9 +14,17 @@ const unitIcons = {
 };
 
 const Toggle = ({ unit }: { unit: 'temp' | 'distance' | 'quantity' }) => {
-  const [isDefaultUnit, setIsDefaultUnit] = useState(true);
   const { units } = useContext(WeatherStateContext);
   const dispatch = useContext(WeatherDispatchContext);
+  const savedUnit = localStorage.getItem(unit);
+  const isSavedDefaultUnit = savedUnit
+    ? UNIT_VALUES[unit][0] === savedUnit
+    : true;
+  const [isDefaultUnit, setIsDefaultUnit] = useState(isSavedDefaultUnit);
+
+  useEffect(() => {
+    setIsDefaultUnit(UNIT_VALUES[unit][0] === units[unit]);
+  }, [unit, units]);
 
   const toggleUnit = () => {
     const newValue = isDefaultUnit
@@ -27,6 +35,7 @@ const Toggle = ({ unit }: { unit: 'temp' | 'distance' | 'quantity' }) => {
       payload: { ...units, [unit]: newValue },
     });
     setIsDefaultUnit((prev) => !prev);
+    localStorage.setItem(unit, newValue);
   };
 
   const togglePosition = isDefaultUnit ? 'first' : 'second';
