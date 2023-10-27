@@ -16,12 +16,8 @@ $primary-gradient: linear-gradient(
   rgba(109, 226, 245, 1) 0%,
   rgba(100, 87, 239, 1) 100%
 );
-$black-fade-gradient: linear-gradient(
-  to bottom,
-  rgba(0, 0, 0, 0.85) 10%,
-  rgba(0, 0, 0, 0.6) 90%,
-  rgba(0, 0, 0, 0) 100%
-);
+$gradient-direction: to bottom;
+$gradient-direction-reversed: to top;
 
 //Padding
 $padding-wide-small: 1rem 2rem;

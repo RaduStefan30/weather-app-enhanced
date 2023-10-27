@@ -1,0 +1,44 @@
+@import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
+
+.footer {
+  @include black-fade-gradient($gradient-direction-reversed);
+  color: #ecf0f1;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 100%;
+  padding: $padding-medium 0;
+  max-height: 13rem;
+  text-decoration: none;
+  font-size: $font-size-tiny;
+  margin-top: 6rem;
+
+  &__personal-links {
+    font-size: $font-size-medium;
+  }
+
+  &__image-wrapper {
+    background-color: $primary-light;
+    border-radius: $border-radius-large;
+    padding: 0.3rem 1rem;
+    margin: 0 1rem;
+  }
+
+  a {
+    color: $primary-color-2;
+    transition: color 0.3s;
+
+    &:hover {
+      color: $primary-color-1;
+    }
+
+    img {
+      vertical-align: middle;
+      height: 1.8rem;
+    }
+  }
+
+  p {
+    margin: $margin-small;
+  }
+}

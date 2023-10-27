@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { Hour } from '../../../types';
+import { Hour } from '../../types';
 import './WeatherHourly.scss';
-import { WeatherStateContext } from '../../../contexts/WeatherContext/WeatherContext';
-import Temperature from '../../../components/Temperature/Temperature';
+import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
+import Temperature from '../Temperature/Temperature';
 
 export const WeatherHourly = ({ hour }: { hour: Hour }) => {
   const date = new Date(hour.time);

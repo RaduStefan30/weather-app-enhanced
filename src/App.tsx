@@ -10,15 +10,18 @@ import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
 import { fetchWeather } from './api/api';
+import Footer from './components/Footer/Footer';
+import './App.scss';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <>
+      <div className="app">
         <Header />
         <Outlet />
-      </>
+        <Footer />
+      </div>
     ),
     children: [
       {

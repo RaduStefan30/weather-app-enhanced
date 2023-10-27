@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { ForecastDay } from '../../../types';
-import './WeatherDetail.scss';
-import { WeatherStateContext } from '../../../contexts/WeatherContext/WeatherContext';
-import Temperature from '../../../components/Temperature/Temperature';
+import { ForecastDay } from '../../types';
+import './WeatherDetailCard.scss';
+import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
+import Temperature from '../Temperature/Temperature';
 
 const WeatherDetail = ({ details }: { details: ForecastDay }) => {
   const condition = details.day.condition;

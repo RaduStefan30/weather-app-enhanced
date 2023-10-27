@@ -1,0 +1,10 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  min-height: 100vh;
+
+  & > * {
+    flex: 1;
+  }
+}

@@ -3,3 +3,12 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin black-fade-gradient($direction: to bottom) {
+  background: linear-gradient(
+    $direction,
+    rgba(0, 0, 0, 0.85) 10%,
+    rgba(0, 0, 0, 0.6) 90%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}

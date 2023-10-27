@@ -5,7 +5,7 @@
   position: relative;
   background-color: $primary-gradient;
   width: 100vw;
-  height: 10rem;
+  max-height: 10rem;
   padding: $padding-wide-medium;
   @include center-items;
   justify-content: space-between;
@@ -18,7 +18,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: $black-fade-gradient;
+    @include black-fade-gradient($gradient-direction);
     z-index: -1;
   }
 }

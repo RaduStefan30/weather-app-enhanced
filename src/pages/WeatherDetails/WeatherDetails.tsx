@@ -7,9 +7,9 @@ import {
 } from '../../contexts/WeatherContext/WeatherContext';
 import { useParams } from 'react-router-dom';
 import './WeatherDetails.scss';
-import WeatherDetail from './WeatherDetail/WeatherDetail';
+import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard';
 import { ForecastDay } from '../../types';
-import { WeatherHourly } from './WeatherHourly/WeatherHourly';
+import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
 
 const WeatherDetails = () => {
