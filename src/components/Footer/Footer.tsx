@@ -1,7 +1,7 @@
 import './Footer.scss';
 import { FaGithub, FaEnvelope } from 'react-icons/fa';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <footer className="footer">
       <p>

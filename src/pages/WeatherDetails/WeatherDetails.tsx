@@ -11,6 +11,7 @@ import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard'
 import { ForecastDay } from '../../types';
 import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
+import Spinner from '../../components/Spinner/Spinner';
 
 const WeatherDetails = () => {
   const { data, loading, error, location } = useContext(WeatherStateContext);
@@ -63,7 +64,7 @@ const WeatherDetails = () => {
     if (city && dispatch) dispatch({ type: 'UPDATE_LOCATION', payload: city });
   }, [city, dispatch, location]);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Spinner />;
   if (error) return <div>Error: {error}</div>;
   if (!data) return <div>No weather data available</div>;
 
