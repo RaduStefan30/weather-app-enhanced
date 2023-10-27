@@ -4,6 +4,7 @@ export const weatherDataMock: WeatherData = {
   location: { name: 'London', country: 'United Kingdom' },
   current: {
     temp_c: 12,
+    temp_f: 12,
     condition: {
       icon: '',
       text: '',
@@ -22,6 +23,7 @@ export const weatherDataMock: WeatherData = {
             },
             time: '00:00',
             temp_c: 12,
+            temp_f: 12,
           },
         ],
         day: {
@@ -30,6 +32,9 @@ export const weatherDataMock: WeatherData = {
             text: '',
           },
           avgtemp_c: 12,
+          avgtemp_f: 30,
+          temp_c: 0,
+          temp_f: 0,
         },
       },
     ],

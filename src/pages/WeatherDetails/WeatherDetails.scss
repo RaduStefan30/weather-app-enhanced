@@ -44,7 +44,7 @@
 .animate-out .swiper-slide {
   opacity: 0;
   transform: translateY(-100%);
-  animation: slideDown 0.4s ease forwards;
+  animation: slideDown 0.3s ease forwards;
 
   & * {
     opacity: 0.4;

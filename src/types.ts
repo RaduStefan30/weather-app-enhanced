@@ -1,6 +1,7 @@
 export type WeatherData = {
   current: {
     temp_c: number;
+    temp_f: number;
     condition: Condition;
   };
   forecast: {
@@ -40,6 +41,7 @@ export type Hour = {
   condition: Condition;
   time: string;
   temp_c: number;
+  temp_f: number;
 };
 
 export type ForecastDay = {
@@ -49,5 +51,6 @@ export type ForecastDay = {
   day: {
     condition: Condition;
     avgtemp_c: number;
+    avgtemp_f: number;
   };
 };

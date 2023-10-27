@@ -1,8 +1,13 @@
+import { useContext } from 'react';
 import { ForecastDay } from '../../../types';
 import './WeatherDetail.scss';
+import { WeatherStateContext } from '../../../contexts/WeatherContext/WeatherContext';
+import Temperature from '../../../components/Temperature/Temperature';
 
 const WeatherDetail = ({ details }: { details: ForecastDay }) => {
   const condition = details.day.condition;
+  const { units } = useContext(WeatherStateContext);
+  const { temp } = units;
   return (
     <div className="weather-detail-card">
       <img
@@ -11,9 +16,12 @@ const WeatherDetail = ({ details }: { details: ForecastDay }) => {
         alt="large weather icon"
       />
       <p className="weather-detail-card__text">{condition.text}</p>
-      <h2 className="weather-detail-card__temp">
-        {Math.floor(details.day.avgtemp_c)} &#176;C
-      </h2>
+      <Temperature
+        classNames={'weather-detail-card__temp'}
+        temp={temp}
+        tempC={details.day.avgtemp_c}
+        tempF={details.day.avgtemp_f}
+      />
     </div>
   );
 };
