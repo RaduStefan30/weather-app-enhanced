@@ -69,7 +69,7 @@ const WeatherDetails = () => {
   if (!data) return <div>No weather data available</div>;
 
   return (
-    <div className="weather-details-container">
+    <div className="weather-details-container slide-in page">
       <h1 className="weather-details-title">{data.location.name}</h1>
       <div className="swiper1">
         <div className="swiper-wrapper">

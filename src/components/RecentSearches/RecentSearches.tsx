@@ -11,14 +11,14 @@ const Recent = () => {
 
     const fetchData = async () => {
       const searchResults = await Promise.all(
-        searches.map(async (search: string) => {
+        searches.map(async (search: string, index: number) => {
           const data = await fetchWeather(search);
           return (
             <RecentCard
               key={search}
               current={data.current}
               location={data.location}
-              forecast={data.forecast}
+              classNames={index % 2 === 0 ? 'slide-left' : 'slide-right'}
             />
           );
         })

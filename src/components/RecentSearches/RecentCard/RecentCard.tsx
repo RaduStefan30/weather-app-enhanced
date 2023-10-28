@@ -5,14 +5,21 @@ import { useContext } from 'react';
 import { WeatherStateContext } from '../../../contexts/WeatherContext/WeatherContext';
 import Temperature from '../../Temperature/Temperature';
 
-const RecentCard = (props: WeatherData) => {
-  const { location, current } = props;
+const RecentCard = ({
+  location,
+  current,
+  classNames,
+}: {
+  location: WeatherData['location'];
+  current: WeatherData['current'];
+  classNames: string;
+}) => {
   const navigate = useNavigate();
   const { units } = useContext(WeatherStateContext);
   const { temp } = units;
   return (
     <div
-      className="recent-card"
+      className={`recent-card ${classNames}`}
       onClick={() => navigate(`details/${location.name}`)}
     >
       <div className="recent-card__location">
