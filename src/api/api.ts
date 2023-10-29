@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { WeatherData } from '../types';
+import { Suggestion, WeatherData } from '../types';
 
 const url = 'https://api.weatherapi.com/v1';
 
 export const fetchSuggestions = async (
   location: string
-): Promise<Array<object>> => {
+): Promise<Array<Suggestion>> => {
   const response = await axios.get(
     `${url}/search.json?key=${import.meta.env.VITE_SECRET_KEY}&q=${location}`
   );

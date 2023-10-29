@@ -54,3 +54,10 @@ export type ForecastDay = {
     avgtemp_f: number;
   };
 };
+
+export type Suggestion = {
+  id: number;
+  name: string;
+  region: string;
+  country: string;
+};
