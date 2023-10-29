@@ -13,11 +13,12 @@ const Search = () => {
   const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
+  const activeDropDownClass = isFocused && suggestions ? 'show' : '';
 
-  const handleSearch = () => {
-    if (searchTerm) {
-      updateSearchesFromLocalStorage(searchTerm);
-      navigate(`details/${searchTerm}`);
+  const handleSearch = (search: string) => {
+    if (search) {
+      updateSearchesFromLocalStorage(search);
+      navigate(`details/${search}`);
     }
   };
 
@@ -27,7 +28,7 @@ const Search = () => {
 
   const handleInputKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      handleSearch();
+      handleSearch(searchTerm);
     }
   };
 
@@ -55,7 +56,10 @@ const Search = () => {
 
   return (
     <div className="search-container">
-      <button onClick={handleSearch} className="search-button">
+      <button
+        onClick={() => handleSearch(searchTerm)}
+        className={`search-button ${activeDropDownClass}`}
+      >
         <LiaSearchSolid />
       </button>
       <input
@@ -70,21 +74,16 @@ const Search = () => {
       />
       <button
         onClick={() => setSearchTerm('')}
-        className="search-button search-cancel"
+        className={`search-button search-cancel ${activeDropDownClass}`}
       >
         <AiOutlineClose
           className={`icon ${searchTerm ? 'visible' : 'hidden'}`}
         />
       </button>
-      <div className={`search-dropdown ${isFocused ? 'show' : ''}`}>
+      <div className={`search-dropdown ${activeDropDownClass}`}>
         {suggestions &&
           suggestions.map((suggestion) => (
-            <p
-              key={suggestion.id}
-              onClick={() => {
-                navigate(`details/${suggestion.url}`);
-              }}
-            >
+            <p key={suggestion.id} onClick={() => handleSearch(suggestion.url)}>
               {suggestion.name}
               {suggestion.region && `,  ${suggestion.region}`},{' '}
               {suggestion.country}

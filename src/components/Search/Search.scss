@@ -23,6 +23,10 @@
     font-size: $font-size-large;
     padding-top: 12px;
     cursor: pointer;
+
+    &.show {
+      border-radius: $border-radius-small 0 0 0 !important;
+    }
   }
 
   &-cancel {
@@ -31,6 +35,10 @@
     & .visible {
       cursor: pointer;
       pointer-events: all;
+    }
+
+    &.show {
+      border-radius: 0 $border-radius-small 0 0 !important;
     }
   }
 
@@ -73,14 +81,5 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
-  }
-  &-container:focus-within {
-    .search-button {
-      border-radius: $border-radius-small 0 0 0 !important;
-    }
-
-    .search-cancel {
-      border-radius: 0 $border-radius-small 0 0 !important;
-    }
   }
 }
