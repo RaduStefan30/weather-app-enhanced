@@ -79,8 +79,15 @@ const Search = () => {
       <div className={`search-dropdown ${isFocused ? 'show' : ''}`}>
         {suggestions &&
           suggestions.map((suggestion) => (
-            <p key={suggestion.id}>
-              {suggestion.name}, {suggestion.region}, {suggestion.country}
+            <p
+              key={suggestion.id}
+              onClick={() => {
+                navigate(`details/${suggestion.url}`);
+              }}
+            >
+              {suggestion.name}
+              {suggestion.region && `,  ${suggestion.region}`},{' '}
+              {suggestion.country}
             </p>
           ))}
       </div>

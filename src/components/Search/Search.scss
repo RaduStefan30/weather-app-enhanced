@@ -30,6 +30,7 @@
     pointer-events: none;
     & .visible {
       cursor: pointer;
+      pointer-events: all;
     }
   }
 

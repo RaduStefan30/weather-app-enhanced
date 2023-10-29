@@ -60,4 +60,5 @@ export type Suggestion = {
   name: string;
   region: string;
   country: string;
+  url: string;
 };
