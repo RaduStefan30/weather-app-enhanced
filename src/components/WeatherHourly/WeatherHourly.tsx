@@ -13,7 +13,8 @@ export const WeatherHourly = ({ hour }: { hour: Hour }) => {
       <div className="weather-hourly__time">{formattedTime}</div>
       <WeatherIcon
         className="weather-hourly__icon"
-        src={hour.condition.icon}
+        code={hour.condition.code}
+        isDay={hour.is_day}
         alt="weather icon"
       />
       <Measurement

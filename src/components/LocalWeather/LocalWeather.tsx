@@ -34,8 +34,9 @@ const LocalWeather = () => {
         </p>
         <WeatherIcon
           className="local-weather__icon big"
-          src={data.current.condition.icon}
+          code={data.current.condition.code}
           alt="large weather icon"
+          isDay={data.current.is_day}
         />
         <p className="local-weather__condition">
           {data.current.condition.text}

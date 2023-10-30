@@ -31,7 +31,8 @@ const RecentCard = ({
         <WeatherIcon
           className="recent-card__temperature-icon"
           alt="weather icon"
-          src={current.condition.icon}
+          code={current.condition.code}
+          isDay={current.is_day}
         />
         <Measurement
           className={'recent-card__temperature-value'}

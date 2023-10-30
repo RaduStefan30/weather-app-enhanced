@@ -10,6 +10,7 @@ export type WeatherData = {
     wind_kph: number;
     wind_mph: number;
     condition: Condition;
+    is_day: boolean;
   };
   forecast: {
     forecastday: [ForecastDay];
@@ -45,11 +46,13 @@ export type WeatherAction =
     };
 
 export type Condition = {
+  code: number;
   icon: string;
   text: string;
 };
 
 export type Hour = {
+  is_day: boolean;
   condition: Condition;
   time: string;
   temp_c: number;

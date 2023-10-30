@@ -31,7 +31,8 @@
     @include center-items;
 
     &-icon {
-      height: 4rem;
+      height: 2.4rem;
+      margin: $margin-small;
     }
 
     &-value {

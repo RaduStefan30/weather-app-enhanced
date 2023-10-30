@@ -3,13 +3,20 @@ import './WeatherDetailCard.scss';
 import Measurement from '../Measurement/Measurement';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
 
-const WeatherDetail = ({ details }: { details: ForecastDay }) => {
+const WeatherDetail = ({
+  details,
+  isDay,
+}: {
+  details: ForecastDay;
+  isDay: boolean;
+}) => {
   const condition = details.day.condition;
   return (
     <div className="weather-detail-card">
       <WeatherIcon
         className="weather-detail-card__image"
-        src={condition.icon}
+        code={condition.code}
+        isDay={isDay}
         alt="large weather icon"
       />
       <p className="weather-detail-card__text">{condition.text}</p>

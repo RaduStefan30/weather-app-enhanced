@@ -75,7 +75,10 @@ const WeatherDetails = () => {
         <div className="swiper-wrapper">
           {data.forecast.forecastday.map((day) => (
             <div className="swiper-slide" key={day.date}>
-              <WeatherDetail details={day as ForecastDay} />
+              <WeatherDetail
+                details={day as ForecastDay}
+                isDay={data.current.is_day}
+              />
             </div>
           ))}
         </div>

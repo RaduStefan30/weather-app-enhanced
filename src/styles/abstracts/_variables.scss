@@ -13,9 +13,10 @@ $black-overlay: rgba(0, 0, 0, 0.8);
 //Gradients
 $primary-gradient: linear-gradient(
   90deg,
-  rgba(109, 226, 245, 1) 0%,
-  rgba(100, 87, 239, 1) 100%
+  rgb(89, 207, 225) 0%,
+  rgba(80, 67, 229, 1) 100%
 );
+
 $gradient-direction: to bottom;
 $gradient-direction-reversed: to top;
 
@@ -45,6 +46,7 @@ $font-weight-normal: 400;
 $font-weight-bold: 600;
 
 //Margins
+$margin-tiny: 0.5rem;
 $margin-small: 1rem;
 $margin-medium: 2rem;
 $margin-large: 4rem;

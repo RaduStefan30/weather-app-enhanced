@@ -1,15 +1,19 @@
+import { getIconPathByCode } from '../../utils/codeToIcon';
 import './WeatherIcon.scss';
 
 const WeatherIcon = ({
-  src,
+  code,
   alt,
   className,
+  isDay,
 }: {
-  src: string;
+  code: number;
   alt: string;
   className: string;
+  isDay: boolean;
 }) => {
-  return <img src={src} alt={alt} className={className} />;
+  const path = getIconPathByCode(code, isDay);
+  return <img src={path} alt={alt} className={className} />;
 };
 
 export default WeatherIcon;
