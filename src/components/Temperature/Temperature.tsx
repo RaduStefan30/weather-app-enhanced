@@ -1,16 +1,18 @@
+import { useContext } from 'react';
 import './Temperature.scss';
+import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
 
 const Temperature = ({
   classNames,
-  temp,
   tempC,
   tempF,
 }: {
   classNames: string;
-  temp: string;
   tempC: number;
   tempF: number;
 }) => {
+  const { units } = useContext(WeatherStateContext);
+  const { temp } = units;
   const isCelsius = temp === 'celsius';
   return (
     <h2 className={classNames}>

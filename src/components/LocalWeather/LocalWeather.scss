@@ -1,0 +1,23 @@
+@import '../../styles/abstracts/variables';
+
+.local-weather {
+  &__section {
+    display: flex;
+    flex-direction: column;
+    margin: $margin-large auto;
+    width: 80vw;
+  }
+
+  &__title {
+    font-size: $font-size-medium;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    margin: $margin-medium 0;
+  }
+
+  &__content {
+    padding: $padding-wide-medium;
+    background: $primary-dark-half;
+    border-radius: $border-radius-small;
+  }
+}

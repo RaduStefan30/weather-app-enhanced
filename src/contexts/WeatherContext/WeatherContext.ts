@@ -2,16 +2,15 @@
 
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
-import { getSearchesFromLocalStorage } from '../../utils/utils';
+import { getIP } from '../../api/api';
 
-const lastSearch = getSearchesFromLocalStorage()[0] || 'london';
 const tempUnit = localStorage.getItem('temp') || 'celsius';
 const distanceUnit = localStorage.getItem('distance') || 'km';
 const quantityUnit = localStorage.getItem('quantity') || 'mm';
 
 const initialState: WeatherState = {
   data: null,
-  location: lastSearch,
+  location: await getIP(),
   loading: false,
   error: '',
   units: {

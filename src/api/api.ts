@@ -20,3 +20,12 @@ export const fetchWeather = async (location: string): Promise<WeatherData> => {
   );
   return response.data;
 };
+
+export const getIP = async () => {
+  try {
+    const response = await axios.get('https://api.ipify.org?format=json');
+    return response.data.ip;
+  } catch (error) {
+    return null;
+  }
+};
