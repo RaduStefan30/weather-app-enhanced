@@ -1,7 +1,9 @@
 import './RecentCard.scss';
 import { WeatherData } from '../../../types';
 import { useNavigate } from 'react-router-dom';
-import Temperature from '../../Temperature/Temperature';
+import Measurement from '../../Measurement/Measurement';
+import LocationName from '../../LocationName/LocationName';
+import WeatherIcon from '../../WeatherIcon/WeatherIcon';
 
 const RecentCard = ({
   location,
@@ -19,18 +21,23 @@ const RecentCard = ({
       onClick={() => navigate(`details/${location.name}`)}
     >
       <div className="recent-card__location">
-        {location.name}, {location.country}
+        <LocationName
+          name={location.name}
+          region={location.region}
+          country={location.country}
+        />
       </div>
       <div className="recent-card__temperature">
-        <img
+        <WeatherIcon
           className="recent-card__temperature-icon"
           alt="weather icon"
           src={current.condition.icon}
         />
-        <Temperature
-          classNames={'recent-card__temperature-value'}
-          tempC={current.temp_c}
-          tempF={current.temp_f}
+        <Measurement
+          className={'recent-card__temperature-value'}
+          metricValue={current.temp_c}
+          imperialValue={current.temp_f}
+          unitType="temperature"
         />
       </div>
     </div>

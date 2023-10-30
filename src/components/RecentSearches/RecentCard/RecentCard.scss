@@ -13,6 +13,7 @@
   align-items: center;
   cursor: pointer;
   transition: $box-shadow-transition;
+  gap: 0.2rem;
 
   &:hover {
     box-shadow: $box-shadow-1;
@@ -21,6 +22,9 @@
   &__location {
     color: $primary-light;
     font-size: $font-size-small;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &__temperature {

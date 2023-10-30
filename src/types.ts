@@ -1,13 +1,25 @@
 export type WeatherData = {
   current: {
+    feelslike_c: number;
+    feelslike_f: number;
+    precip_mm: number;
+    precip_in: number;
+    humidity: number;
     temp_c: number;
     temp_f: number;
+    wind_kph: number;
+    wind_mph: number;
     condition: Condition;
   };
   forecast: {
     forecastday: [ForecastDay];
   };
-  location: { name: string; country: string };
+  location: {
+    name: string;
+    region: string;
+    country: string;
+    localtime: string;
+  };
 };
 
 export type WeatherState = {

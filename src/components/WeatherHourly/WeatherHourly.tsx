@@ -1,6 +1,7 @@
 import { Hour } from '../../types';
 import './WeatherHourly.scss';
-import Temperature from '../Temperature/Temperature';
+import Measurement from '../Measurement/Measurement';
+import WeatherIcon from '../WeatherIcon/WeatherIcon';
 
 export const WeatherHourly = ({ hour }: { hour: Hour }) => {
   const date = new Date(hour.time);
@@ -10,15 +11,16 @@ export const WeatherHourly = ({ hour }: { hour: Hour }) => {
   return (
     <div className="weather-hourly">
       <div className="weather-hourly__time">{formattedTime}</div>
-      <img
+      <WeatherIcon
         className="weather-hourly__icon"
         src={hour.condition.icon}
         alt="weather icon"
       />
-      <Temperature
-        classNames={'weather-hourly__temp'}
-        tempC={hour.temp_c}
-        tempF={hour.temp_f}
+      <Measurement
+        className={'weather-hourly__temp'}
+        metricValue={hour.temp_c}
+        imperialValue={hour.temp_f}
+        unitType="temperature"
       />
     </div>
   );

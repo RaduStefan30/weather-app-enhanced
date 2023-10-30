@@ -1,8 +1,15 @@
 import { useContext } from 'react';
+import { BiWind, BiDroplet } from 'react-icons/bi';
+import { WiBarometer } from 'react-icons/wi';
+import { BsCloudRain } from 'react-icons/bs';
 import './LocalWeather.scss';
 import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
 import Spinner from '../Spinner/Spinner';
-import Temperature from '../Temperature/Temperature';
+import Measurement from '../Measurement/Measurement';
+import LocationName from '../LocationName/LocationName';
+import { formatDate } from '../../utils/utils';
+import WeatherIcon from '../WeatherIcon/WeatherIcon';
+
 const LocalWeather = () => {
   const { data } = useContext(WeatherStateContext);
   if (!data) return <Spinner />;
@@ -14,12 +21,74 @@ const LocalWeather = () => {
         </h2>
       </div>
       <div className="local-weather__content">
-        {data.current.condition.text}
-        <Temperature
-          classNames={'weather-detail-card__temp'}
-          tempC={data.current.temp_c}
-          tempF={data.current.temp_f}
+        <h3 className="local-weather__location">
+          <LocationName
+            name={data.location.name}
+            region=""
+            country={data.location.country}
+          />
+        </h3>
+        <p className="local-weather__date">
+          {' '}
+          {formatDate(data.location.localtime)}
+        </p>
+        <WeatherIcon
+          className="local-weather__icon big"
+          src={data.current.condition.icon}
+          alt="large weather icon"
         />
+        <p className="local-weather__condition">
+          {data.current.condition.text}
+        </p>
+        <Measurement
+          className={'local-weather__temp big'}
+          metricValue={data.current.temp_c}
+          imperialValue={data.current.temp_f}
+          unitType="temperature"
+        />
+        <Measurement
+          className={'local-weather__temp'}
+          metricValue={data.current.feelslike_c}
+          imperialValue={data.current.feelslike_f}
+          unitType="temperature"
+        >
+          Feels like: &nbsp;
+        </Measurement>
+        <div className="local-weather__details">
+          <div className="local-weather__details-item">
+            <BiWind />
+            <Measurement
+              className={''}
+              metricValue={data.current.wind_kph}
+              imperialValue={data.current.wind_mph}
+              unitType="distance"
+            />
+            /h
+          </div>{' '}
+          <div className="local-weather__details-item">
+            <BsCloudRain />
+            <Measurement
+              className={''}
+              metricValue={data.current.precip_mm}
+              imperialValue={data.current.precip_in}
+              unitType="quantity"
+            />
+          </div>
+          <div className="local-weather__details-item">
+            <BiDroplet />
+            <p>{data.current.humidity}</p>
+            &nbsp; %
+          </div>
+          <div className="local-weather__details-item">
+            <WiBarometer />
+            <Measurement
+              className={''}
+              metricValue={data.current.wind_kph}
+              imperialValue={data.current.wind_mph}
+              unitType="pressure"
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { updateSearchesFromLocalStorage } from '../../utils/utils';
 import { fetchSuggestions } from '../../api/api';
 import { Suggestion } from '../../types';
+import LocationName from '../LocationName/LocationName';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -89,9 +90,11 @@ const Search = () => {
         {suggestions &&
           suggestions.map((suggestion) => (
             <p key={suggestion.id} onClick={() => handleSearch(suggestion.url)}>
-              {suggestion.name}
-              {suggestion.region && `,  ${suggestion.region}`},{' '}
-              {suggestion.country}
+              <LocationName
+                name={suggestion.name}
+                region={suggestion.region}
+                country={suggestion.country}
+              />
             </p>
           ))}
       </div>
