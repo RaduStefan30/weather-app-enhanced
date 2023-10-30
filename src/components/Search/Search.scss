@@ -6,6 +6,12 @@
     display: flex;
     margin: $margin-large auto $margin-small;
     width: 80vw;
+    transition: $box-shadow-transition;
+
+    &:hover,
+    &:focus-within {
+      box-shadow: $box-shadow-1;
+    }
 
     & > * {
       height: 4.8rem;

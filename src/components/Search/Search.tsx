@@ -13,7 +13,7 @@ const Search = () => {
   const [isFocused, setIsFocused] = useState(false);
   const navigate = useNavigate();
   const inputRef = useRef<HTMLInputElement>(null);
-  const activeDropDownClass = isFocused && suggestions ? 'show' : '';
+  const activeDropDownClass = isFocused && suggestions.length ? 'show' : '';
 
   const handleSearch = (search: string) => {
     if (search) {
@@ -38,6 +38,11 @@ const Search = () => {
 
   const handleBlur = () => {
     setIsFocused(false);
+  };
+
+  const handleCancel = () => {
+    setSearchTerm('');
+    setSuggestions([]);
   };
 
   useEffect(() => {
@@ -73,7 +78,7 @@ const Search = () => {
         onBlur={handleBlur}
       />
       <button
-        onClick={() => setSearchTerm('')}
+        onClick={handleCancel}
         className={`search-button search-cancel ${activeDropDownClass}`}
       >
         <AiOutlineClose

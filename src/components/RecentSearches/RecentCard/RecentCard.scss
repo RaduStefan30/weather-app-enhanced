@@ -11,6 +11,11 @@
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  transition: $box-shadow-transition;
+
+  &:hover {
+    box-shadow: $box-shadow-1;
+  }
 
   &__location {
     color: $primary-light;
