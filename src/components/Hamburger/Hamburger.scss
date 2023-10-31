@@ -54,6 +54,9 @@
 
     &:hover {
       cursor: pointer;
+      & > * {
+        filter: brightness(1.2);
+      }
     }
 
     &:disabled * {
