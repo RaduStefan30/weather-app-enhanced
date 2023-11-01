@@ -22,5 +22,3 @@ jobs:
         run: npm i
       - name: Test and coverage
         run: npm run test -- --coverage
-      - name: List coverage directory
-        run: ls -alh coverage/
