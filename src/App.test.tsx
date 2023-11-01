@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import App from './App';
 import * as api from './api/api';
 import { weatherDataMock } from './__mocks__/weatherDataMock';
+import { GENERIC_IP } from './utils/constants';
 
 jest.mock('./api/api');
 jest.mock('swiper/bundle');
@@ -15,7 +16,7 @@ const mockGetIP = api.getIP as jest.MockedFunction<typeof api.getIP>;
 
 describe('App Component', () => {
   beforeEach(() => {
-    mockGetIP.mockResolvedValue('103.14.104.0');
+    mockGetIP.mockResolvedValue(GENERIC_IP);
     mockFetchWeatherData.mockResolvedValue(weatherDataMock);
   });
 

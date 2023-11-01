@@ -12,6 +12,7 @@ const Hamburger = ({
   return (
     <button
       disabled={isAnimating}
+      data-testid="hamburger"
       className={`hamburger__container ${isMenuOpen ? 'open' : ''}`}
       onClick={() => toggleMenu(false)}
     >

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { Suggestion, WeatherData } from '../types';
+import { GENERIC_IP } from '../utils/constants';
 
 const url = 'https://api.weatherapi.com/v1';
 
@@ -26,6 +27,6 @@ export const getIP = async () => {
     const response = await axios.get('https://api.ipify.org?format=json');
     return response.data.ip;
   } catch (error) {
-    return null;
+    return GENERIC_IP;
   }
 };
