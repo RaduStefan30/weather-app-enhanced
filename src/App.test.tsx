@@ -1,40 +1,48 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import App from './App';
-import { fetchWeather, getIP } from './api/api';
+import * as api from './api/api';
 import { weatherDataMock } from './__mocks__/weatherDataMock';
 
 jest.mock('./api/api');
 jest.mock('swiper/bundle');
 jest.mock('swiper/css/bundle');
 
-const mockFetchWeatherData = fetchWeather as jest.MockedFunction<
-  typeof fetchWeather
+const mockFetchWeatherData = api.fetchWeather as jest.MockedFunction<
+  typeof api.fetchWeather
 >;
-
-const mockGetIP = getIP as jest.MockedFunction<typeof getIP>;
+const mockGetIP = api.getIP as jest.MockedFunction<typeof api.getIP>;
 
 describe('App Component', () => {
   beforeEach(() => {
-    mockFetchWeatherData.mockResolvedValue(weatherDataMock);
     mockGetIP.mockResolvedValue('103.14.104.0');
+    mockFetchWeatherData.mockResolvedValue(weatherDataMock);
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('renders App component with Header and Footer', async () => {
+  test('should render the main header on initial load', async () => {
     render(<App />);
     const headerElement = await screen.findByRole('banner');
-    const footerElement = screen.getByText(/weather data provided by/i);
     expect(headerElement).toBeInTheDocument();
+  });
+
+  test('should render the footer when weather data is available', async () => {
+    render(<App />);
+    const footerElement = await screen.findByText(/weather data provided by/i);
     expect(footerElement).toBeInTheDocument();
   });
 
-  test('fetches weather data based on IP location', async () => {
+  test('should hide the footer when no weather data is available', async () => {
+    mockFetchWeatherData.mockResolvedValue(null!);
+
     render(<App />);
-    const weatherElement = await screen.findByText(/weather/i);
-    expect(weatherElement).toBeInTheDocument();
+    const headerElement = await screen.findByRole('banner');
+    expect(headerElement).toBeInTheDocument();
+
+    const footerElement = screen.queryByText(/weather data provided by/i);
+    expect(footerElement).not.toBeInTheDocument();
   });
 });
