@@ -89,7 +89,12 @@ const Search = () => {
       <div className={`search-dropdown ${activeDropDownClass}`}>
         {suggestions &&
           suggestions.map((suggestion) => (
-            <p key={suggestion.id} onClick={() => handleSearch(suggestion.url)}>
+            <p
+              role="button"
+              tabIndex={0}
+              key={suggestion.id}
+              onClick={() => handleSearch(suggestion.url)}
+            >
               <LocationName
                 name={suggestion.name}
                 region={suggestion.region}

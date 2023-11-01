@@ -4,7 +4,6 @@
 .footer {
   @include black-fade-gradient($gradient-direction-reversed);
   color: #ecf0f1;
-  font-size: 0.9rem;
   text-align: center;
   width: 100%;
   padding: $padding-medium 0;

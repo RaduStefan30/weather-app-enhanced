@@ -86,6 +86,8 @@ const WeatherDetails = () => {
       <div className="weather-details-date__container">
         {data.forecast.forecastday.map((day, index) => (
           <div
+            role="button"
+            tabIndex={0}
             className={
               activeIndex === index
                 ? 'weather-details-date active'

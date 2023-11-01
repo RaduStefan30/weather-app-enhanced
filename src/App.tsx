@@ -12,7 +12,7 @@ import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
 import { fetchWeather, getIP } from './api/api';
 import Footer from './components/Footer/Footer';
 import './App.scss';
-import Error from './pages/Error/Error';
+import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +35,7 @@ const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <Error />,
+        element: <ErrorPage />,
       },
     ],
   },
@@ -53,20 +53,25 @@ const App = () => {
         console.error('Failed to fetch IP', error);
       }
     };
+
     fetchIP();
   }, []);
 
   useEffect(() => {
+    if (!state.location) return;
+
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
       const data = await fetchWeather(state.location);
-      if (!data)
+      if (!data) {
         return dispatch({
           type: 'FETCH_FAILURE',
           payload: 'Could not retrieve any data',
         });
+      }
       dispatch({ type: 'FETCH_SUCCESS', payload: data });
     };
+
     fetchData();
   }, [state.location]);
 

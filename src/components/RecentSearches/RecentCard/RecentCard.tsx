@@ -17,6 +17,8 @@ const RecentCard = ({
   const navigate = useNavigate();
   return (
     <div
+      role="button"
+      tabIndex={0}
       className={`recent-card ${classNames}`}
       onClick={() => navigate(`details/${location.name}`)}
     >
