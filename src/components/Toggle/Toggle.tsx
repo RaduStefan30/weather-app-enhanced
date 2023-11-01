@@ -8,7 +8,10 @@ import {
 import { UNIT_VALUES } from '../../utils/constants';
 
 const unitIcons = {
-  temp: [<RiCelsiusLine />, <RiFahrenheitLine />],
+  temp: [
+    <RiCelsiusLine key="celsius" />,
+    <RiFahrenheitLine key="fahrenheit" />,
+  ],
   distance: ['km', 'mi'],
   quantity: ['mm', 'in'],
 };

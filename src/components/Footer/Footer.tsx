@@ -9,7 +9,7 @@ const Footer = () => {
     return (
       <footer className="footer">
         <p>
-          Weather data provided by&nbsp;
+          Weather data provided by{' '}
           <a
             href="https://www.weatherapi.com/"
             title="Free Weather API"
@@ -28,8 +28,8 @@ const Footer = () => {
         <div className="footer__personal-links">
           <a href="mailto:radustefan3010@gmail.com">
             <FaEnvelope />
-          </a>
-          &nbsp; | &nbsp;
+          </a>{' '}
+          |{' '}
           <a
             href="https://github.com/RaduStefan30"
             target="_blank"

@@ -87,20 +87,19 @@ const Search = () => {
         />
       </button>
       <div className={`search-dropdown ${activeDropDownClass}`}>
-        {suggestions &&
-          suggestions.map((suggestion) => (
-            <button
-              className="no-styles-button"
-              key={suggestion.id}
-              onClick={() => handleSearch(suggestion.url)}
-            >
-              <LocationName
-                name={suggestion.name}
-                region={suggestion.region}
-                country={suggestion.country}
-              />
-            </button>
-          ))}
+        {suggestions?.map((suggestion) => (
+          <button
+            className="no-styles-button"
+            key={suggestion.id}
+            onClick={() => handleSearch(suggestion.url)}
+          >
+            <LocationName
+              name={suggestion.name}
+              region={suggestion.region}
+              country={suggestion.country}
+            />
+          </button>
+        ))}
       </div>
     </div>
   );

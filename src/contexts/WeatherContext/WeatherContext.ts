@@ -2,9 +2,9 @@
 
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
-const tempUnit = localStorage.getItem('temp') || 'celsius';
-const distanceUnit = localStorage.getItem('distance') || 'km';
-const quantityUnit = localStorage.getItem('quantity') || 'mm';
+const tempUnit = localStorage.getItem('temp') ?? 'celsius';
+const distanceUnit = localStorage.getItem('distance') ?? 'km';
+const quantityUnit = localStorage.getItem('quantity') ?? 'mm';
 
 const initialState: WeatherState = {
   data: null,

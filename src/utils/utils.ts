@@ -1,7 +1,7 @@
 import { MAX_SEARCHES } from './constants';
 
 export const getSearchesFromLocalStorage = () =>
-  JSON.parse(localStorage.getItem('searches') || '[]');
+  JSON.parse(localStorage.getItem('searches') ?? '[]');
 
 export const updateSearchesFromLocalStorage = (searchTerm: string) => {
   const maxItems = MAX_SEARCHES;

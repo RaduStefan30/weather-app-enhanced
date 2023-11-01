@@ -12,27 +12,6 @@
 }
 
 .toggle {
-  &.first {
-    background-color: $primary-color-1-washed;
-  }
-  &.second {
-    background-color: $primary-color-2-washed;
-  }
-}
-
-.slider {
-  &.first {
-    background-color: $primary-color-1;
-
-    transform: translateX(4rem);
-  }
-  &.second {
-    background-color: $primary-color-2;
-    transform: translateX(0);
-  }
-}
-
-.toggle {
   position: relative;
   width: 10rem;
   height: 5.5rem;
@@ -44,6 +23,13 @@
   cursor: pointer;
   overflow: hidden;
   transition: background-color 0.3s ease;
+
+  &.first {
+    background-color: $primary-color-1-washed;
+  }
+  &.second {
+    background-color: $primary-color-2-washed;
+  }
 
   &-unit {
     font-size: $font-size-small;
@@ -62,4 +48,14 @@
   transition: transform 0.3s ease-in-out;
   font-weight: bold;
   font-size: 16px;
+
+  &.first {
+    background-color: $primary-color-1;
+
+    transform: translateX(4rem);
+  }
+  &.second {
+    background-color: $primary-color-2;
+    transform: translateX(0);
+  }
 }
