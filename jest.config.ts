@@ -3,7 +3,6 @@ import type { Config } from '@jest/types';
 const config: Config.InitialOptions = {
   preset: 'ts-jest/presets/default-esm',
   testEnvironment: 'jest-environment-jsdom',
-  coverageReporters: ['text'],
   transform: {
     '^.+\\.tsx?$': [
       'ts-jest',
