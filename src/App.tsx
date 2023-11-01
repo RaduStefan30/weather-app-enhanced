@@ -9,7 +9,7 @@ import Header from './components/Header/Header';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
-import { fetchWeather } from './api/api';
+import { fetchWeather, getIP } from './api/api';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 import Error from './pages/Error/Error';
@@ -43,6 +43,18 @@ const router = createBrowserRouter([
 
 const App = () => {
   const [state, dispatch] = useReducer(weatherReducer, initialState);
+
+  useEffect(() => {
+    const fetchIP = async () => {
+      try {
+        const location = await getIP();
+        dispatch({ type: 'UPDATE_LOCATION', payload: location });
+      } catch (error) {
+        console.error('Failed to fetch IP', error);
+      }
+    };
+    fetchIP();
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {

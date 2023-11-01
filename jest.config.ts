@@ -13,7 +13,7 @@ const config: Config.InitialOptions = {
         astTransformers: {
           before: [
             {
-              path: 'node_modules/ts-jest-mock-import-meta', // or, alternatively, 'ts-jest-mock-import-meta' directly, without node_modules.
+              path: 'node_modules/ts-jest-mock-import-meta',
               options: {
                 metaObjectReplacement: { url: 'https://www.url.com' },
               },
