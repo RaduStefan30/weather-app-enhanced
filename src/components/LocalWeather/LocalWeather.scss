@@ -6,6 +6,7 @@
     flex-direction: column;
     margin: $margin-large auto;
     width: 80vw;
+    animation: slideUp 0.3s ease forwards;
   }
 
   &__title {

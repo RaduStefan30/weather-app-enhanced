@@ -12,6 +12,7 @@ import WeatherDetails from './pages/WeatherDetails/WeatherDetails';
 import { fetchWeather } from './api/api';
 import Footer from './components/Footer/Footer';
 import './App.scss';
+import Error from './pages/Error/Error';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: '/details/:city',
         element: <WeatherDetails />,
+      },
+      {
+        path: '*',
+        element: <Error />,
       },
     ],
   },

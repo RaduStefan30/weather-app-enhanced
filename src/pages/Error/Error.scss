@@ -1,0 +1,46 @@
+@import '../../styles/abstracts/variables';
+
+.error {
+  &-page {
+    display: flex;
+    flex-direction: column; // To make the content vertical
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background: $primary-gradient;
+  }
+
+  &-number {
+    font-size: 96px;
+    color: #fff;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+
+  &-message {
+    font-size: 24px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+  }
+
+  &-home-link {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    background-color: darken($primary-color-1, 20%);
+    color: lighten($primary-color-2, 20%);
+    text-decoration: none; // Removes default underline of anchor links
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: $border-radius-medium;
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary-color-2, 10%);
+      color: lighten($primary-color-1, 20%);
+      text-decoration: none; // Keeps the underline off during hover/focus
+    }
+  }
+}
