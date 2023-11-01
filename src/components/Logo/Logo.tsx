@@ -4,17 +4,16 @@ import './Logo.scss';
 const Logo = ({ toggleMenu }: { toggleMenu: (close: boolean) => void }) => {
   const navigate = useNavigate();
   return (
-    <img
-      role="button"
-      tabIndex={0}
-      className="logo"
-      src="/logo.png"
-      alt="Logo"
+    <button
+      className="no-styles-button logo-button"
+      aria-label="Logo"
       onClick={() => {
         toggleMenu(true);
         navigate('');
       }}
-    />
+    >
+      <img className="logo" src="/logo.png" alt="Logo" />
+    </button>
   );
 };
 

@@ -41,10 +41,8 @@ const Toggle = ({ unit }: { unit: 'temp' | 'distance' | 'quantity' }) => {
   const togglePosition = isDefaultUnit ? 'first' : 'second';
 
   return (
-    <div
-      role="button"
-      tabIndex={0}
-      className={`toggle ${togglePosition}`}
+    <button
+      className={`no-styles-button toggle ${togglePosition}`}
       onClick={toggleUnit}
     >
       <div className={`slider ${togglePosition}`}>
@@ -52,7 +50,7 @@ const Toggle = ({ unit }: { unit: 'temp' | 'distance' | 'quantity' }) => {
           {isDefaultUnit ? unitIcons[unit][0] : unitIcons[unit][1]}
         </p>
       </div>
-    </div>
+    </button>
   );
 };
 

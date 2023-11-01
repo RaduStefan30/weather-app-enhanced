@@ -70,11 +70,15 @@
     border-radius: 0 0 $border-radius-small $border-radius-small;
     z-index: 50;
 
-    p {
+    button {
       padding: $padding-wide-small;
       cursor: pointer;
       font-size: $font-size-small;
       transition: all 0.3s;
+      color: inherit;
+      display: block;
+      width: 100%;
+      text-align: start;
 
       &:hover {
         background-color: $primary-light;

@@ -5,7 +5,8 @@
   cursor: pointer;
   transition: $default-transition;
 
-  &:hover {
+  &-button:hover,
+  &-button:focus {
     filter: brightness(1.2);
   }
 }

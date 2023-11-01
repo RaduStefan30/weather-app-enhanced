@@ -85,19 +85,18 @@ const WeatherDetails = () => {
       </div>
       <div className="weather-details-date__container">
         {data.forecast.forecastday.map((day, index) => (
-          <div
-            role="button"
-            tabIndex={0}
-            className={
-              activeIndex === index
-                ? 'weather-details-date active'
-                : 'weather-details-date'
-            }
+          <button
+            className={`no-styles-button 
+             ${
+               activeIndex === index
+                 ? 'weather-details-date active'
+                 : 'weather-details-date'
+             }`}
             onClick={() => setActiveIndex(index)}
             key={day.date}
           >
             {formatDate(day.date)}
-          </div>
+          </button>
         ))}
       </div>
 

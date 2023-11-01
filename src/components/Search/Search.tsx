@@ -89,9 +89,8 @@ const Search = () => {
       <div className={`search-dropdown ${activeDropDownClass}`}>
         {suggestions &&
           suggestions.map((suggestion) => (
-            <p
-              role="button"
-              tabIndex={0}
+            <button
+              className="no-styles-button"
               key={suggestion.id}
               onClick={() => handleSearch(suggestion.url)}
             >
@@ -100,7 +99,7 @@ const Search = () => {
                 region={suggestion.region}
                 country={suggestion.country}
               />
-            </p>
+            </button>
           ))}
       </div>
     </div>
