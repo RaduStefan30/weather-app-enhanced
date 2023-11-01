@@ -46,12 +46,8 @@ const App = () => {
 
   useEffect(() => {
     const fetchIP = async () => {
-      try {
-        const location = await getIP();
-        dispatch({ type: 'UPDATE_LOCATION', payload: location });
-      } catch (error) {
-        console.error('Failed to fetch IP', error);
-      }
+      const location = await getIP();
+      dispatch({ type: 'UPDATE_LOCATION', payload: location });
     };
 
     fetchIP();

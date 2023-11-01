@@ -8,7 +8,6 @@ import {
 import { useParams } from 'react-router-dom';
 import './WeatherDetails.scss';
 import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard';
-import { ForecastDay } from '../../types';
 import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
 import Spinner from '../../components/Spinner/Spinner';
@@ -75,10 +74,7 @@ const WeatherDetails = () => {
         <div className="swiper-wrapper">
           {data.forecast.forecastday.map((day) => (
             <div className="swiper-slide" key={day.date}>
-              <WeatherDetail
-                details={day as ForecastDay}
-                isDay={data.current.is_day}
-              />
+              <WeatherDetail details={day} isDay={data.current.is_day} />
             </div>
           ))}
         </div>
