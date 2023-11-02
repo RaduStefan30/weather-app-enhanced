@@ -11,6 +11,8 @@ import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard'
 import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
 import Spinner from '../../components/Spinner/Spinner';
+import Rain from '../../components/Rain/Rain';
+import Snow from '../../components/Snow/Snow';
 
 const WeatherDetails = () => {
   const { data, loading, error, location } = useContext(WeatherStateContext);
@@ -68,54 +70,62 @@ const WeatherDetails = () => {
   if (!data) return <div>No weather data available</div>;
 
   return (
-    <div className="weather-details-container slide-in page">
-      <h1 className="weather-details-title">{data.location.name}</h1>
-      <div className="swiper1">
-        <div className="swiper-wrapper">
-          {data.forecast.forecastday.map((day) => (
-            <div className="swiper-slide" key={day.date}>
-              <WeatherDetail details={day} isDay={data.current.is_day} />
-            </div>
-          ))}
+    <>
+      {data.forecast.forecastday[activeIndex].day.condition.text.includes(
+        'rain'
+      ) && <Rain />}
+      {data.forecast.forecastday[activeIndex].day.condition.text.includes(
+        'snow'
+      ) && <Snow />}
+      <div className="weather-details-container slide-in page">
+        <h1 className="weather-details-title">{data.location.name}</h1>
+        <div className="swiper1">
+          <div className="swiper-wrapper">
+            {data.forecast.forecastday.map((day) => (
+              <div className="swiper-slide" key={day.date}>
+                <WeatherDetail details={day} isDay={data.current.is_day} />
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="weather-details-date__container">
-        {data.forecast.forecastday.map((day, index) => (
-          <button
-            className={`no-styles-button 
+        <div className="weather-details-date__container">
+          {data.forecast.forecastday.map((day, index) => (
+            <button
+              className={`no-styles-button 
              ${
                activeIndex === index
                  ? 'weather-details-date active'
                  : 'weather-details-date'
              }`}
-            onClick={() => setActiveIndex(index)}
-            key={day.date}
-          >
-            {formatDate(day.date)}
-          </button>
-        ))}
-      </div>
+              onClick={() => setActiveIndex(index)}
+              key={day.date}
+            >
+              {formatDate(day.date)}
+            </button>
+          ))}
+        </div>
 
-      <div className="swiper2">
-        <div
-          className={`swiper-wrapper weather-details-hourly ${
-            animationTrigger ? 'animate-out' : 'animate-in'
-          }`}
-        >
-          {data.forecast.forecastday.flatMap((day, index) => {
-            if (activeIndex === index)
-              return day.hour.map((hour) => (
-                <div
-                  className="swiper-slide weather-details-hourly-card"
-                  key={hour.time}
-                >
-                  <WeatherHourly key={hour.time} hour={hour} />
-                </div>
-              ));
-          })}
+        <div className="swiper2">
+          <div
+            className={`swiper-wrapper weather-details-hourly ${
+              animationTrigger ? 'animate-out' : 'animate-in'
+            }`}
+          >
+            {data.forecast.forecastday.flatMap((day, index) => {
+              if (activeIndex === index)
+                return day.hour.map((hour) => (
+                  <div
+                    className="swiper-slide weather-details-hourly-card"
+                    key={hour.time}
+                  >
+                    <WeatherHourly key={hour.time} hour={hour} />
+                  </div>
+                ));
+            })}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

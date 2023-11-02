@@ -2,7 +2,6 @@ import { ForecastDay } from '../../types';
 import './WeatherDetailCard.scss';
 import Measurement from '../Measurement/Measurement';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
-
 const WeatherDetail = ({
   details,
   isDay,

@@ -1,4 +1,5 @@
 @import '../../styles/abstracts/variables';
+
 .temperature {
   &-labels {
     position: absolute;
@@ -34,6 +35,7 @@
   &-unit {
     font-size: $font-size-small;
     font-weight: $font-weight-smallest;
+    color: $primary-light;
   }
 }
 
