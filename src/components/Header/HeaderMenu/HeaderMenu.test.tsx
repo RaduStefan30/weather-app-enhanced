@@ -16,11 +16,11 @@ jest.mock('react-i18next', () => ({
 describe('<HeaderMenu />', () => {
   afterEach(cleanup);
 
-  it('renders without crashing', () => {
+  it('should render without crashing', () => {
     render(<HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />);
   });
 
-  it('sets overflow to hidden when menu is open and resets on close', () => {
+  it('should set overflow to hidden when menu is open and resets on close', () => {
     const { rerender } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -37,7 +37,7 @@ describe('<HeaderMenu />', () => {
     expect(document.body.style.overflow).toBe('auto');
   });
 
-  it('calls changeLanguage when language button is clicked', () => {
+  it('should call changeLanguage when language button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -46,7 +46,7 @@ describe('<HeaderMenu />', () => {
     fireEvent.click(englishButton);
     expect(changeLanguageMock).toHaveBeenCalledWith('en');
   });
-  it('calls changeLanguage when English button is clicked', () => {
+  it('should call changeLanguage when English button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -56,7 +56,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('en');
   });
 
-  it('calls changeLanguage when Romanian button is clicked', () => {
+  it('should call changeLanguage when Romanian button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -66,7 +66,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('ro');
   });
 
-  it('calls changeLanguage when Spanish button is clicked', () => {
+  it('should call changeLanguage when Spanish button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -76,7 +76,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('es');
   });
 
-  it('calls changeLanguage when French button is clicked', () => {
+  it('should call changeLanguage when French button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -86,7 +86,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('fr');
   });
 
-  it('calls changeLanguage when German button is clicked', () => {
+  it('should call changeLanguage when German button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -96,7 +96,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('de');
   });
 
-  it('calls changeLanguage when Dutch button is clicked', () => {
+  it('should call changeLanguage when Dutch button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
@@ -106,7 +106,7 @@ describe('<HeaderMenu />', () => {
     expect(changeLanguageMock).toHaveBeenCalledWith('nl');
   });
 
-  it('calls changeLanguage when Italian button is clicked', () => {
+  it('should call changeLanguage when Italian button is clicked', () => {
     const { getByAltText } = render(
       <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
     );
