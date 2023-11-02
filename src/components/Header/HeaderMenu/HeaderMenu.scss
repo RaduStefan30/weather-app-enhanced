@@ -2,6 +2,13 @@
 @import '../../../styles/abstracts/mixins';
 
 .header-menu {
+  &__units {
+    font-size: $font-size-small;
+    font-weight: $font-weight-semi-bold;
+    text-transform: uppercase;
+    margin: $margin-large 0 $margin-medium;
+  }
+
   &__overlay {
     position: fixed;
     top: -30vh;
@@ -24,7 +31,7 @@
 
   &__items {
     position: absolute;
-    top: 15em;
+    top: 15rem;
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.4s 0.6s;
@@ -44,5 +51,24 @@
   &__toggle-container {
     display: flex;
     gap: 1rem;
+  }
+
+  &__languages {
+    display: flex;
+    gap: $margin-small;
+    button {
+      background: none;
+      border: none;
+      transition: filter 0.3s ease;
+      &:hover {
+        cursor: pointer;
+        filter: brightness(0.8);
+      }
+    }
+
+    img {
+      display: block;
+      width: 6rem;
+    }
   }
 }

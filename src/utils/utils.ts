@@ -20,6 +20,6 @@ export const formatDate = (dateString: string, format: string) => {
   return date.toLocaleDateString(format, {
     weekday: 'short',
     day: 'numeric',
-    month: 'short',
+    month: 'long',
   });
 };
