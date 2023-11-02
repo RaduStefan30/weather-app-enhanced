@@ -46,6 +46,7 @@ const Rain = () => {
         <div
           key={drop.id}
           className="raindrop"
+          data-testid="raindrop"
           style={{
             left: `${drop.x}px`,
             top: `${drop.y}px`,

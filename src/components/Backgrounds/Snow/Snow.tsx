@@ -46,6 +46,7 @@ const Snow = () => {
         <div
           key={flake.id}
           className="snowflake"
+          data-testid="snowflake"
           style={{
             left: `${flake.x}px`,
             top: `${flake.y}px`,
