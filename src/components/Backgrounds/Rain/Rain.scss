@@ -1,15 +1,4 @@
-@import '../../styles/abstracts/variables';
-
-.rain-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: -1000;
-}
+@import '../../../styles/abstracts/variables';
 
 .raindrop {
   position: absolute;

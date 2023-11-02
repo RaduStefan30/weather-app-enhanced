@@ -2,13 +2,14 @@
 
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
+import { getSearchesFromLocalStorage } from '../../utils/utils';
 const tempUnit = localStorage.getItem('temp') ?? 'celsius';
 const distanceUnit = localStorage.getItem('distance') ?? 'km';
 const quantityUnit = localStorage.getItem('quantity') ?? 'mm';
 
 const initialState: WeatherState = {
   data: null,
-  location: '',
+  location: getSearchesFromLocalStorage()[0] ?? '',
   loading: false,
   error: '',
   units: {

@@ -11,8 +11,9 @@ import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard'
 import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
 import Spinner from '../../components/Spinner/Spinner';
-import Rain from '../../components/Rain/Rain';
-import Snow from '../../components/Snow/Snow';
+import Rain from '../../components/Backgrounds/Rain/Rain';
+import Snow from '../../components/Backgrounds/Snow/Snow';
+import Day from '../../components/Backgrounds/Day/Day';
 
 const WeatherDetails = () => {
   const { data, loading, error, location } = useContext(WeatherStateContext);
@@ -20,6 +21,12 @@ const WeatherDetails = () => {
   const { city } = useParams();
   const [activeIndex, setActiveIndex] = useState(0);
   const [animationTrigger, setAnimationTrigger] = useState(false);
+
+  const conditionText =
+    data?.forecast.forecastday[activeIndex].day.condition.text ?? '';
+
+  const isRaining = conditionText.includes('rain');
+  const isSnowing = conditionText.includes('snow');
 
   const swiperRef1 = useRef<Swiper | null>(null);
   const swiperRef2 = useRef<Swiper | null>(null);
@@ -71,12 +78,9 @@ const WeatherDetails = () => {
 
   return (
     <>
-      {data.forecast.forecastday[activeIndex].day.condition.text.includes(
-        'rain'
-      ) && <Rain />}
-      {data.forecast.forecastday[activeIndex].day.condition.text.includes(
-        'snow'
-      ) && <Snow />}
+      {isRaining && <Rain />}
+      {isSnowing && <Snow />}
+      {!isRaining && !isSnowing && <Day />}
       <div className="weather-details-container slide-in page">
         <h1 className="weather-details-title">{data.location.name}</h1>
         <div className="swiper1">

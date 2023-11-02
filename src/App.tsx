@@ -47,11 +47,12 @@ const App = () => {
   useEffect(() => {
     const fetchIP = async () => {
       const location = await getIP();
-      dispatch({ type: 'UPDATE_LOCATION', payload: location });
+      if (!state.location)
+        dispatch({ type: 'UPDATE_LOCATION', payload: location });
     };
 
     fetchIP();
-  }, []);
+  }, [state.location]);
 
   useEffect(() => {
     if (!state.location) return;
