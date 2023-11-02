@@ -10,7 +10,7 @@ describe('Night component', () => {
 
   it('should have the correct classes', () => {
     render(<Night />);
-    const nightBackground = screen.getByTestId('night-background');
+    const nightBackground = screen.getByTestId('night');
     expect(nightBackground).toHaveClass('night');
     expect(nightBackground).toHaveClass('background');
   });

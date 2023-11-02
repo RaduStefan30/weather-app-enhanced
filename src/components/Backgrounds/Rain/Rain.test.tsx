@@ -36,4 +36,26 @@ describe('Rain component', () => {
       `animation-duration: ${raindrop.style.animationDuration}`
     );
   });
+
+  it('should remove raindrops that move out of the viewport', () => {
+    Object.defineProperty(window, 'innerHeight', {
+      writable: true,
+      configurable: true,
+      value: 100,
+    });
+
+    render(<Rain />);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+
+    const raindrops = screen.queryAllByTestId('raindrop');
+
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
+    raindrops.forEach((raindrop) => {
+      expect(parseFloat(raindrop.style.top)).toBeLessThanOrEqual(100);
+    });
+  });
 });

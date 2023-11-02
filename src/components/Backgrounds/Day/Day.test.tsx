@@ -10,7 +10,7 @@ describe('Day component', () => {
 
   it('should have the correct class', () => {
     render(<Day />);
-    const dayBackground = screen.getByTestId('day-background');
+    const dayBackground = screen.getByTestId('day');
     expect(dayBackground).toHaveClass('day');
     expect(dayBackground).toHaveClass('background');
   });

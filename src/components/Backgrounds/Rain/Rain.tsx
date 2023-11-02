@@ -40,7 +40,7 @@ const Rain = () => {
   }, []);
 
   return (
-    <div className="background rain">
+    <div className="background rain" data-testid="rain">
       <img src="/rain.png" alt="cloudy landscape" loading="lazy" />
       {raindrops.map((drop) => (
         <div

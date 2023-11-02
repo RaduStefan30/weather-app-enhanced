@@ -37,4 +37,26 @@ describe('Snow component', () => {
       `animation-duration: ${snowflake.style.animationDuration}`
     );
   });
+
+  it('should remove raindrops that move out of the viewport', () => {
+    Object.defineProperty(window, 'innerHeight', {
+      writable: true,
+      configurable: true,
+      value: 100,
+    });
+
+    render(<Snow />);
+    act(() => {
+      jest.advanceTimersByTime(100);
+    });
+
+    const snowflakes = screen.queryAllByTestId('snowflake');
+
+    act(() => {
+      jest.advanceTimersByTime(2000);
+    });
+    snowflakes.forEach((snowflake) => {
+      expect(parseFloat(snowflake.style.top)).toBeLessThanOrEqual(100);
+    });
+  });
 });
