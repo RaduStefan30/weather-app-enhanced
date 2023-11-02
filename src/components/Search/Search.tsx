@@ -97,6 +97,7 @@ const Search = () => {
               name={suggestion.name}
               region={suggestion.region}
               country={suggestion.country}
+              classNames=""
             />
           </button>
         ))}

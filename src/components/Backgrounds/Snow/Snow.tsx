@@ -40,11 +40,13 @@ const Snow = () => {
   }, []);
 
   return (
-    <div className="snow-container">
+    <div className="background snow" data-testid="snow">
+      <img src="/snow.png" alt="snowy landscape" loading="lazy" />
       {snowflakes.map((flake) => (
         <div
           key={flake.id}
           className="snowflake"
+          data-testid="snowflake"
           style={{
             left: `${flake.x}px`,
             top: `${flake.y}px`,

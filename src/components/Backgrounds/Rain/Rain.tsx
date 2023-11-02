@@ -40,11 +40,13 @@ const Rain = () => {
   }, []);
 
   return (
-    <div className="rain-container">
+    <div className="background rain" data-testid="rain">
+      <img src="/rain.png" alt="cloudy landscape" loading="lazy" />
       {raindrops.map((drop) => (
         <div
           key={drop.id}
           className="raindrop"
+          data-testid="raindrop"
           style={{
             left: `${drop.x}px`,
             top: `${drop.y}px`,
