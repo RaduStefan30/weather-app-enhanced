@@ -50,12 +50,14 @@
 
   &__toggle-container {
     display: flex;
-    gap: 1rem;
+    gap: $margin-small;
+    justify-content: center;
   }
 
   &__languages {
     display: flex;
     gap: $margin-small;
+    justify-content: center;
     button {
       background: none;
       border: none;

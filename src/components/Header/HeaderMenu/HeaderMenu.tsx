@@ -1,4 +1,4 @@
-import { RefObject } from 'react';
+import { RefObject, useEffect } from 'react';
 import './HeaderMenu.scss';
 import Toggle from '../../Toggle/Toggle';
 import { useTranslation } from 'react-i18next';
@@ -15,6 +15,17 @@ const HeaderMenu = ({
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, [isMenuOpen]);
   return (
     <>
       <div
