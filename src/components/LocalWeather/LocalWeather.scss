@@ -18,14 +18,15 @@
 
   &__location {
     margin-bottom: $margin-small;
-    width: 90%;
     font-size: $font-size-medium;
+    text-align: center;
   }
 
   &__date {
     margin-bottom: $margin-medium;
     font-size: $font-size-tiny;
     opacity: 0.9;
+    text-transform: uppercase;
   }
 
   &__icon {
@@ -44,12 +45,6 @@
       opacity: 1;
       font-weight: $font-weight-normal;
     }
-  }
-
-  &__condition {
-    opacity: 0.9;
-    font-size: $font-size-tiny;
-    transform: translateY(-1rem);
   }
 
   &__details {

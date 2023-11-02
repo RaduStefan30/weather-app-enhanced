@@ -14,6 +14,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import Rain from '../../components/Backgrounds/Rain/Rain';
 import Snow from '../../components/Backgrounds/Snow/Snow';
 import Day from '../../components/Backgrounds/Day/Day';
+import { useTranslation } from 'react-i18next';
 
 const WeatherDetails = () => {
   const { data, loading, error, location } = useContext(WeatherStateContext);
@@ -21,10 +22,10 @@ const WeatherDetails = () => {
   const { city } = useParams();
   const [activeIndex, setActiveIndex] = useState(0);
   const [animationTrigger, setAnimationTrigger] = useState(false);
+  const { t } = useTranslation();
 
   const conditionText =
     data?.forecast.forecastday[activeIndex].day.condition.text ?? '';
-
   const isRaining = conditionText.includes('rain');
   const isSnowing = conditionText.includes('snow');
 
@@ -104,7 +105,7 @@ const WeatherDetails = () => {
               onClick={() => setActiveIndex(index)}
               key={day.date}
             >
-              {formatDate(day.date)}
+              {formatDate(day.date, t('format'))}
             </button>
           ))}
         </div>

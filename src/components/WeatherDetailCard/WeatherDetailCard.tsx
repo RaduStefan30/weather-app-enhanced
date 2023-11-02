@@ -18,7 +18,6 @@ const WeatherDetail = ({
         isDay={isDay}
         alt="large weather icon"
       />
-      <p className="weather-detail-card__text">{condition.text}</p>
       <Measurement
         className={'weather-detail-card__temp'}
         metricValue={details.day.avgtemp_c}

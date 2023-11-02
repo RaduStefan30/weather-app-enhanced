@@ -15,11 +15,11 @@ export const updateSearchesFromLocalStorage = (searchTerm: string) => {
   }
 };
 
-export const formatDate = (dateString: string) => {
+export const formatDate = (dateString: string, format: string) => {
   const date = new Date(dateString);
-  return date.toLocaleDateString('en-GB', {
+  return date.toLocaleDateString(format, {
     weekday: 'short',
     day: 'numeric',
-    month: 'short',
+    month: 'long',
   });
 };
