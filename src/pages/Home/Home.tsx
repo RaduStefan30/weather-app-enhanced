@@ -16,11 +16,12 @@ const Home = () => {
   const isDay = data?.current.is_day;
   const isRaining = conditionText?.includes('rain');
   const isSnowing = conditionText?.includes('snow');
+
   return (
     <div className="home page">
       {isRaining && <Rain />}
       {isSnowing && <Snow />}
-      {!isRaining && !isSnowing && isDay ? <Day /> : <Night />}
+      {!isRaining && !isSnowing && (isDay ? <Day /> : <Night />)}
       <Search />
       <Recent />
       <LocalWeather />
