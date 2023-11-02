@@ -13,17 +13,30 @@ jest.mock('react-i18next', () => ({
   }),
 }));
 
+const renderHeaderMenu = (isMenuOpen = false) => {
+  return render(
+    <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={isMenuOpen} />
+  );
+};
+
+const testChangeLanguage = (altText: string, expectedLang: string) => {
+  it(`should call changeLanguage when ${altText} button is clicked`, () => {
+    const { getByAltText } = renderHeaderMenu();
+    const button = getByAltText(altText);
+    fireEvent.click(button);
+    expect(changeLanguageMock).toHaveBeenCalledWith(expectedLang);
+  });
+};
+
 describe('<HeaderMenu />', () => {
   afterEach(cleanup);
 
   it('should render without crashing', () => {
-    render(<HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />);
+    renderHeaderMenu();
   });
 
   it('should set overflow to hidden when menu is open and resets on close', () => {
-    const { rerender } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
+    const { rerender } = renderHeaderMenu();
     expect(document.body.style.overflow).toBe('auto');
 
     rerender(
@@ -37,82 +50,11 @@ describe('<HeaderMenu />', () => {
     expect(document.body.style.overflow).toBe('auto');
   });
 
-  it('should call changeLanguage when language button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const englishButton = getByAltText('uk flag');
-    fireEvent.click(englishButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('en');
-  });
-  it('should call changeLanguage when English button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const englishButton = getByAltText('uk flag');
-    fireEvent.click(englishButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('en');
-  });
-
-  it('should call changeLanguage when Romanian button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const romanianButton = getByAltText('romanian flag');
-    fireEvent.click(romanianButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('ro');
-  });
-
-  it('should call changeLanguage when Spanish button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const spanishButton = getByAltText('spanish flag');
-    fireEvent.click(spanishButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('es');
-  });
-
-  it('should call changeLanguage when French button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const frenchButton = getByAltText('french flag');
-    fireEvent.click(frenchButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('fr');
-  });
-
-  it('should call changeLanguage when German button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const germanButton = getByAltText('german flag');
-    fireEvent.click(germanButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('de');
-  });
-
-  it('should call changeLanguage when Dutch button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const dutchButton = getByAltText('netherlands flag');
-    fireEvent.click(dutchButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('nl');
-  });
-
-  it('should call changeLanguage when Italian button is clicked', () => {
-    const { getByAltText } = render(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
-
-    const italianButton = getByAltText('italian flag');
-    fireEvent.click(italianButton);
-    expect(changeLanguageMock).toHaveBeenCalledWith('it');
-  });
+  testChangeLanguage('uk flag', 'en');
+  testChangeLanguage('romanian flag', 'ro');
+  testChangeLanguage('spanish flag', 'es');
+  testChangeLanguage('french flag', 'fr');
+  testChangeLanguage('german flag', 'de');
+  testChangeLanguage('netherlands flag', 'nl');
+  testChangeLanguage('italian flag', 'it');
 });
