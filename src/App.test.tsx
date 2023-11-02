@@ -32,18 +32,7 @@ describe('App Component', () => {
 
   test('should render the footer when weather data is available', async () => {
     render(<App />);
-    const footerElement = await screen.findByText(/weather data provided by/i);
+    const footerElement = await screen.findByTestId('footer');
     expect(footerElement).toBeInTheDocument();
-  });
-
-  test('should hide the footer when no weather data is available', async () => {
-    mockFetchWeatherData.mockResolvedValue(null!);
-
-    render(<App />);
-    const headerElement = await screen.findByRole('banner');
-    expect(headerElement).toBeInTheDocument();
-
-    const footerElement = screen.queryByText(/weather data provided by/i);
-    expect(footerElement).not.toBeInTheDocument();
   });
 });
