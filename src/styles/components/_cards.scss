@@ -1,0 +1,38 @@
+.card {
+  background: $primary-dark-half;
+  padding: $padding-wide-small;
+  border-radius: $border-radius-small;
+  height: 6rem;
+  margin: $margin-small auto;
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: $box-shadow-transition;
+  gap: 0.2rem;
+
+  &:hover {
+    box-shadow: $box-shadow-1;
+  }
+
+  &__location {
+    color: $primary-light;
+    font-size: $font-size-small;
+  }
+
+  &__temperature {
+    @include center-items;
+
+    &-icon {
+      height: 2.4rem;
+      margin: $margin-small;
+    }
+
+    &-value {
+      font-size: $font-size-medium;
+      color: $primary-light;
+      font-weight: $font-weight-small;
+    }
+  }
+}

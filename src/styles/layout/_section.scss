@@ -1,0 +1,11 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  margin: $margin-large auto;
+  width: 80vw;
+
+  &-content {
+    padding: $padding-extra-large $padding-medium;
+    border-radius: $border-radius-small;
+  }
+}

@@ -14,18 +14,19 @@ const LocalWeather = () => {
   const { data } = useContext(WeatherStateContext);
   if (!data) return <Spinner />;
   return (
-    <div className="local-weather__section">
+    <div className="local-weather__section section">
       <div className="local-weather__header">
-        <h2 className="local-weather__title">
+        <h2 className="local-weather__title title no-wrap">
           {data.location.name} Weather Conditions
         </h2>
       </div>
-      <div className="local-weather__content">
-        <h3 className="local-weather__location">
+      <div className="local-weather__content section-content">
+        <h3 className="local-weather__location no-wrap">
           <LocationName
             name={data.location.name}
             region=""
             country={data.location.country}
+            classNames="local-weather__location no-wrap"
           />
         </h3>
         <p className="local-weather__date">

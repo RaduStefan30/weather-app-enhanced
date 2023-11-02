@@ -1,4 +1,4 @@
-export const MAX_SEARCHES = 5;
+export const MAX_SEARCHES = 4;
 
 export const UNIT_VALUES = {
   temp: ['celsius', 'fahrenheit'],

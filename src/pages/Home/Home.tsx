@@ -6,6 +6,7 @@ import Search from '../../components/Search/Search';
 import './Home.scss';
 import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
 import Snow from '../../components/Snow/Snow';
+import GlobalWeather from '../../components/GlobalWeather/GlobalWeather';
 
 const Home = () => {
   const { data } = useContext(WeatherStateContext);
@@ -16,6 +17,7 @@ const Home = () => {
       <Search />
       <Recent />
       <LocalWeather />
+      <GlobalWeather />
     </div>
   );
 };

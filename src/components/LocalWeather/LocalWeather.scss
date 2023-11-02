@@ -2,31 +2,23 @@
 
 .local-weather {
   &__section {
-    display: flex;
-    flex-direction: column;
-    margin: $margin-large auto;
-    width: 80vw;
     animation: slideUp 0.6s ease forwards;
   }
 
   &__title {
-    font-size: $font-size-small;
-    font-weight: $font-weight-bold;
-    text-transform: uppercase;
-    margin: $margin-medium 0;
+    width: 100%;
   }
 
   &__content {
-    padding: $padding-extra-large $padding-medium;
-    background: $primary-dark-half;
-    border-radius: $border-radius-small;
     display: flex;
     flex-direction: column;
+    background: $primary-dark-half;
     align-items: center;
   }
 
   &__location {
     margin-bottom: $margin-small;
+    width: 90%;
     font-size: $font-size-medium;
   }
 
@@ -65,7 +57,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem 0;
     width: 100%;
-    margin-top: $margin-large;
+    margin-top: $margin-extra-large;
 
     &-item {
       display: flex;

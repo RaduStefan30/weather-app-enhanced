@@ -17,25 +17,24 @@ const RecentCard = ({
   const navigate = useNavigate();
   return (
     <button
-      className={`no-styles-button recent-card ${classNames}`}
+      className={`no-styles-button card ${classNames}`}
       onClick={() => navigate(`details/${location.name}`)}
     >
-      <div className="recent-card__location">
-        <LocationName
-          name={location.name}
-          region={location.region}
-          country={location.country}
-        />
-      </div>
-      <div className="recent-card__temperature">
+      <LocationName
+        name={location.name}
+        region={location.region}
+        country={location.country}
+        classNames="card__location no-wrap"
+      />
+      <div className="card__temperature">
         <WeatherIcon
-          className="recent-card__temperature-icon"
+          className="card__temperature-icon"
           alt="weather icon"
           code={current.condition.code}
           isDay={current.is_day}
         />
         <Measurement
-          className={'recent-card__temperature-value'}
+          className={'card__temperature-value'}
           metricValue={current.temp_c}
           imperialValue={current.temp_f}
           unitType="temperature"
