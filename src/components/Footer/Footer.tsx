@@ -2,14 +2,16 @@ import { useContext } from 'react';
 import './Footer.scss';
 import { FaGithub, FaEnvelope } from 'react-icons/fa';
 import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const { loading, data } = useContext(WeatherStateContext);
   if (!loading && data)
     return (
       <footer className="footer">
         <p>
-          Weather data provided by{' '}
+          {t('provided')}{' '}
           <a
             href="https://www.weatherapi.com/"
             title="Free Weather API"

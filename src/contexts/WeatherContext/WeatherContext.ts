@@ -2,14 +2,13 @@
 
 import { createContext, Dispatch } from 'react';
 import { WeatherAction, WeatherState } from '../../types';
-import { getSearchesFromLocalStorage } from '../../utils/utils';
 const tempUnit = localStorage.getItem('temp') ?? 'celsius';
 const distanceUnit = localStorage.getItem('distance') ?? 'km';
 const quantityUnit = localStorage.getItem('quantity') ?? 'mm';
 
 const initialState: WeatherState = {
   data: null,
-  location: getSearchesFromLocalStorage()[0] ?? '',
+  location: localStorage.getItem('last_search') ?? '',
   loading: false,
   error: '',
   units: {
@@ -30,10 +29,12 @@ const weatherReducer = (
     case 'FETCH_INIT':
       return { ...state, loading: true };
     case 'FETCH_SUCCESS':
+      localStorage.setItem('last_search', state.location);
       return { ...state, loading: false, data: action.payload };
     case 'FETCH_FAILURE':
       return { ...state, loading: false, error: action.payload };
     case 'UPDATE_LOCATION':
+      localStorage.setItem('last_search', state.location);
       return { ...state, location: action.payload };
     case 'UPDATE_UNITS':
       return { ...state, units: { ...action.payload } };

@@ -1,13 +1,13 @@
+import { useTranslation } from 'react-i18next';
 import WeatherCard from '../WeatherCard/WeatherCard';
 import './GlobalWeather.scss';
 
 const GlobalWeather = () => {
+  const { t } = useTranslation();
   return (
     <div className="global-weather__section section">
       <div className="global-weather__header">
-        <h2 className="global-weather__title title">
-          Weather Around the globe
-        </h2>
+        <h2 className="global-weather__title title">{t('global')}</h2>
       </div>
       <div className="global-weather__content section-content">
         <WeatherCard key={'London'} search={'London'} />

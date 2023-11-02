@@ -9,15 +9,17 @@ import Measurement from '../Measurement/Measurement';
 import LocationName from '../LocationName/LocationName';
 import { formatDate } from '../../utils/utils';
 import WeatherIcon from '../WeatherIcon/WeatherIcon';
+import { useTranslation } from 'react-i18next';
 
 const LocalWeather = () => {
   const { data } = useContext(WeatherStateContext);
+  const { t } = useTranslation();
   if (!data) return <Spinner />;
   return (
     <div className="local-weather__section section">
       <div className="local-weather__header">
         <h2 className="local-weather__title title no-wrap">
-          {data.location.name} Weather Conditions
+          {t('conditions', { city: data.location.name })}
         </h2>
       </div>
       <div className="local-weather__content section-content">
@@ -30,8 +32,7 @@ const LocalWeather = () => {
           />
         </h3>
         <p className="local-weather__date">
-          {' '}
-          {formatDate(data.location.localtime)}
+          {formatDate(data.location.localtime, t('format'))}
         </p>
         <WeatherIcon
           className="local-weather__icon big"
@@ -39,9 +40,6 @@ const LocalWeather = () => {
           alt="large weather icon"
           isDay={data.current.is_day}
         />
-        <p className="local-weather__condition">
-          {data.current.condition.text}
-        </p>
         <Measurement
           className={'local-weather__temp big'}
           metricValue={data.current.temp_c}

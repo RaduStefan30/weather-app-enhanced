@@ -1,6 +1,7 @@
 import { RefObject } from 'react';
 import './HeaderMenu.scss';
 import Toggle from '../../Toggle/Toggle';
+import { useTranslation } from 'react-i18next';
 
 const HeaderMenu = ({
   isFirstRender,
@@ -9,6 +10,11 @@ const HeaderMenu = ({
   isFirstRender: RefObject<boolean>;
   isMenuOpen: boolean;
 }) => {
+  const { i18n } = useTranslation();
+
+  const changeLanguage = (lng: string) => {
+    i18n.changeLanguage(lng);
+  };
   return (
     <>
       <div
@@ -22,6 +28,10 @@ const HeaderMenu = ({
           <Toggle unit={'temp'} />
           <Toggle unit={'distance'} />
           <Toggle unit={'quantity'} />
+        </div>
+        <div className="header-menu__languages">
+          <button onClick={() => changeLanguage('en')}>English</button>
+          <button onClick={() => changeLanguage('ro')}>Romanian</button>
         </div>
       </div>
     </>
