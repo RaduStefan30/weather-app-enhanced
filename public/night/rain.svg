@@ -1,42 +1,1 @@
-<?xml version="1.0" ?>
-<!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
-<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-<svg width="800px" height="800px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="Layer_2"/>
-<g id="Layer_3"/>
-<g id="Layer_4"/>
-<g id="Layer_5"/>
-<g id="Layer_6"/>
-<g id="Layer_7"/>
-<g id="Layer_8"/>
-<g id="Layer_9"/>
-<g id="Layer_10"/>
-<g id="Layer_11"/>
-<g id="Layer_12"/>
-<g id="Layer_13"/>
-<g id="Layer_14"/>
-<g id="Layer_15"/>
-<g id="Layer_16"/>
-<g id="Layer_17"/>
-<g id="Layer_18"/>
-<g id="Layer_19"/>
-<g id="Layer_20"/>
-<g id="Layer_21"/>
-<g id="Layer_22">
-<g>
-<path d="M16.5,22.1c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2.2c-0.3,0.5-0.1,1.1,0.4,1.4c0.2,0.1,0.3,0.1,0.5,0.1    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C17.1,23,17,22.4,16.5,22.1z" fill="#16BCD4"/>
-<path d="M13.7,27c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2.2c-0.3,0.5-0.1,1.1,0.4,1.4C11.7,31,11.8,31,12,31    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C14.4,27.8,14.2,27.2,13.7,27z" fill="#16BCD4"/>
-<path d="M10.5,22.1C10,21.9,9.4,22,9.1,22.5l-1.2,2.2c-0.3,0.5-0.1,1.1,0.4,1.4c0.2,0.1,0.3,0.1,0.5,0.1    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C11.1,23,11,22.4,10.5,22.1z" fill="#16BCD4"/>
-<path d="M7.7,27c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2.2C4.9,30,5,30.6,5.5,30.9C5.7,31,5.8,31,6,31    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C8.4,27.8,8.2,27.2,7.7,27z" fill="#16BCD4"/>
-<path d="M22.5,22.1c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2.2c-0.3,0.5-0.1,1.1,0.4,1.4c0.2,0.1,0.3,0.1,0.5,0.1    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C23.1,23,23,22.4,22.5,22.1z" fill="#16BCD4"/>
-<path d="M19.7,27c-0.5-0.3-1.1-0.1-1.4,0.4l-1.2,2.2c-0.3,0.5-0.1,1.1,0.4,1.4C17.7,31,17.8,31,18,31    c0.3,0,0.7-0.2,0.9-0.5l1.2-2.2C20.4,27.8,20.2,27.2,19.7,27z" fill="#16BCD4"/>
-</g>
-<g>
-<path d="M31,15c0,5-4.5,9-10,9H8c-3.9,0-7-3.1-7-7s3.1-7,7-7c1.4,0,2.8,0.4,3.9,1.2C13.5,8.1,17.1,6,21,6    C26.5,6,31,10,31,15z" fill="#607C8B"/>
-</g>
-</g>
-<g id="Layer_23"/>
-<g id="Layer_24"/>
-<g id="Layer_25"/>
-<g id="Wearher"/>
-</svg>
+<?xml version="1.0" ?><svg data-name="Layer 1" id="Layer_1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style>.cls-1{fill:none;stroke:#0baeff;stroke-linecap:round;stroke-miterlimit:10;stroke-width:3px;}.cls-2{fill:url(#linear-gradient);}.cls-3{fill:url(#linear-gradient-2);}</style><linearGradient gradientTransform="matrix(-1, 0, 0, 1, -82.03, 0)" gradientUnits="userSpaceOnUse" id="linear-gradient" x1="-101.28" x2="-122.37" y1="46.39" y2="19.08"><stop offset="0" stop-color="#f2f2f2"/><stop offset="1" stop-color="#cfcfcf"/></linearGradient><linearGradient gradientTransform="matrix(0, -1, -1, 0, 134.73, -122.7)" gradientUnits="userSpaceOnUse" id="linear-gradient-2" x1="-157.89" x2="-146.27" y1="82.46" y2="100.11"><stop offset="0.02" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient></defs><title/><line class="cls-1" x1="32.5" x2="32.5" y1="50.5" y2="57.5"/><line class="cls-1" x1="26.5" x2="26.5" y1="48.5" y2="55.5"/><line class="cls-1" x1="38.5" x2="38.5" y1="48.5" y2="55.5"/><path class="cls-2" d="M23.66,9.9a17.49,17.49,0,0,1,15.47,9.32A13.75,13.75,0,1,1,46,44.84l-22.39.06a17.5,17.5,0,0,1,0-35Z"/><circle class="cls-3" cx="46.05" cy="31.09" r="13.75" transform="translate(3.72 67.08) rotate(-74.39)"/></svg>
