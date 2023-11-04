@@ -9,7 +9,7 @@ const GlobalWeather = () => {
       <div className="global-weather__header">
         <h2 className="global-weather__title title">{t('global')}</h2>
       </div>
-      <div className="global-weather__content section-content">
+      <div className="global-weather__content section-content grid-6">
         <WeatherCard key={'London'} search={'London'} />
         <WeatherCard key={'New York'} search={'New York'} />
         <WeatherCard key={'Tokyo'} search={'Tokyo'} />
