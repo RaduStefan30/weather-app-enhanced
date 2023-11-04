@@ -57,4 +57,5 @@ describe('<HeaderMenu />', () => {
   testChangeLanguage('german flag', 'de');
   testChangeLanguage('netherlands flag', 'nl');
   testChangeLanguage('italian flag', 'it');
+  testChangeLanguage('chinese flag', 'zh');
 });
