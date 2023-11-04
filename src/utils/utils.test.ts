@@ -59,4 +59,38 @@ describe('localStorage utilities', () => {
 
     expect(formattedDate).toBe(expectedFormat);
   });
+
+  it('should not add a duplicate search term', () => {
+    const searchTerm = 'existingSearch';
+    updateSearchesFromLocalStorage(searchTerm);
+    updateSearchesFromLocalStorage(searchTerm);
+
+    const searches = getSearchesFromLocalStorage();
+    expect(searches).toEqual([searchTerm]);
+  });
+
+  it('should remove the oldest search term when exceeding MAX_SEARCHES', () => {
+    const maxSearches = MAX_SEARCHES;
+    for (let i = 0; i < maxSearches; i++) {
+      updateSearchesFromLocalStorage(`search${i}`);
+    }
+
+    const newSearchTerm = 'newSearch';
+    updateSearchesFromLocalStorage(newSearchTerm);
+
+    const searches = getSearchesFromLocalStorage();
+
+    expect(searches).toContain(newSearchTerm);
+    expect(searches).not.toContain('search0');
+    expect(searches.length).toBe(maxSearches);
+  });
+
+  it('should format dates with long month format', () => {
+    const date = '2020-01-01T00:00:00Z';
+    const expectedFormatLong = 'Wed, 1 January';
+
+    const formattedDateLong = formatDate(date, 'en-GB', 'long');
+
+    expect(formattedDateLong).toBe(expectedFormatLong);
+  });
 });
