@@ -105,7 +105,7 @@ const WeatherDetails = () => {
               onClick={() => setActiveIndex(index)}
               key={day.date}
             >
-              {formatDate(day.date, t('format'))}
+              {formatDate(day.date, t('format'), 'short')}
             </button>
           ))}
         </div>

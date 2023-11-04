@@ -55,10 +55,11 @@
   }
 
   &__languages {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: $margin-small;
-    justify-content: center;
     button {
+      justify-self: center;
       background: none;
       border: none;
       transition: filter 0.3s ease;

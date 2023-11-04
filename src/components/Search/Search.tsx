@@ -97,7 +97,7 @@ const Search = () => {
               name={suggestion.name}
               region={suggestion.region}
               country={suggestion.country}
-              classNames=""
+              classNames="search-location no-wrap"
             />
           </button>
         ))}

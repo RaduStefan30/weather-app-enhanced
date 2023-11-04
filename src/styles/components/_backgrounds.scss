@@ -7,7 +7,6 @@
   overflow: hidden;
   pointer-events: none;
   z-index: -1000;
-  background-repeat: no-repeat;
-  background-size: cover;
+  object-fit: cover;
   filter: brightness(0.7);
 }
