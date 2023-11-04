@@ -60,6 +60,23 @@ const WeatherDetails = () => {
       slidesOffsetBefore: 25,
       slidesOffsetAfter: 25,
       spaceBetween: 20,
+      breakpoints: {
+        425: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 4,
+        },
+        1024: {
+          slidesPerView: 5,
+        },
+        1440: {
+          slidesPerView: 6,
+        },
+        3840: {
+          slidesPerView: 8,
+        },
+      },
       on: {
         init(swiper) {
           swiper.slideTo(0);
@@ -105,7 +122,7 @@ const WeatherDetails = () => {
               onClick={() => setActiveIndex(index)}
               key={day.date}
             >
-              {formatDate(day.date, t('format'))}
+              {formatDate(day.date, t('format'), 'short')}
             </button>
           ))}
         </div>

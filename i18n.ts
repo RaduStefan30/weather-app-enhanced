@@ -82,6 +82,16 @@ i18n
           languages: 'lingue',
         },
       },
+      zh: {
+        translation: {
+          conditions: '{{city}} 的天气状况',
+          global: '全球天气',
+          provided: '天气数据由提供',
+          format: 'zh-CN',
+          units: '测量单位',
+          languages: '语言',
+        },
+      },
     },
   });
 

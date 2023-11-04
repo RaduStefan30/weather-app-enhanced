@@ -23,14 +23,12 @@ const LocalWeather = () => {
         </h2>
       </div>
       <div className="local-weather__content section-content">
-        <h3 className="local-weather__location no-wrap">
-          <LocationName
-            name={data.location.name}
-            region=""
-            country={data.location.country}
-            classNames="local-weather__location no-wrap"
-          />
-        </h3>
+        <LocationName
+          name={data.location.name}
+          region=""
+          country={data.location.country}
+          classNames="local-weather__location no-wrap"
+        />
         <p className="local-weather__date">
           {formatDate(data.location.localtime, t('format'))}
         </p>

@@ -64,6 +64,9 @@ const HeaderMenu = ({
           <button onClick={() => changeLanguage('it')}>
             <img src="/it.svg" alt="italian flag" />
           </button>
+          <button onClick={() => changeLanguage('zh')}>
+            <img src="/zh.svg" alt="chinese flag" />
+          </button>
         </div>
       </div>
     </>
