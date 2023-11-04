@@ -1,7 +1,7 @@
 @import '../../styles/abstracts/variables';
 
 .recent-container {
-  display: flex;
   padding: $padding-small 0;
-  flex-direction: column;
+  width: 80vw;
+  margin: 0 auto;
 }

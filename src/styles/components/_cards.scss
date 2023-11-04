@@ -4,13 +4,13 @@
   border-radius: $border-radius-small;
   height: 6rem;
   margin: $margin-small auto;
-  width: 80vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   transition: $box-shadow-transition;
   gap: 0.2rem;
+  width: 100%;
 
   &:hover {
     box-shadow: $box-shadow-1;

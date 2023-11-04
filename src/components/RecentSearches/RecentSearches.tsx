@@ -29,7 +29,11 @@ const Recent = () => {
     fetchData();
   }, []);
 
-  return <div className="recent-container">{recentSearches}</div>;
+  return (
+    <div className={`recent-container grid-${recentSearches.length}`}>
+      {recentSearches}
+    </div>
+  );
 };
 
 export default Recent;
