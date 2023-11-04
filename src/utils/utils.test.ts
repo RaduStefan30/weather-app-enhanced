@@ -93,4 +93,12 @@ describe('localStorage utilities', () => {
 
     expect(formattedDateLong).toBe(expectedFormatLong);
   });
+
+  it('should use the default long month format if monthFormat is not provided', () => {
+    const date = '2020-01-01T00:00:00Z';
+    const expectedFormat = 'Wed, 1 January';
+    const formattedDate = formatDate(date, 'en-GB');
+
+    expect(formattedDate).toBe(expectedFormat);
+  });
 });
