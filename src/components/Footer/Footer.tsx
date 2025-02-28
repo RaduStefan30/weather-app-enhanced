@@ -22,7 +22,7 @@ const Footer = () => {
           </span>
         </a>
       </p>
-      <p>© 2023 Ranzascu Radu</p>
+      <p>© 2025 Ranzascu Radu</p>
       <div className="footer__personal-links">
         <a href="mailto:radustefan3010@gmail.com">
           <FaEnvelope />
