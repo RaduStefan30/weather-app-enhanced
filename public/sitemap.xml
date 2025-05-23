@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://enhanced-weather-app.netlify.app/</loc>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Example city pages -->
+  <url>
+    <loc>https://enhanced-weather-app.netlify.app/details/london</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://enhanced-weather-app.netlify.app/details/new-york</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://enhanced-weather-app.netlify.app/details/bacau</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- You can add more static city pages below or generate them dynamically -->
+
+</urlset>
