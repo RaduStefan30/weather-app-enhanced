@@ -12,6 +12,8 @@ node_modules
 dist
 dist-ssr
 *.local
+
+# Local API keys; commit only the empty template.
 .env
 .env.*
 !.env.example
