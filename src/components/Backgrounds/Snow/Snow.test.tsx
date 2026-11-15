@@ -7,9 +7,9 @@ Date.now = jest.fn(() => 1234567890);
 jest.useFakeTimers();
 
 describe('Snow component', () => {
-  it('should render the snow image', () => {
+  it('should render a decorative snow background', () => {
     render(<Snow />);
-    expect(screen.getByAltText('snowy landscape')).toBeInTheDocument();
+    expect(screen.getByTestId('snow')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should add snowflakes over time', () => {

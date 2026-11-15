@@ -40,8 +40,7 @@ const Snow = () => {
   }, []);
 
   return (
-    <div className="background snow" data-testid="snow">
-      <img src="/snow.png" alt="snowy landscape" />
+    <div className="background snow" data-testid="snow" aria-hidden="true">
       {snowflakes.map((flake) => (
         <div
           key={flake.id}

@@ -7,9 +7,9 @@ Date.now = jest.fn(() => 1234567890);
 jest.useFakeTimers();
 
 describe('Rain component', () => {
-  it('should render the rain image', () => {
+  it('should render a decorative rain background', () => {
     render(<Rain />);
-    expect(screen.getByAltText('cloudy landscape')).toBeInTheDocument();
+    expect(screen.getByTestId('rain')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should add raindrops over time', () => {

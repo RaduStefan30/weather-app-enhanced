@@ -29,36 +29,36 @@ describe('Home Component', () => {
     jest.clearAllMocks();
   });
 
-  it('should render the Rain component when the condition text includes "rain"', () => {
+  it('should render the Rain component for a rain condition code regardless of language', () => {
     (useContext as jest.Mock).mockReturnValue({
       data: {
         current: {
           condition: {
-            text: 'rain',
+            text: 'Pluie', code: 1183,
           },
         },
       },
     });
 
     render(<Home />);
-    const rainComponent = screen.queryByTestId('rain');
-    expect(rainComponent).toBeInTheDocument();
+    const rainComponent = screen.queryByTestId('weather-background');
+    expect(rainComponent).toHaveAttribute('data-scene', 'rain');
   });
 
-  it('should render the Snow component when the condition text includes "snow"', () => {
+  it('should render the Snow component for a snow condition code regardless of language', () => {
     (useContext as jest.Mock).mockReturnValue({
       data: {
         current: {
           condition: {
-            text: 'snow',
+            text: 'Neige', code: 1213,
           },
         },
       },
     });
 
     render(<Home />);
-    const snowComponent = screen.queryByTestId('snow');
-    expect(snowComponent).toBeInTheDocument();
+    const snowComponent = screen.queryByTestId('weather-background');
+    expect(snowComponent).toHaveAttribute('data-scene', 'snow');
   });
 
   it('should render the Day component when all conditions are met', () => {
@@ -66,7 +66,7 @@ describe('Home Component', () => {
       data: {
         current: {
           condition: {
-            text: 'clear',
+            text: 'Clear', code: 1000,
           },
           is_day: 1,
         },
@@ -74,8 +74,8 @@ describe('Home Component', () => {
     });
 
     render(<Home />);
-    const snowComponent = screen.queryByTestId('day');
-    expect(snowComponent).toBeInTheDocument();
+    const snowComponent = screen.queryByTestId('weather-background');
+    expect(snowComponent).toHaveAttribute('data-period', 'day');
   });
 
   it('should render the Night component when all conditions are met', () => {
@@ -83,7 +83,7 @@ describe('Home Component', () => {
       data: {
         current: {
           condition: {
-            text: 'clear',
+            text: 'Clear', code: 1000,
           },
           is_day: 0,
         },
@@ -91,7 +91,7 @@ describe('Home Component', () => {
     });
 
     render(<Home />);
-    const snowComponent = screen.queryByTestId('night');
-    expect(snowComponent).toBeInTheDocument();
+    const snowComponent = screen.queryByTestId('weather-background');
+    expect(snowComponent).toHaveAttribute('data-period', 'night');
   });
 });

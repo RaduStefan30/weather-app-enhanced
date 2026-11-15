@@ -1,3 +1,4 @@
+import BackgroundPreview from './pages/BackgroundPreview/BackgroundPreview';
 import { useEffect, useReducer } from 'react';
 import {
   WeatherStateContext,
@@ -15,6 +16,7 @@ import './App.scss';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter([
+  { path: "/background-preview", element: <BackgroundPreview /> },
   {
     path: '/',
     element: (
