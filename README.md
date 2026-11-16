@@ -53,6 +53,29 @@ cd weather-app-enhanced
 npm install
 ```
 
+4. **Configure the weather API key**
+
+Copy `.env.example` to `.env` if you do not already have a local `.env` file:
+
+```bash
+cp .env.example .env
+```
+
+Set your WeatherAPI.com API key in `.env`:
+
+```dotenv
+VITE_SECRET_KEY=your_weatherapi_key_here
+```
+
+Vite automatically loads `.env` using its built-in dotenv integration. The API
+client reads the key through `import.meta.env.VITE_SECRET_KEY`; no browser-side
+dotenv import is needed. Restart the dev server after changing the key.
+
+Local `.env` files are ignored by Git; `.env.example` contains no credentials and
+can be committed. `VITE_` variables are included in the browser bundle, so this
+key is visible to users of the app. Deployment builds need the same variable set
+in the hosting environment.
+
 ### Running the Application
 
 ```bash

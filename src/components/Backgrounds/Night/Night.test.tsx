@@ -3,9 +3,9 @@ import Night from './Night';
 import '@testing-library/jest-dom';
 
 describe('Night component', () => {
-  it('should render the night image', () => {
+  it('should render a decorative night background', () => {
     render(<Night />);
-    expect(screen.getByAltText('night landscape')).toBeInTheDocument();
+    expect(screen.getByTestId('night')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should have the correct classes', () => {

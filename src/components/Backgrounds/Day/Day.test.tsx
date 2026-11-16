@@ -3,9 +3,9 @@ import Day from './Day';
 import '@testing-library/jest-dom';
 
 describe('Day component', () => {
-  it('should render the day image', () => {
+  it('should render a decorative day background', () => {
     render(<Day />);
-    expect(screen.getByAltText('colorful day landscape')).toBeInTheDocument();
+    expect(screen.getByTestId('day')).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should have the correct class', () => {

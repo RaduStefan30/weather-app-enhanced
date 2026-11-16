@@ -5,6 +5,18 @@ const getIconPath = (code: number, timeOfDay: string): string => {
     1006: `/${timeOfDay}/cloudy.svg`,
     1009: `/${timeOfDay}/cloudy.svg`,
     1030: `/${timeOfDay}/mist.svg`,
+    1012: `/${timeOfDay}/mist.svg`,
+    1015: `/${timeOfDay}/mist.svg`,
+    1018: `/${timeOfDay}/mist.svg`,
+    1021: `/${timeOfDay}/mist.svg`,
+    1024: `/${timeOfDay}/mist.svg`,
+    1027: `/${timeOfDay}/mist.svg`,
+    1033: `/${timeOfDay}/mist.svg`,
+    1036: `/${timeOfDay}/mist.svg`,
+    1039: `/${timeOfDay}/mist.svg`,
+    1042: `/${timeOfDay}/mist.svg`,
+    1045: `/${timeOfDay}/mist.svg`,
+    1048: `/${timeOfDay}/mist.svg`,
     1063: `/${timeOfDay}/patchyRain.svg`,
     1066: `/${timeOfDay}/patchySnow.svg`,
     1069: `/${timeOfDay}/sleet.svg`,
@@ -50,7 +62,7 @@ const getIconPath = (code: number, timeOfDay: string): string => {
     1282: `/${timeOfDay}/thunder.svg`,
   };
 
-  return mapping[code] || `/${timeOfDay}/clear.png`;
+  return mapping[code] || `/${timeOfDay}/clear.svg`;
 };
 
 export const getIconPathByCode = (code: number, isDay: boolean): string => {

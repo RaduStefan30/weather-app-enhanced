@@ -52,12 +52,13 @@ describe('localStorage utilities', () => {
   });
 
   it('should format dates correctly', () => {
-    const date = '2020-01-01T00:00:00Z';
-    const expectedFormat = 'Wed, 1 Jan';
+    const date = '2020-01-01T12:00:00';
+    // ICU versions differ on the optional comma after the weekday.
+    const expectedFormat = /^Wed,?\s+1\s+Jan$/;
 
     const formattedDate = formatDate(date, 'en-GB', 'short');
 
-    expect(formattedDate).toBe(expectedFormat);
+    expect(formattedDate).toMatch(expectedFormat);
   });
 
   it('should not add a duplicate search term', () => {
@@ -86,19 +87,19 @@ describe('localStorage utilities', () => {
   });
 
   it('should format dates with long month format', () => {
-    const date = '2020-01-01T00:00:00Z';
-    const expectedFormatLong = 'Wed, 1 January';
+    const date = '2020-01-01T12:00:00';
+    const expectedFormatLong = /^Wed,?\s+1\s+January$/;
 
     const formattedDateLong = formatDate(date, 'en-GB', 'long');
 
-    expect(formattedDateLong).toBe(expectedFormatLong);
+    expect(formattedDateLong).toMatch(expectedFormatLong);
   });
 
   it('should use the default long month format if monthFormat is not provided', () => {
-    const date = '2020-01-01T00:00:00Z';
-    const expectedFormat = 'Wed, 1 January';
+    const date = '2020-01-01T12:00:00';
+    const expectedFormat = /^Wed,?\s+1\s+January$/;
     const formattedDate = formatDate(date, 'en-GB');
 
-    expect(formattedDate).toBe(expectedFormat);
+    expect(formattedDate).toMatch(expectedFormat);
   });
 });

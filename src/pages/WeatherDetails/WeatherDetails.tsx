@@ -1,3 +1,4 @@
+import WeatherBackground from '../../components/Backgrounds/WeatherBackground';
 import { useContext, useEffect, useRef, useState } from 'react';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
@@ -11,9 +12,6 @@ import WeatherDetail from '../../components/WeatherDetailCard/WeatherDetailCard'
 import { WeatherHourly } from '../../components/WeatherHourly/WeatherHourly';
 import { formatDate } from '../../utils/utils';
 import Spinner from '../../components/Spinner/Spinner';
-import Rain from '../../components/Backgrounds/Rain/Rain';
-import Snow from '../../components/Backgrounds/Snow/Snow';
-import Day from '../../components/Backgrounds/Day/Day';
 import { useTranslation } from 'react-i18next';
 
 const WeatherDetails = () => {
@@ -23,11 +21,6 @@ const WeatherDetails = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [animationTrigger, setAnimationTrigger] = useState(false);
   const { t } = useTranslation();
-
-  const conditionText =
-    data?.forecast.forecastday[activeIndex].day.condition.text ?? '';
-  const isRaining = conditionText.includes('rain');
-  const isSnowing = conditionText.includes('snow');
 
   const swiperRef1 = useRef<Swiper | null>(null);
   const swiperRef2 = useRef<Swiper | null>(null);
@@ -96,9 +89,11 @@ const WeatherDetails = () => {
 
   return (
     <>
-      {isRaining && <Rain />}
-      {isSnowing && <Snow />}
-      {!isRaining && !isSnowing && <Day />}
+      <WeatherBackground
+        code={data.forecast.forecastday[activeIndex]?.day.condition.code}
+        isDay={data.forecast.forecastday[activeIndex]?.date === data.location.localtime.split(' ')[0]
+          ? data.current.is_day : true}
+      />
       <div className="weather-details-container slide-in page">
         <h1 className="weather-details-title">{data.location.name}</h1>
         <div className="swiper1">
