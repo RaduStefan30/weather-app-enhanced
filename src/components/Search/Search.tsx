@@ -7,8 +7,10 @@ import { updateSearchesFromLocalStorage } from '../../utils/utils';
 import { fetchSuggestions } from '../../api/api';
 import { Suggestion } from '../../types';
 import LocationName from '../LocationName/LocationName';
+import { useTranslation } from 'react-i18next';
 
 const Search = () => {
+  const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isFocused, setIsFocused] = useState(false);
@@ -65,8 +67,9 @@ const Search = () => {
       <button
         onClick={() => handleSearch(searchTerm)}
         className={`search-button ${activeDropDownClass}`}
+        aria-label={t('search')}
       >
-        <LiaSearchSolid />
+        <LiaSearchSolid aria-hidden="true" />
       </button>
       <input
         ref={inputRef}
@@ -77,20 +80,27 @@ const Search = () => {
         onKeyDown={(e) => handleInputKeyPress(e)}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        aria-label={t('searchCity')}
+        placeholder={t('searchCity')}
       />
       <button
         onClick={handleCancel}
         className={`search-button search-cancel ${activeDropDownClass}`}
+        aria-label={t('clearSearch')}
       >
         <AiOutlineClose
           className={`icon ${searchTerm ? 'visible' : 'hidden'}`}
         />
       </button>
-      <div className={`search-dropdown ${activeDropDownClass}`}>
+      <div
+        className={`search-dropdown ${activeDropDownClass}`}
+        aria-label={t('searchSuggestions')}
+      >
         {suggestions?.map((suggestion) => (
           <button
             className="no-styles-button"
             key={suggestion.id}
+            onMouseDown={(event) => event.preventDefault()}
             onClick={() => handleSearch(suggestion.url)}
           >
             <LocationName

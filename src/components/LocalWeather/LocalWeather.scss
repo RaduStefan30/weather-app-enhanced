@@ -3,68 +3,181 @@
 .local-weather {
   &__section {
     animation: slideUp 0.6s ease forwards;
+    width: 100%;
+    margin: clamp(3rem, 6vw, 7rem) 0 0;
+    color: $ink-deep;
+  }
+
+  &__header {
+    margin-bottom: $margin-medium;
+  }
+
+  &__eyebrow,
+  &__forecast-label {
+    color: $ochre;
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   &__title {
-    width: 100%;
+    margin-top: 0.4rem;
+    color: $paper;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: $font-weight-normal;
+    letter-spacing: -0.035em;
   }
 
   &__content {
-    display: flex;
-    flex-direction: column;
-    background: $primary-dark-half;
-    align-items: center;
+    display: grid;
+    gap: $margin-medium;
+    padding: clamp(2.4rem, 5vw, 5rem);
+    background: rgba($paper, 0.95);
+    border: 1px solid rgba($paper, 0.75);
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-1;
   }
 
   &__location {
-    margin-bottom: $margin-small;
-    font-size: $font-size-medium;
-    text-align: center;
+    margin-bottom: 0.4rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(2.6rem, 4vw, 4.2rem);
+    line-height: 1;
     width: 100%;
   }
 
   &__date {
-    margin-bottom: $margin-medium;
-    font-size: $font-size-tiny;
-    opacity: 0.9;
+    color: rgba($ink-deep, 0.62);
+    font-size: 1.2rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  &__reading {
+    display: flex;
+    gap: $margin-medium;
+    align-items: center;
+    margin-top: $margin-large;
   }
 
   &__icon {
     &.big {
-      width: 13rem;
-      margin-bottom: $margin-large;
+      width: clamp(8rem, 14vw, 13rem);
+      filter: drop-shadow(0 0.8rem 1.2rem rgba($ink-deep, 0.13));
     }
   }
 
   &__temp {
+    color: rgba($ink-deep, 0.66);
     font-size: $font-size-tiny;
-    opacity: 0.9;
-    font-weight: $font-weight-smallest;
+
     &.big {
-      font-size: $font-size-extra-large;
-      opacity: 1;
-      font-weight: $font-weight-normal;
+      color: $ink-deep;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(6rem, 12vw, 11rem);
+      letter-spacing: -0.07em;
+      line-height: 0.8;
     }
+  }
+
+  &__condition {
+    margin: 2.4rem 0 0.4rem;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-semi-bold;
   }
 
   &__details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem 0;
-    width: 100%;
-    margin-top: $margin-extra-large;
+    gap: $margin-small;
 
     &-item {
-      display: flex;
-      justify-content: center;
-      font-size: $font-size-small;
-      font-weight: $font-weight-normal;
-      & :first-child {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 0.2rem $margin-small;
+      min-height: 9rem;
+      padding: 1.6rem;
+      background: rgba($sage, 0.28);
+      border: 1px solid rgba($ink, 0.08);
+      border-radius: $border-radius-small;
+
+      > svg {
+        grid-row: 1 / 3;
+        color: $ink;
         font-size: $font-size-large;
-        margin-right: 0.5rem;
-        transform: translateY(-0.1rem);
       }
+
+      > span {
+        color: rgba($ink-deep, 0.58);
+        font-size: 1.1rem;
+        font-weight: $font-weight-bold;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      > p {
+        font-family: 'Newsreader', Georgia, serif;
+        font-size: $font-size-medium;
+      }
+    }
+  }
+
+  &__detail-value {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: $font-size-medium;
+
+    p {
+      font: inherit;
+    }
+  }
+
+  &__forecast {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: space-between;
+    align-items: center;
+    gap: $margin-medium;
+    padding: 1.8rem 2rem;
+    background: rgba($sky, 0.2);
+    border: 1px solid rgba($ink, 0.08);
+    border-radius: $border-radius-small;
+    font-size: $font-size-small;
+
+    &-label {
+      margin-bottom: 0.4rem;
+    }
+
+    &-reading {
+      display: flex;
+      align-items: center;
+      gap: $margin-small;
+    }
+
+    &-icon {
+      width: 4.8rem;
+    }
+
+    &-temp {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: $font-size-large;
+    }
+  }
+
+  @media (min-width: 760px) {
+    &__content {
+      grid-template-columns: minmax(0, 1.15fr) minmax(32rem, 0.85fr);
+    }
+
+    &__summary {
+      grid-row: 1 / 3;
+      padding-right: clamp(2rem, 5vw, 6rem);
+      border-right: 1px solid rgba($ink, 0.12);
     }
   }
 }

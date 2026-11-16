@@ -5,8 +5,9 @@ import './GlobalWeather.scss';
 const GlobalWeather = () => {
   const { t } = useTranslation();
   return (
-    <div className="global-weather__section section">
+    <section className="global-weather__section section">
       <div className="global-weather__header">
+        <p className="global-weather__eyebrow">{t('aroundWorld')}</p>
         <h2 className="global-weather__title title">{t('global')}</h2>
       </div>
       <div className="global-weather__content section-content grid-6">
@@ -17,7 +18,7 @@ const GlobalWeather = () => {
         <WeatherCard key={'Beijing'} search={'Beijing'} />
         <WeatherCard key={'Sydney'} search={'Sydney'} />
       </div>
-    </div>
+    </section>
   );
 };
 
