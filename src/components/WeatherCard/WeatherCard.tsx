@@ -7,13 +7,22 @@ import RecentCard from '../RecentSearches/RecentCard/RecentCard';
 
 const WeatherCard = ({ search }: { search: string }) => {
   const [data, setData] = useState<WeatherData>();
+
   useEffect(() => {
+    let isCurrentRequest = true;
+
     const fetchData = async () => {
       const weather = await fetchWeather(search);
-      setData(weather);
+      if (isCurrentRequest) setData(weather);
     };
+
     fetchData();
-  }, [data, search]);
+
+    return () => {
+      isCurrentRequest = false;
+    };
+  }, [search]);
+
   if (!data) return <Spinner />;
   return (
     <RecentCard
