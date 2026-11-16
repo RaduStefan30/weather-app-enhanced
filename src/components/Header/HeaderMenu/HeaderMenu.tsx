@@ -29,6 +29,7 @@ const HeaderMenu = ({
   return (
     <>
       <div
+        id="header-settings"
         data-testid="header-menu"
         className={`header-menu__overlay ${
           !isFirstRender.current && (isMenuOpen ? 'open' : 'closed')

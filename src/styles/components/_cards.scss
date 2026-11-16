@@ -1,19 +1,24 @@
 .card {
   background: $primary-dark-half;
-  padding: $padding-wide-small;
+  padding: 1.4rem 1.8rem;
   border-radius: $border-radius-small;
-  height: 6rem;
+  min-height: 6.4rem;
   margin: $margin-small auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  transition: $box-shadow-transition;
+  border: 1px solid rgba($paper, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
   gap: 0.2rem;
   width: 100%;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     box-shadow: $box-shadow-1;
+    background: rgba($ink-deep, 0.94);
+    transform: translateY(-0.2rem);
   }
 
   &__location {
@@ -32,7 +37,7 @@
     &-value {
       font-size: $font-size-medium;
       color: $primary-light;
-      font-weight: $font-weight-small;
+      font-weight: $font-weight-semi-bold;
     }
   }
 }

@@ -1,6 +1,8 @@
 .title {
-  font-size: $font-size-small;
-  font-weight: $font-weight-bold;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: $font-size-large;
+  font-weight: $font-weight-normal;
   text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin: $margin-medium 0;
 }

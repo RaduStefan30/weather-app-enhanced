@@ -3,22 +3,14 @@
 
 .header {
   position: relative;
-  background-color: $primary-gradient;
-  width: 100vw;
-  max-height: 10rem;
-  padding: $padding-wide-medium;
+  width: 100%;
+  min-height: 7.2rem;
+  padding: 1.4rem clamp(2rem, 6vw, 8rem);
   @include center-items;
   justify-content: space-between;
   z-index: 100;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    @include black-fade-gradient($gradient-direction);
-    z-index: -1;
-  }
+  background: rgba($ink-deep, 0.88);
+  border-bottom: 1px solid rgba($paper, 0.08);
+  box-shadow: 0 0.8rem 3rem rgba($ink-deep, 0.12);
+  backdrop-filter: blur(1.2rem);
 }

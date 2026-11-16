@@ -1,12 +1,53 @@
 @import '../../styles/abstracts/variables';
+@import '../../styles/abstracts/mixins';
 
-.logo {
-  height: 4rem;
-  cursor: pointer;
+.logo-button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: $paper;
+  text-align: left;
   transition: $default-transition;
 
-  &-button:hover,
-  &-button:focus {
-    filter: brightness(1.2);
+  &:hover {
+    transform: translateY(-0.1rem);
+  }
+}
+
+.logo {
+  &__mark {
+    @include center-items;
+    width: 4.2rem;
+    height: 4.2rem;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    color: $ink-deep;
+    background: $sun;
+    transform: rotate(-3deg);
+
+    svg {
+      width: 2.8rem;
+      height: 2.8rem;
+    }
+  }
+
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+
+    strong {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: $font-size-medium;
+      font-weight: $font-weight-semi-bold;
+    }
+
+    small {
+      margin-top: 0.3rem;
+      color: rgba($paper, 0.68);
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
   }
 }

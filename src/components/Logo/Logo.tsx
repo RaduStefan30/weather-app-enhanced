@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { WiDayCloudy } from 'react-icons/wi';
 import './Logo.scss';
 
 const Logo = ({ toggleMenu }: { toggleMenu: (close: boolean) => void }) => {
@@ -7,13 +8,19 @@ const Logo = ({ toggleMenu }: { toggleMenu: (close: boolean) => void }) => {
     <button
       className="no-styles-button logo-button"
       data-testid="logo"
-      aria-label="Logo"
+      aria-label="Enhanced Weather home"
       onClick={() => {
         toggleMenu(true);
         navigate('/');
       }}
     >
-      <img className="logo" src="/logo.png" alt="Logo" />
+      <span className="logo__mark" aria-hidden="true">
+        <WiDayCloudy />
+      </span>
+      <span className="logo__copy">
+        <strong>Weather</strong>
+        <small>close to home</small>
+      </span>
     </button>
   );
 };
