@@ -34,7 +34,7 @@
     cursor: pointer;
 
     &.show {
-      border-radius: $border-radius-medium 0 0 0 !important;
+      border-radius: $border-radius-medium 0 0 0;
     }
   }
 
@@ -48,7 +48,7 @@
     }
 
     &.show {
-      border-radius: 0 $border-radius-medium 0 0 !important;
+      border-radius: 0 $border-radius-medium 0 0;
     }
   }
 
