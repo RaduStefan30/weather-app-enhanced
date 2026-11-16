@@ -3,5 +3,9 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  outline: none;
+
+  &:focus-visible {
+    outline: 0.3rem solid $sun;
+    outline-offset: 0.4rem;
+  }
 }

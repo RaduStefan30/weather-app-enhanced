@@ -3,9 +3,11 @@
 
 .header-menu {
   &__units {
-    font-size: $font-size-small;
-    font-weight: $font-weight-semi-bold;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: $font-size-large;
+    font-weight: $font-weight-normal;
     text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin: $margin-large 0 $margin-medium;
   }
 
@@ -15,7 +17,7 @@
     right: -30vw;
     height: 0;
     width: 0;
-    background: $primary-gradient;
+    background: $ink-deep;
     z-index: -2;
     transform-origin: top right;
     border-radius: 100%;
@@ -35,6 +37,9 @@
     left: 50%;
     transform: translateX(-50%);
     transition: opacity 0.4s 0.6s;
+    width: min(56rem, calc(100vw - 4rem));
+    color: $paper;
+    text-align: center;
 
     &.open {
       transition: opacity 0.5s 0.3s;
@@ -63,15 +68,22 @@
       background: none;
       border: none;
       transition: filter 0.3s ease;
+      border-radius: $border-radius-small;
       &:hover {
         cursor: pointer;
         filter: brightness(0.8);
+      }
+
+      &:focus-visible {
+        outline: 0.3rem solid $sun;
+        outline-offset: 0.3rem;
       }
     }
 
     img {
       display: block;
-      width: 6rem;
+      width: 5.2rem;
+      border-radius: 0.8rem;
     }
   }
 }

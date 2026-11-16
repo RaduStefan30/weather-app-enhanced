@@ -1,22 +1,31 @@
-//Colors
-$primary-light: #f9f6ee;
-$primary-light-half: rgba(249, 246, 238, 0.5);
-$primary-dark: #1b1212;
-$primary-dark-half: rgba(27, 18, 18, 0.5);
-$primary-dark-transparent: rgba(27, 18, 18, 0.2);
-$primary-color-1: #79beee;
-$primary-color-1-washed: #afd8f5;
-$primary-color-2: #8a84e2;
-$primary-color-2-washed: #b9b5ee;
-$primary-color-2-half: #e3e1f8;
-$black-overlay: rgba(0, 0, 0, 0.8);
+// Cut-paper palette
+$paper: #f3ead7;
+$paper-muted: #d9d1bd;
+$ink: #173c3d;
+$ink-deep: #102f30;
+$sky: #6f9bad;
+$sage: #a8b47d;
+$ochre: #c99547;
+$sun: #f2c85b;
+$surface: rgba(16, 47, 48, 0.86);
+$surface-soft: rgba(16, 47, 48, 0.68);
+$surface-subtle: rgba(243, 234, 215, 0.1);
+
+// Legacy aliases used by existing screens during the redesign.
+$primary-light: $paper;
+$primary-light-half: rgba(243, 234, 215, 0.5);
+$primary-dark: $ink-deep;
+$primary-dark-half: $surface;
+$primary-dark-transparent: rgba(16, 47, 48, 0.32);
+$primary-color-1: $sky;
+$primary-color-1-washed: #b9ccca;
+$primary-color-2: $ochre;
+$primary-color-2-washed: #d8c79f;
+$primary-color-2-half: #e8ddc5;
+$black-overlay: rgba(16, 47, 48, 0.92);
 
 //Gradients
-$primary-gradient: linear-gradient(
-  90deg,
-  rgb(89, 207, 225) 0%,
-  rgba(80, 67, 229, 1) 100%
-);
+$primary-gradient: linear-gradient(135deg, $ink-deep 0%, $ink 100%);
 
 $gradient-direction: to bottom;
 $gradient-direction-reversed: to top;
@@ -31,21 +40,21 @@ $padding-large: 4rem;
 $padding-extra-large: 6rem;
 
 //Border Radius
-$border-radius-small: 0.5rem;
-$border-radius-medium: 1rem;
-$border-radius-large: 3rem;
+$border-radius-small: 1.2rem;
+$border-radius-medium: 2rem;
+$border-radius-large: 999px;
 
 //Font Size
 
-$font-size-tiny: 1.5rem;
+$font-size-tiny: 1.4rem;
 $font-size-small: 1.6rem;
 $font-size-medium: 2rem;
 $font-size-large: 2.4rem;
-$font-size-extra-large: 3.2rem;
+$font-size-extra-large: 3.6rem;
 
 //Font Weight
-$font-weight-smallest: 100;
-$font-weight-small: 200;
+$font-weight-smallest: 300;
+$font-weight-small: 400;
 $font-weight-normal: 400;
 $font-weight-semi-bold: 500;
 $font-weight-bold: 600;
@@ -58,8 +67,25 @@ $margin-large: 4rem;
 $margin-extra-large: 6rem;
 
 //Box-Shadows
-$box-shadow-1: 1px 4px 8px rgba(0, 0, 0, 0.3);
+$box-shadow-1: 0 1.2rem 3.2rem rgba(8, 31, 31, 0.2);
 
 //Transitions
 $box-shadow-transition: box-shadow 0.3s ease;
-$default-transition: all 0.3s ease;
+$default-transition: color 0.2s ease, background-color 0.2s ease,
+  transform 0.2s ease, box-shadow 0.2s ease;
+
+:root {
+  --color-paper: #{$paper};
+  --color-paper-muted: #{$paper-muted};
+  --color-ink: #{$ink};
+  --color-ink-deep: #{$ink-deep};
+  --color-sky: #{$sky};
+  --color-sage: #{$sage};
+  --color-ochre: #{$ochre};
+  --color-sun: #{$sun};
+  --surface-weather: #{$surface};
+  --surface-weather-soft: #{$surface-soft};
+  --radius-sm: #{$border-radius-small};
+  --radius-md: #{$border-radius-medium};
+  --shadow-weather: #{$box-shadow-1};
+}

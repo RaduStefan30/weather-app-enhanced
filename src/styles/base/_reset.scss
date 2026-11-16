@@ -14,4 +14,11 @@ html {
 body {
   overflow-x: hidden;
   box-sizing: border-box;
+  min-width: 32rem;
+  background: $ink-deep;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }

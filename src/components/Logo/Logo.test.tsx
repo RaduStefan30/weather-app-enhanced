@@ -28,14 +28,12 @@ describe('Logo Component', () => {
     const logoButton = screen.getByTestId('logo');
     expect(logoButton).toBeInTheDocument();
     expect(logoButton).toHaveClass('no-styles-button logo-button');
-    expect(logoButton).toHaveAttribute('aria-label', 'Logo');
+    expect(logoButton).toHaveAttribute('aria-label', 'Enhanced Weather home');
   });
 
-  it('should render logo image', () => {
-    const logoImage = screen.getByAltText('Logo');
-    expect(logoImage).toBeInTheDocument();
-    expect(logoImage).toHaveClass('logo');
-    expect(logoImage).toHaveAttribute('src', '/logo.png');
+  it('should render the weather wordmark', () => {
+    expect(screen.getByText('Weather')).toBeInTheDocument();
+    expect(screen.getByText('close to home')).toBeInTheDocument();
   });
 
   it('should call toggleMenu with true on button click', () => {
