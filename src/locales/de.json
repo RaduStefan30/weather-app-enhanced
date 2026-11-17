@@ -34,5 +34,21 @@
   "loadingWeather": "Wetter wird geladen",
   "pageNotFound": "Seite nicht gefunden",
   "pageNotFoundMessage": "Diese Vorhersage scheint von der Karte verschwunden zu sein.",
-  "goHome": "Zur Startseite"
+  "goHome": "Zur Startseite",
+  "nextHours": "Nächste Stunden",
+  "highLow": "Höchst / tiefst",
+  "rainChance": "Regenwahrscheinlichkeit",
+  "maxWind": "Maximaler Wind",
+  "sunrise": "Sonnenaufgang",
+  "sunset": "Sonnenuntergang",
+  "uvIndex": "UV-Index",
+  "airQuality": "Luftqualität",
+  "airQualityGood": "Gut",
+  "airQualityModerate": "Mäßig",
+  "airQualitySensitive": "Empfindliche Gruppen",
+  "airQualityUnhealthy": "Ungesund",
+  "airQualityVeryUnhealthy": "Sehr ungesund",
+  "airQualityHazardous": "Gefährlich",
+  "weatherAlert": "Wetterwarnung",
+  "expires": "Endet"
 }

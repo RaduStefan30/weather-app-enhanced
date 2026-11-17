@@ -18,6 +18,7 @@ jest.mock('react-i18next', () => ({
         dailyOutlook: 'Daily outlook',
         dayAtGlance: 'The day at a glance',
         hourlyForecast: 'Hourly forecast',
+        nextHours: 'Next hours',
       })[key] ?? key,
   }),
 }));

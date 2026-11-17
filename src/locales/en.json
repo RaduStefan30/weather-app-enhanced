@@ -34,5 +34,21 @@
   "loadingWeather": "Loading weather",
   "pageNotFound": "Page not found",
   "pageNotFoundMessage": "This forecast seems to have drifted off the map.",
-  "goHome": "Go home"
+  "goHome": "Go home",
+  "nextHours": "Next hours",
+  "highLow": "High / low",
+  "rainChance": "Chance of rain",
+  "maxWind": "Maximum wind",
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
+  "uvIndex": "UV index",
+  "airQuality": "Air quality",
+  "airQualityGood": "Good",
+  "airQualityModerate": "Moderate",
+  "airQualitySensitive": "Sensitive groups",
+  "airQualityUnhealthy": "Unhealthy",
+  "airQualityVeryUnhealthy": "Very unhealthy",
+  "airQualityHazardous": "Hazardous",
+  "weatherAlert": "Weather alert",
+  "expires": "Expires"
 }

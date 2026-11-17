@@ -1,0 +1,58 @@
+@import '../../styles/abstracts/variables';
+
+.weather-alert {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1.6rem;
+  width: min(118rem, calc(100% - 4rem));
+  margin: 2rem auto 0;
+  padding: 1.6rem 2rem;
+  color: $paper;
+  background: rgba(130, 55, 40, 0.94);
+  border: 1px solid rgba($paper, 0.22);
+  border-radius: $border-radius-small;
+  box-shadow: $box-shadow-1;
+
+  &__eyebrow,
+  &__expires {
+    font-size: 1.1rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__eyebrow {
+    color: $sun;
+  }
+
+  &__content {
+    h2 {
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 2rem;
+      font-weight: $font-weight-normal;
+    }
+
+    p {
+      margin-top: 0.3rem;
+      color: rgba($paper, 0.76);
+      font-size: 1.3rem;
+    }
+  }
+
+  &__expires {
+    color: rgba($paper, 0.7);
+    text-align: right;
+  }
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+
+    &__expires {
+      text-align: left;
+    }
+  }
+}

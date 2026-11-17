@@ -7,11 +7,11 @@
     z-index: 1;
     width: min(118rem, calc(100% - 4rem));
     margin: 0 auto;
-    padding: clamp(4rem, 8vw, 8rem) 0 $padding-extra-large;
+    padding: clamp(3rem, 5vw, 5rem) 0 $padding-extra-large;
   }
 
   &-header {
-    margin-bottom: clamp(2.8rem, 5vw, 5rem);
+    margin-bottom: clamp(2rem, 3vw, 3.2rem);
     color: $paper;
   }
 
@@ -85,27 +85,33 @@
   }
 
   &-summary {
+    min-width: 0;
+    background: rgba($paper, 0.98);
+  }
+
+  &-forecast {
+    display: grid;
     overflow: hidden;
     color: $ink-deep;
-    background: rgba($paper, 0.95);
+    background: rgba($paper, 0.94);
     border: 1px solid rgba($paper, 0.75);
     border-radius: $border-radius-medium;
     box-shadow: $box-shadow-1;
     animation: slideUp 0.45s ease forwards;
   }
 
-  &-hourly-section {
-    margin-top: clamp(4rem, 7vw, 8rem);
-  }
-
   &-section-heading {
-    margin-bottom: $margin-medium;
-    color: $paper;
+    margin-bottom: 1.6rem;
+    color: $ink-deep;
+
+    p {
+      color: $ochre;
+    }
 
     h2 {
       margin-top: 0.4rem;
       font-family: 'Newsreader', Georgia, serif;
-      font-size: clamp(3rem, 5vw, 5rem);
+      font-size: clamp(2.6rem, 4vw, 3.8rem);
       font-weight: $font-weight-normal;
       letter-spacing: -0.035em;
     }
@@ -113,10 +119,10 @@
 
   &-hourly {
     display: grid;
-    grid-auto-columns: minmax(14rem, 17rem);
+    grid-auto-columns: minmax(12.5rem, 14.5rem);
     grid-auto-flow: column;
     gap: $margin-small;
-    padding: 0.4rem 0 $margin-medium;
+    padding: 0.4rem 0 1.2rem;
     overflow-x: auto;
     overscroll-behavior-inline: contain;
     scroll-snap-type: inline mandatory;
@@ -136,6 +142,23 @@
         background: $paper;
         transform: translateY(-0.3rem);
       }
+    }
+  }
+
+  &-hourly-pane {
+    min-width: 0;
+    padding: clamp(2.4rem, 4vw, 3.6rem);
+    border-top: 1px solid rgba($ink, 0.1);
+  }
+
+  @media (min-width: 900px) {
+    &-forecast {
+      grid-template-columns: minmax(32rem, 0.72fr) minmax(0, 1.28fr);
+    }
+
+    &-hourly-pane {
+      border-top: 0;
+      border-left: 1px solid rgba($ink, 0.1);
     }
   }
 }

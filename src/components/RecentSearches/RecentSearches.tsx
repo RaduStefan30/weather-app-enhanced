@@ -6,7 +6,9 @@ import { getSearchesFromLocalStorage } from '../../utils/utils';
 import { useTranslation } from 'react-i18next';
 
 const Recent = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const weatherLanguage = (i18n.resolvedLanguage ?? i18n.language ?? 'en')
+    .split('-')[0];
   const [recentSearches, setRecentSearches] = useState<ReactElement[]>([]);
   useEffect(() => {
     const searches = getSearchesFromLocalStorage();
@@ -15,7 +17,7 @@ const Recent = () => {
     const fetchData = async () => {
       const searchResults = await Promise.all(
         searches.map(async (search: string, index: number) => {
-          const data = await fetchWeather(search);
+          const data = await fetchWeather(search, weatherLanguage);
           return (
             <RecentCard
               key={search}
@@ -30,7 +32,7 @@ const Recent = () => {
     };
 
     fetchData();
-  }, []);
+  }, [weatherLanguage]);
 
   if (!recentSearches.length) return null;
 
