@@ -1,19 +1,36 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import WeatherDetails from './WeatherDetails';
-import { WeatherStateContext, initialState } from '../../contexts/WeatherContext/WeatherContext';
+import {
+  WeatherStateContext,
+  initialState,
+} from '../../contexts/WeatherContext/WeatherContext';
 import { weatherDataMock } from '../../__mocks__/weatherDataMock';
 import { WeatherData } from '../../types';
 
-jest.mock('swiper/bundle', () => jest.fn().mockImplementation(() => ({
-  slideTo: jest.fn(), update: jest.fn(),
-})));
-jest.mock('react-i18next', () => ({ useTranslation: () => ({ t: () => 'en-GB' }) }));
-jest.mock('../../components/WeatherDetailCard/WeatherDetailCard', () => () => <div />);
-jest.mock('../../components/WeatherHourly/WeatherHourly', () => ({ WeatherHourly: () => <div /> }));
-
-beforeEach(() => jest.useFakeTimers());
-afterEach(() => { jest.clearAllTimers(); jest.useRealTimers(); });
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) =>
+      ({
+        format: 'en-GB',
+        forecastFor: 'Forecast for',
+        chooseDay: 'Choose forecast day',
+        dailyOutlook: 'Daily outlook',
+        dayAtGlance: 'The day at a glance',
+        hourlyForecast: 'Hourly forecast',
+      })[key] ?? key,
+  }),
+}));
+jest.mock('../../components/WeatherDetailCard/WeatherDetailCard', () => ({
+  details,
+}: {
+  details: WeatherData['forecast']['forecastday'][number];
+}) => <div>{details.day.condition.text}</div>);
+jest.mock('../../components/WeatherHourly/WeatherHourly', () => ({
+  WeatherHourly: ({ hour }: { hour: { time: string } }) => (
+    <div>{hour.time}</div>
+  ),
+}));
 
 it('uses nighttime for today and daytime for future forecasts, updating weather when the date changes', () => {
   const today = {
@@ -41,10 +58,40 @@ it('uses nighttime for today and daytime for future forecasts, updating weather 
   const image = screen.getByTestId('weather-background').querySelector('img');
   expect(image).toHaveAttribute('src', '/backgrounds/clear-night.webp');
 
-  fireEvent.click(screen.getByRole('button', { name: /16 Nov/ }));
+  expect(screen.getByRole('tab', { name: /15 Nov/ })).toHaveAttribute(
+    'aria-selected',
+    'true'
+  );
+  expect(screen.getByText('Clear')).toBeInTheDocument();
+
+  fireEvent.click(screen.getByRole('tab', { name: /16 Nov/ }));
   expect(image).toHaveAttribute('src', '/backgrounds/blizzard.webp');
   expect(screen.getByTestId('weather-background')).toHaveAttribute('data-period', 'day');
+  expect(screen.getByText('Blizzard')).toBeInTheDocument();
 
-  fireEvent.click(screen.getByRole('button', { name: /15 Nov/ }));
+  fireEvent.click(screen.getByRole('tab', { name: /15 Nov/ }));
   expect(image).toHaveAttribute('src', '/backgrounds/clear-night.webp');
+});
+
+it('renders loading, error, and empty states', () => {
+  const { rerender } = render(
+    <WeatherStateContext.Provider value={{ ...initialState, loading: true }}>
+      <WeatherDetails />
+    </WeatherStateContext.Provider>
+  );
+  expect(document.querySelector('.spinner')).toBeInTheDocument();
+
+  rerender(
+    <WeatherStateContext.Provider value={{ ...initialState, error: 'Offline' }}>
+      <WeatherDetails />
+    </WeatherStateContext.Provider>
+  );
+  expect(screen.getByText('Error: Offline')).toBeInTheDocument();
+
+  rerender(
+    <WeatherStateContext.Provider value={initialState}>
+      <WeatherDetails />
+    </WeatherStateContext.Provider>
+  );
+  expect(screen.getByText('No weather data available')).toBeInTheDocument();
 });

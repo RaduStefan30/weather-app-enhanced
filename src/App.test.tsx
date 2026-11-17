@@ -6,8 +6,6 @@ import { weatherDataMock } from './__mocks__/weatherDataMock';
 import { GENERIC_IP } from './utils/constants';
 
 jest.mock('./api/api');
-jest.mock('swiper/bundle');
-jest.mock('swiper/css/bundle');
 
 const mockFetchWeatherData = api.fetchWeather as jest.MockedFunction<
   typeof api.fetchWeather

@@ -15,8 +15,9 @@ export const WeatherHourly = ({ hour }: { hour: Hour }) => {
         className="weather-hourly__icon"
         code={hour.condition.code}
         isDay={hour.is_day}
-        alt="weather icon"
+        alt=""
       />
+      <p className="weather-hourly__condition">{hour.condition.text}</p>
       <Measurement
         className={'weather-hourly__temp'}
         metricValue={hour.temp_c}
