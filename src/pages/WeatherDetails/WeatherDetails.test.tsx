@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import WeatherDetails from './WeatherDetails';
 import {
@@ -32,7 +32,7 @@ jest.mock('../../components/WeatherHourly/WeatherHourly', () => ({
   ),
 }));
 
-it('uses nighttime for today and daytime for future forecasts, updating weather when the date changes', () => {
+it('uses nighttime for today and daytime for future forecasts, updating weather when the date changes', async () => {
   const today = {
     ...weatherDataMock.forecast.forecastday[0],
     date: '2026-11-15',
@@ -55,8 +55,10 @@ it('uses nighttime for today and daytime for future forecasts, updating weather 
       <WeatherDetails />
     </WeatherStateContext.Provider>
   );
-  const image = screen.getByTestId('weather-background').querySelector('img');
-  expect(image).toHaveAttribute('src', '/backgrounds/clear-night.webp');
+  const background = screen.getByTestId('weather-background');
+  expect(
+    background.querySelector('.weather-background__layer--current img')
+  ).toHaveAttribute('src', '/backgrounds/clear-night.webp');
 
   expect(screen.getByRole('tab', { name: /15 Nov/ })).toHaveAttribute(
     'aria-selected',
@@ -65,12 +67,27 @@ it('uses nighttime for today and daytime for future forecasts, updating weather 
   expect(screen.getByText('Clear')).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('tab', { name: /16 Nov/ }));
-  expect(image).toHaveAttribute('src', '/backgrounds/blizzard.webp');
-  expect(screen.getByTestId('weather-background')).toHaveAttribute('data-period', 'day');
+  const pendingBlizzard = background.querySelector(
+    '.weather-background__layer--pending img'
+  );
+  expect(pendingBlizzard).toHaveAttribute('src', '/backgrounds/blizzard.webp');
+  fireEvent.load(pendingBlizzard!);
+  await waitFor(() =>
+    expect(background).toHaveAttribute('data-period', 'day')
+  );
   expect(screen.getByText('Blizzard')).toBeInTheDocument();
 
   fireEvent.click(screen.getByRole('tab', { name: /15 Nov/ }));
-  expect(image).toHaveAttribute('src', '/backgrounds/clear-night.webp');
+  const pendingClear = background.querySelector(
+    '.weather-background__layer--pending img'
+  );
+  expect(pendingClear).toHaveAttribute('src', '/backgrounds/clear-night.webp');
+  fireEvent.load(pendingClear!);
+  await waitFor(() =>
+    expect(
+      background.querySelector('.weather-background__layer--current img')
+    ).toHaveAttribute('src', '/backgrounds/clear-night.webp')
+  );
 });
 
 it('renders loading, error, and empty states', () => {
