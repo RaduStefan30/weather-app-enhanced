@@ -11,7 +11,6 @@
   z-index: 100;
   background: rgba($ink-deep, 0.88);
   border-bottom: 1px solid rgba($paper, 0.08);
-  box-shadow: 0 -50vh 0 50vh $ink-deep,
-    0 0.8rem 3rem rgba($ink-deep, 0.12);
+  box-shadow: 0 0.8rem 3rem rgba($ink-deep, 0.12);
   backdrop-filter: blur(1.2rem);
 }
