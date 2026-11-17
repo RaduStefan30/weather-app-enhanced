@@ -5,6 +5,15 @@ export const WEATHER_SCENES = [
 
 export type WeatherScene = typeof WEATHER_SCENES[number];
 
+export type WeatherBackgroundData = ReturnType<typeof getWeatherBackground>;
+
+type WeatherBackgroundRequest = {
+  code?: number;
+  isDay?: boolean | number;
+};
+
+const preloadedBackgrounds = new Set<string>();
+
 // WeatherAPI condition codes: https://www.weatherapi.com/docs/weather_conditions.json
 export const WEATHER_CODES: Record<WeatherScene, readonly number[]> = {
   clear: [1000],
@@ -34,4 +43,22 @@ export function getWeatherBackground(code?: number, isDay: boolean | number = tr
     tintNight: night && !hasNightArt,
     image: `/backgrounds/${scene}${night && hasNightArt ? '-night' : ''}.webp`,
   };
+}
+
+export function preloadWeatherBackgrounds(
+  backgrounds: WeatherBackgroundRequest[]
+) {
+  if (typeof Image === 'undefined') return;
+
+  backgrounds.forEach(({ code, isDay }) => {
+    const { image: src } = getWeatherBackground(code, isDay);
+    if (preloadedBackgrounds.has(src)) return;
+
+    preloadedBackgrounds.add(src);
+    const image = new Image();
+    image.decoding = 'async';
+    image.src = src;
+
+    if (image.decode) void image.decode().catch(() => undefined);
+  });
 }

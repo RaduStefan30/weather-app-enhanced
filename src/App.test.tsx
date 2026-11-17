@@ -6,8 +6,6 @@ import { weatherDataMock } from './__mocks__/weatherDataMock';
 import { GENERIC_IP } from './utils/constants';
 
 jest.mock('./api/api');
-jest.mock('swiper/bundle');
-jest.mock('swiper/css/bundle');
 
 const mockFetchWeatherData = api.fetchWeather as jest.MockedFunction<
   typeof api.fetchWeather
@@ -16,6 +14,7 @@ const mockGetIP = api.getIP as jest.MockedFunction<typeof api.getIP>;
 
 describe('App Component', () => {
   beforeEach(() => {
+    window.scrollTo = jest.fn();
     mockGetIP.mockResolvedValue(GENERIC_IP);
     mockFetchWeatherData.mockResolvedValue(weatherDataMock);
   });

@@ -1,19 +1,58 @@
 @import '../../styles/abstracts/variables';
 
 .weather-detail-card {
-  min-height: 30rem;
-  margin-top: $margin-large;
-  margin-bottom: $margin-medium;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  min-height: 38rem;
+
+  &__visual,
+  &__reading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(3rem, 7vw, 7rem);
+  }
+
+  &__visual {
+    min-height: 26rem;
+    background: rgba($sky, 0.2);
+  }
 
   &__image {
-    height: 15rem;
-    margin-bottom: $margin-medium;
+    width: clamp(15rem, 32vw, 28rem);
+    filter: drop-shadow(0 1.2rem 1.6rem rgba($ink-deep, 0.15));
+  }
+
+  &__reading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  &__label {
+    color: $ochre;
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
   }
 
   &__temp {
-    font-size: $font-size-extra-large;
+    margin: $margin-small 0;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(7rem, 16vw, 13rem);
+    letter-spacing: -0.07em;
+    line-height: 0.85;
+  }
+
+  &__condition {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: $font-weight-semi-bold;
+  }
+
+  @media (min-width: 720px) {
+    grid-template-columns: minmax(0, 1fr) minmax(32rem, 0.8fr);
+
+    &__visual {
+      border-right: 1px solid rgba($ink, 0.1);
+    }
   }
 }

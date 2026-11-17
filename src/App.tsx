@@ -14,6 +14,8 @@ import { fetchWeather, getIP } from './api/api';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import { preloadWeatherBackgrounds } from './utils/weatherBackground';
 
 const router = createBrowserRouter([
   { path: "/background-preview", element: <BackgroundPreview /> },
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <div className="app">
+        <ScrollToTop />
         <Header />
         <Outlet />
         <Footer />
@@ -68,6 +71,14 @@ const App = () => {
           payload: 'Could not retrieve any data',
         });
       }
+
+      const currentDate = data.location.localtime.split(' ')[0];
+      preloadWeatherBackgrounds(
+        data.forecast.forecastday.map((day) => ({
+          code: day.day.condition.code,
+          isDay: day.date === currentDate ? data.current.is_day : true,
+        }))
+      );
       dispatch({ type: 'FETCH_SUCCESS', payload: data });
     };
 

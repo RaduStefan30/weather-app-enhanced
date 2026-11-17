@@ -2,20 +2,40 @@
 
 .weather-hourly {
   display: flex;
+  height: 100%;
   flex-direction: column;
   align-items: center;
+  padding: 1.8rem $padding-small;
+  text-align: center;
 
   &__time {
-    font-size: $font-size-small;
-    margin: $margin-small;
+    color: rgba($ink-deep, 0.62);
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.08em;
   }
 
   &__icon {
-    width: 7rem;
-    margin-bottom: $margin-medium;
+    width: 6.4rem;
+    height: 6.4rem;
+    margin: $margin-small 0;
+    object-fit: contain;
   }
 
   &__temp {
-    font-size: $font-size-large;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 2.8rem;
+    line-height: 1;
+  }
+
+  &__condition {
+    display: -webkit-box;
+    margin-top: auto;
+    overflow: hidden;
+    color: rgba($ink-deep, 0.66);
+    font-size: 1.2rem;
+    line-height: 1.35;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
 }

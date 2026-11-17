@@ -1,5 +1,11 @@
 import { existsSync } from 'fs';
-import { getWeatherBackground, getWeatherScene, WEATHER_CODES, WEATHER_SCENES } from './weatherBackground';
+import {
+  getWeatherBackground,
+  getWeatherScene,
+  preloadWeatherBackgrounds,
+  WEATHER_CODES,
+  WEATHER_SCENES,
+} from './weatherBackground';
 
 describe('weather backgrounds', () => {
   it.each([
@@ -27,5 +33,25 @@ describe('weather backgrounds', () => {
       expect(background.night).toBe(!isDay);
       expect(background.tintNight).toBe(!isDay && !['clear', 'partly-cloudy'].includes(scene));
     }
+  });
+
+  it('preloads each forecast background only once', () => {
+    const OriginalImage = global.Image;
+    const decode = jest.fn().mockResolvedValue(undefined);
+    const ImageMock = jest.fn(() => ({
+      decoding: 'auto',
+      src: '',
+      decode,
+    })) as unknown as typeof Image;
+    global.Image = ImageMock;
+
+    preloadWeatherBackgrounds([
+      { code: 1117, isDay: true },
+      { code: 1117, isDay: true },
+    ]);
+
+    expect(ImageMock).toHaveBeenCalledTimes(1);
+    expect(decode).toHaveBeenCalledTimes(1);
+    global.Image = OriginalImage;
   });
 });

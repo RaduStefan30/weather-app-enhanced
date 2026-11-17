@@ -3,63 +3,139 @@
 
 .weather-details {
   &-container {
-    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    width: min(118rem, calc(100% - 4rem));
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 8rem) 0 $padding-extra-large;
   }
+
+  &-header {
+    margin-bottom: clamp(2.8rem, 5vw, 5rem);
+    color: $paper;
+  }
+
+  &-eyebrow,
+  &-section-heading p {
+    color: $sun;
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
   &-title {
-    font-size: $font-size-extra-large;
-    text-align: center;
+    margin-top: 0.4rem;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(5rem, 10vw, 9rem);
+    font-weight: $font-weight-normal;
+    letter-spacing: -0.055em;
+    line-height: 0.9;
   }
 
-  &-hourly {
-    height: 18rem;
-
-    &-card {
-      background-color: $primary-dark-half;
-      border-radius: $border-radius-small;
-    }
+  &-location {
+    margin-top: $margin-small;
+    color: rgba($paper, 0.72);
+    font-size: $font-size-small;
   }
 
   &-date {
-    font-size: $font-size-tiny;
-    font-weight: $font-weight-normal;
-    margin-bottom: $margin-large;
+    flex: 1 0 auto;
+    min-width: 11rem;
+    padding: 1.2rem 1.8rem;
+    color: rgba($paper, 0.72);
+    background: rgba($ink-deep, 0.7);
+    border: 1px solid rgba($paper, 0.18);
+    border-radius: $border-radius-large;
     cursor: pointer;
-    color: #e3e1f8;
+    font-size: 1.2rem;
+    font-weight: $font-weight-semi-bold;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
+    transition: $default-transition;
+
+    &:hover,
+    &:focus-visible {
+      color: $paper;
+      border-color: rgba($paper, 0.45);
+      outline: none;
+      transform: translateY(-0.2rem);
+    }
+
+    &:focus-visible {
+      box-shadow: 0 0 0 0.3rem $sun;
+    }
+
+    &.active {
+      color: $ink-deep;
+      background: $sun;
+      border-color: $sun;
+      box-shadow: 0 0.8rem 2rem rgba($ink-deep, 0.2);
+    }
 
     &__container {
       display: flex;
-      width: 100%;
-      justify-content: center;
       gap: $margin-small;
-      margin-bottom: $margin-large;
-    }
-    &.active {
-      color: $primary-light;
-      font-weight: $font-weight-bold;
-      transition: color 0.3s ease;
+      margin-bottom: $margin-medium;
+      padding: 0.4rem 0 $margin-small;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba($paper, 0.4) transparent;
     }
   }
-}
 
-.animate-out .swiper-slide {
-  opacity: 0;
-  transform: translateY(-100%);
-  animation: slideDown 0.3s ease forwards;
-
-  & * {
-    opacity: 0.4;
+  &-summary {
+    overflow: hidden;
+    color: $ink-deep;
+    background: rgba($paper, 0.95);
+    border: 1px solid rgba($paper, 0.75);
+    border-radius: $border-radius-medium;
+    box-shadow: $box-shadow-1;
+    animation: slideUp 0.45s ease forwards;
   }
-}
 
-.animate-in .swiper-slide {
-  opacity: 0;
-  transform: translateY(100%);
-  animation: slideUp 0.6s ease forwards;
+  &-hourly-section {
+    margin-top: clamp(4rem, 7vw, 8rem);
+  }
 
-  @for $i from 1 through 10 {
-    &:nth-child(#{$i}) {
-      animation-delay: 0.1s * $i;
+  &-section-heading {
+    margin-bottom: $margin-medium;
+    color: $paper;
+
+    h2 {
+      margin-top: 0.4rem;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: clamp(3rem, 5vw, 5rem);
+      font-weight: $font-weight-normal;
+      letter-spacing: -0.035em;
+    }
+  }
+
+  &-hourly {
+    display: grid;
+    grid-auto-columns: minmax(14rem, 17rem);
+    grid-auto-flow: column;
+    gap: $margin-small;
+    padding: 0.4rem 0 $margin-medium;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: rgba($paper, 0.4) transparent;
+
+    &-card {
+      min-height: 20rem;
+      color: $ink-deep;
+      background: rgba($paper, 0.92);
+      border: 1px solid rgba($paper, 0.72);
+      border-radius: $border-radius-small;
+      scroll-snap-align: start;
+      transition: $default-transition;
+
+      &:hover {
+        background: $paper;
+        transform: translateY(-0.3rem);
+      }
     }
   }
 }

@@ -15,7 +15,7 @@ export type WeatherData = {
     is_day: boolean;
   };
   forecast: {
-    forecastday: [ForecastDay];
+    forecastday: ForecastDay[];
   };
   location: {
     name: string;
@@ -64,7 +64,7 @@ export type Hour = {
 export type ForecastDay = {
   date: string;
   astro: object;
-  hour: [Hour];
+  hour: Hour[];
   day: {
     condition: Condition;
     avgtemp_c: number;
