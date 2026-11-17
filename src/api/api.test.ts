@@ -12,8 +12,15 @@ it('requests localized forecasts with alerts and air quality', async () => {
   await fetchWeather('New York', 'ro');
 
   expect(mockGet).toHaveBeenCalledWith(
-    expect.stringContaining(
-      'q=New%20York&days=3&aqi=yes&alerts=yes&lang=ro'
-    )
+    'https://api.weatherapi.com/v1/forecast.json',
+    expect.objectContaining({
+      params: expect.objectContaining({
+        q: 'New York',
+        days: 3,
+        aqi: 'yes',
+        alerts: 'yes',
+        lang: 'ro',
+      }),
+    })
   );
 });
