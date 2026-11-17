@@ -7,7 +7,7 @@
   height: 0.2rem;
   background: $paper;
   border-radius: $border-radius-small;
-  transition: all 0.5s ease;
+  transition: all 0.25s ease;
 
   &:before,
   &:after {
@@ -69,8 +69,9 @@
       outline-offset: 0.3rem;
     }
 
-    &:disabled * {
-      filter: brightness(0.5);
+    &:disabled {
+      cursor: wait;
+      opacity: 0.65;
     }
   }
 }

@@ -1,63 +1,58 @@
 @import '../../styles/abstracts/variables';
 
-.temperature {
-  &-labels {
-    position: absolute;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10px;
-    font-size: 12px;
-    pointer-events: none;
-  }
-}
-
 .toggle {
   position: relative;
-  width: 10rem;
-  height: 5.5rem;
-  border-radius: $border-radius-large;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: $padding-small;
-  cursor: pointer;
+  width: 8.4rem;
+  height: 4.6rem;
+  padding: 0.5rem;
   overflow: hidden;
-  transition: background-color 0.3s ease;
+  cursor: pointer;
+  border: 1px solid rgba($ink, 0.12);
+  border-radius: $border-radius-large;
+  transition: $default-transition;
 
   &.first {
-    background-color: $primary-color-1-washed;
+    background: $primary-color-1-washed;
   }
+
   &.second {
-    background-color: $primary-color-2-washed;
+    background: $primary-color-2-washed;
+  }
+
+  &:hover {
+    box-shadow: 0 0.6rem 1.6rem rgba($ink, 0.14);
+  }
+
+  &:focus-visible {
+    outline: 0.3rem solid $ochre;
+    outline-offset: 0.2rem;
   }
 
   &-unit {
-    font-size: $font-size-small;
-    font-weight: $font-weight-smallest;
-    color: $primary-light;
+    margin: 0;
+    color: $paper;
+    font-size: 1.4rem;
+    font-weight: $font-weight-bold;
   }
 }
 
 .slider {
   position: absolute;
-  width: 4rem;
-  height: 4rem;
-  border-radius: $border-radius-large;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease-in-out;
-  font-weight: bold;
-  font-size: 16px;
+  inset: 0.5rem auto auto 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  transition: transform 0.25s ease-in-out;
 
   &.first {
-    background-color: $primary-color-1;
-
-    transform: translateX(4rem);
+    background: $sky;
+    transform: translateX(3.8rem);
   }
+
   &.second {
-    background-color: $primary-color-2;
+    background: $ochre;
     transform: translateX(0);
   }
 }

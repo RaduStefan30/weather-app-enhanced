@@ -1,44 +1,91 @@
 @import '../../styles/abstracts/variables';
-@import '../../styles/abstracts/mixins';
 
 .footer {
-  @include black-fade-gradient($gradient-direction-reversed);
-  color: #ecf0f1;
-  text-align: center;
   width: 100%;
-  padding: $padding-medium 0;
-  max-height: 18rem;
-  text-decoration: none;
+  margin-top: clamp(5rem, 9vw, 10rem);
+  padding: 2.4rem clamp(1.6rem, 5vw, 4rem);
+  color: $paper-muted;
+  background: $ink-deep;
+  border-top: 1px solid rgba($paper, 0.1);
   font-size: $font-size-tiny;
-  margin-top: 10rem;
-  opacity: 0.9;
 
-  &__personal-links {
-    font-size: $font-size-medium;
+  &__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    width: min(118rem, 100%);
+    margin: 0 auto;
   }
 
-  &__image-wrapper {
-    background-color: $primary-light;
-    border-radius: $border-radius-large;
-    padding: 0.3rem 1rem;
-    margin: 0 1rem;
-  }
+  &__attribution {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 0;
 
-  a {
-    color: $primary-color-2;
-    transition: color 0.3s;
-
-    &:hover {
-      color: $primary-color-1;
+    a {
+      display: inline-flex;
+      padding: 0.5rem 0.8rem;
+      background: $paper;
+      border-radius: $border-radius-large;
     }
 
     img {
-      vertical-align: middle;
+      display: block;
       height: 1.8rem;
     }
   }
 
-  p {
-    margin: $margin-small;
+  &__copyright {
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &__personal-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+
+    a {
+      display: grid;
+      place-items: center;
+      width: 4rem;
+      height: 4rem;
+      color: $paper;
+      background: rgba($paper, 0.08);
+      border: 1px solid rgba($paper, 0.12);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      transition: $default-transition;
+
+      &:hover {
+        color: $sun;
+        background: rgba($paper, 0.14);
+        transform: translateY(-0.2rem);
+      }
+
+      &:focus-visible {
+        outline: 0.3rem solid $sun;
+        outline-offset: 0.2rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .footer {
+    &__inner {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+
+    &__attribution,
+    &__personal-links {
+      justify-content: center;
+    }
   }
 }

@@ -42,11 +42,17 @@ const Toggle = ({ unit }: { unit: 'temp' | 'distance' | 'quantity' }) => {
   };
 
   const togglePosition = isDefaultUnit ? 'first' : 'second';
+  const currentUnit = isDefaultUnit
+    ? UNIT_VALUES[unit][0]
+    : UNIT_VALUES[unit][1];
 
   return (
     <button
+      type="button"
       className={`no-styles-button toggle ${togglePosition}`}
       onClick={toggleUnit}
+      aria-label={`${unit} unit: ${currentUnit}`}
+      aria-pressed={!isDefaultUnit}
     >
       <div className={`slider ${togglePosition}`}>
         <p className="toggle-unit">

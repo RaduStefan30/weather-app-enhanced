@@ -2,10 +2,14 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Hamburger from './Hamburger';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe('Hamburger', () => {
   it.each([
-    [false, 'Open settings'],
-    [true, 'Close settings'],
+    [false, 'openSettings'],
+    [true, 'closeSettings'],
   ])('describes the menu state when open is %s', (isMenuOpen, label) => {
     const toggleMenu = jest.fn();
     render(

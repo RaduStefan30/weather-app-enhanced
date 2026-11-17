@@ -24,8 +24,14 @@
     backdrop-filter: blur(1.2rem);
   }
 
+  &__intro-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   &__eyebrow {
-    margin-bottom: $margin-small;
+    margin: 0 0 1.8rem;
     color: $ochre;
     font-size: 1.2rem;
     font-weight: $font-weight-bold;
@@ -34,6 +40,7 @@
   }
 
   h1 {
+    margin: 0;
     max-width: 65rem;
     font-family: 'Newsreader', Georgia, serif;
     font-size: clamp(4rem, 8vw, 8rem);

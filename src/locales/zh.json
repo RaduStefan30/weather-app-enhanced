@@ -27,5 +27,12 @@
   "dailyOutlook": "每日展望",
   "dayAtGlance": "全天概览",
   "hourlyForecast": "逐小时预报",
-  "averageTemperature": "平均温度"
+  "averageTemperature": "平均温度",
+  "settings": "设置",
+  "openSettings": "打开设置",
+  "closeSettings": "关闭设置",
+  "loadingWeather": "正在加载天气",
+  "pageNotFound": "找不到页面",
+  "pageNotFoundMessage": "这份天气预报似乎从地图上消失了。",
+  "goHome": "返回首页"
 }

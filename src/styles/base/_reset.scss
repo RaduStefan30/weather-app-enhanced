@@ -9,10 +9,12 @@
 html {
   // Redefine the font-size of the root element
   font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+  overscroll-behavior-y: none;
 }
 
 body {
   overflow-x: hidden;
+  overscroll-behavior-y: none;
   box-sizing: border-box;
   min-width: 32rem;
   background: $ink-deep;

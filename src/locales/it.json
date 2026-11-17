@@ -27,5 +27,12 @@
   "dailyOutlook": "Previsioni giornaliere",
   "dayAtGlance": "La giornata a colpo d’occhio",
   "hourlyForecast": "Previsioni orarie",
-  "averageTemperature": "Temperatura media"
+  "averageTemperature": "Temperatura media",
+  "settings": "Impostazioni",
+  "openSettings": "Apri impostazioni",
+  "closeSettings": "Chiudi impostazioni",
+  "loadingWeather": "Caricamento meteo",
+  "pageNotFound": "Pagina non trovata",
+  "pageNotFoundMessage": "Queste previsioni sembrano essere uscite dalla mappa.",
+  "goHome": "Vai alla home"
 }

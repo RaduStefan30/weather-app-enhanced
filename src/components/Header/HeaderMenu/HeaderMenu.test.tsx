@@ -1,61 +1,87 @@
-import { render, fireEvent, cleanup } from '@testing-library/react';
+import { render, fireEvent, cleanup, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import HeaderMenu from './HeaderMenu';
 
 const changeLanguageMock = jest.fn();
+const onCloseMock = jest.fn();
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     i18n: {
       changeLanguage: changeLanguageMock,
+      resolvedLanguage: 'en',
     },
     t: (key: string) => key,
   }),
 }));
 
-const renderHeaderMenu = (isMenuOpen = false) => {
-  return render(
-    <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={isMenuOpen} />
-  );
-};
+const renderHeaderMenu = (isMenuOpen = false) =>
+  render(<HeaderMenu isMenuOpen={isMenuOpen} onClose={onCloseMock} />);
 
-const testChangeLanguage = (altText: string, expectedLang: string) => {
-  it(`should call changeLanguage when ${altText} button is clicked`, () => {
-    const { getByAltText } = renderHeaderMenu();
-    const button = getByAltText(altText);
-    fireEvent.click(button);
-    expect(changeLanguageMock).toHaveBeenCalledWith(expectedLang);
-  });
-};
+const languages = [
+  ['English', 'en'],
+  ['Română', 'ro'],
+  ['Español', 'es'],
+  ['Français', 'fr'],
+  ['Deutsch', 'de'],
+  ['Nederlands', 'nl'],
+  ['Italiano', 'it'],
+  ['中文', 'zh'],
+] as const;
 
 describe('<HeaderMenu />', () => {
-  afterEach(cleanup);
-
-  it('should render without crashing', () => {
-    renderHeaderMenu();
+  beforeEach(() => {
+    document.body.style.overflow = 'auto';
+    changeLanguageMock.mockClear();
+    onCloseMock.mockClear();
   });
 
-  it('should set overflow to hidden when menu is open and resets on close', () => {
+  afterEach(cleanup);
+
+  it('renders the settings dialog when open', () => {
+    renderHeaderMenu(true);
+
+    expect(screen.getByRole('dialog')).toBeVisible();
+    expect(screen.getByRole('heading', { name: 'units' })).toBeInTheDocument();
+  });
+
+  it('locks body scrolling while open and restores the previous value', () => {
     const { rerender } = renderHeaderMenu();
     expect(document.body.style.overflow).toBe('auto');
 
-    rerender(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={true} />
-    );
+    rerender(<HeaderMenu isMenuOpen onClose={onCloseMock} />);
     expect(document.body.style.overflow).toBe('hidden');
 
-    rerender(
-      <HeaderMenu isFirstRender={{ current: true }} isMenuOpen={false} />
-    );
+    rerender(<HeaderMenu isMenuOpen={false} onClose={onCloseMock} />);
     expect(document.body.style.overflow).toBe('auto');
   });
 
-  testChangeLanguage('uk flag', 'en');
-  testChangeLanguage('romanian flag', 'ro');
-  testChangeLanguage('spanish flag', 'es');
-  testChangeLanguage('french flag', 'fr');
-  testChangeLanguage('german flag', 'de');
-  testChangeLanguage('netherlands flag', 'nl');
-  testChangeLanguage('italian flag', 'it');
-  testChangeLanguage('chinese flag', 'zh');
+  it('closes from the backdrop and Escape key', () => {
+    renderHeaderMenu(true);
+
+    fireEvent.click(screen.getByTestId('header-menu'));
+    fireEvent.keyDown(document, { key: 'Escape' });
+
+    expect(onCloseMock).toHaveBeenCalledTimes(2);
+  });
+
+  it('marks the current language as selected', () => {
+    renderHeaderMenu(true);
+
+    expect(screen.getByRole('button', { name: 'English' })).toHaveAttribute(
+      'aria-pressed',
+      'true'
+    );
+  });
+
+  it.each(languages)(
+    'changes the language when %s is selected',
+    (label, language) => {
+      renderHeaderMenu(true);
+
+      fireEvent.click(screen.getByRole('button', { name: label }));
+
+      expect(changeLanguageMock).toHaveBeenCalledWith(language);
+    }
+  );
 });

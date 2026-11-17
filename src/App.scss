@@ -1,11 +1,21 @@
 .app {
   display: flex;
   flex-direction: column;
-  gap: 4rem;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 .page {
   flex: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
