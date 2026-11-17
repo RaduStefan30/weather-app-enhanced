@@ -1,21 +1,21 @@
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Spinner from './Spinner';
 
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({ t: (key: string) => key }),
+}));
+
 describe('Spinner', () => {
-  it('should render without crashing', () => {
+  it('announces the loading state', () => {
     render(<Spinner />);
+
+    expect(screen.getByRole('status', { name: 'loadingWeather' })).toBeVisible();
   });
 
-  it('should have the correct class names', () => {
+  it('renders three animated rings', () => {
     const { container } = render(<Spinner />);
-    expect(container.firstChild).toHaveClass('spinner-container');
-    expect(container.querySelector('.spinner')).toBeInTheDocument();
-  });
 
-  it('should render three div elements inside the spinner', () => {
-    const { container } = render(<Spinner />);
-    const divs = container.querySelectorAll('.spinner > div');
-    expect(divs).toHaveLength(3);
+    expect(container.querySelectorAll('.spinner > div')).toHaveLength(3);
   });
 });

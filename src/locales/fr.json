@@ -27,5 +27,12 @@
   "dailyOutlook": "Prévisions du jour",
   "dayAtGlance": "La journée en un coup d’œil",
   "hourlyForecast": "Prévisions heure par heure",
-  "averageTemperature": "Température moyenne"
+  "averageTemperature": "Température moyenne",
+  "settings": "Paramètres",
+  "openSettings": "Ouvrir les paramètres",
+  "closeSettings": "Fermer les paramètres",
+  "loadingWeather": "Chargement de la météo",
+  "pageNotFound": "Page introuvable",
+  "pageNotFoundMessage": "Ces prévisions semblent avoir quitté la carte.",
+  "goHome": "Accueil"
 }

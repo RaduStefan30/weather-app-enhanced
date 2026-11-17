@@ -1,75 +1,91 @@
-import { RefObject, useEffect } from 'react';
+import { useEffect } from 'react';
 import './HeaderMenu.scss';
 import Toggle from '../../Toggle/Toggle';
 import { useTranslation } from 'react-i18next';
 
+const languages = [
+  { code: 'en', label: 'English', flag: '/uk.svg' },
+  { code: 'ro', label: 'Română', flag: '/ro.svg' },
+  { code: 'es', label: 'Español', flag: '/es.svg' },
+  { code: 'fr', label: 'Français', flag: '/fr.svg' },
+  { code: 'de', label: 'Deutsch', flag: '/de.svg' },
+  { code: 'nl', label: 'Nederlands', flag: '/nl.svg' },
+  { code: 'it', label: 'Italiano', flag: '/it.svg' },
+  { code: 'zh', label: '中文', flag: '/zh.svg' },
+];
+
 const HeaderMenu = ({
-  isFirstRender,
   isMenuOpen,
+  onClose,
 }: {
-  isFirstRender: RefObject<boolean>;
   isMenuOpen: boolean;
+  onClose: () => void;
 }) => {
   const { i18n, t } = useTranslation();
 
   const changeLanguage = (lng: string) => {
-    i18n.changeLanguage(lng);
+    void i18n.changeLanguage(lng);
   };
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
+    if (!isMenuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
     };
-  }, [isMenuOpen]);
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [isMenuOpen, onClose]);
+
   return (
     <>
-      <div
-        id="header-settings"
+      <button
+        type="button"
         data-testid="header-menu"
-        className={`header-menu__overlay ${
-          !isFirstRender.current && (isMenuOpen ? 'open' : 'closed')
-        }`}
-      ></div>
-      <div className={`header-menu__items ${isMenuOpen ? 'open' : 'closed'}`}>
-        <h2 className="header-menu__units">{t('units')}</h2>
+        className={`header-menu__overlay ${isMenuOpen ? 'open' : 'closed'}`}
+        aria-hidden="true"
+        tabIndex={-1}
+        onClick={onClose}
+      />
+      <section
+        id="header-settings"
+        className={`header-menu__items ${isMenuOpen ? 'open' : 'closed'}`}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!isMenuOpen}
+        aria-labelledby="settings-title"
+      >
+        <p className="header-menu__eyebrow">{t('settings')}</p>
+        <h2 id="settings-title" className="header-menu__title">
+          {t('units')}
+        </h2>
         <div className="header-menu__toggle-container">
           <Toggle unit={'temp'} />
           <Toggle unit={'distance'} />
           <Toggle unit={'quantity'} />
         </div>
-        <h2 className="header-menu__units">{t('languages')}</h2>
+        <h2 className="header-menu__title">{t('languages')}</h2>
         <div className="header-menu__languages">
-          <button onClick={() => changeLanguage('en')}>
-            <img src="/uk.svg" alt="uk flag" />
-          </button>
-          <button onClick={() => changeLanguage('ro')}>
-            <img src="/ro.svg" alt="romanian flag" />
-          </button>
-          <button onClick={() => changeLanguage('es')}>
-            <img src="/es.svg" alt="spanish flag" />
-          </button>
-          <button onClick={() => changeLanguage('fr')}>
-            <img src="/fr.svg" alt="french flag" />
-          </button>
-          <button onClick={() => changeLanguage('de')}>
-            <img src="/de.svg" alt="german flag" />
-          </button>
-          <button onClick={() => changeLanguage('nl')}>
-            <img src="/nl.svg" alt="netherlands flag" />
-          </button>
-          <button onClick={() => changeLanguage('it')}>
-            <img src="/it.svg" alt="italian flag" />
-          </button>
-          <button onClick={() => changeLanguage('zh')}>
-            <img src="/zh.svg" alt="chinese flag" />
-          </button>
+          {languages.map((language) => (
+            <button
+              type="button"
+              key={language.code}
+              aria-label={language.label}
+              aria-pressed={i18n.resolvedLanguage?.startsWith(language.code)}
+              onClick={() => changeLanguage(language.code)}
+            >
+              <img src={language.flag} alt="" />
+              <span>{language.label}</span>
+            </button>
+          ))}
         </div>
-      </div>
+      </section>
     </>
   );
 };

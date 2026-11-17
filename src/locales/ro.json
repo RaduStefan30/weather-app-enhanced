@@ -27,5 +27,12 @@
   "dailyOutlook": "Prognoza zilei",
   "dayAtGlance": "Ziua dintr-o privire",
   "hourlyForecast": "Prognoză pe ore",
-  "averageTemperature": "Temperatura medie"
+  "averageTemperature": "Temperatura medie",
+  "settings": "Setări",
+  "openSettings": "Deschide setările",
+  "closeSettings": "Închide setările",
+  "loadingWeather": "Se încarcă vremea",
+  "pageNotFound": "Pagina nu a fost găsită",
+  "pageNotFoundMessage": "Această prognoză pare să fi ieșit de pe hartă.",
+  "goHome": "Acasă"
 }

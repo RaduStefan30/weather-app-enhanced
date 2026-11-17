@@ -27,5 +27,12 @@
   "dailyOutlook": "Dagverwachting",
   "dayAtGlance": "De dag in één oogopslag",
   "hourlyForecast": "Uurverwachting",
-  "averageTemperature": "Gemiddelde temperatuur"
+  "averageTemperature": "Gemiddelde temperatuur",
+  "settings": "Instellingen",
+  "openSettings": "Instellingen openen",
+  "closeSettings": "Instellingen sluiten",
+  "loadingWeather": "Weer laden",
+  "pageNotFound": "Pagina niet gevonden",
+  "pageNotFoundMessage": "Deze verwachting lijkt van de kaart te zijn verdwenen.",
+  "goHome": "Naar home"
 }

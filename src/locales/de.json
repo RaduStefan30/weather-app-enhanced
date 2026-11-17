@@ -27,5 +27,12 @@
   "dailyOutlook": "Tagesvorhersage",
   "dayAtGlance": "Der Tag im Überblick",
   "hourlyForecast": "Stündliche Vorhersage",
-  "averageTemperature": "Durchschnittstemperatur"
+  "averageTemperature": "Durchschnittstemperatur",
+  "settings": "Einstellungen",
+  "openSettings": "Einstellungen öffnen",
+  "closeSettings": "Einstellungen schließen",
+  "loadingWeather": "Wetter wird geladen",
+  "pageNotFound": "Seite nicht gefunden",
+  "pageNotFoundMessage": "Diese Vorhersage scheint von der Karte verschwunden zu sein.",
+  "goHome": "Zur Startseite"
 }

@@ -27,5 +27,12 @@
   "dailyOutlook": "Pronóstico diario",
   "dayAtGlance": "El día de un vistazo",
   "hourlyForecast": "Pronóstico por hora",
-  "averageTemperature": "Temperatura media"
+  "averageTemperature": "Temperatura media",
+  "settings": "Ajustes",
+  "openSettings": "Abrir ajustes",
+  "closeSettings": "Cerrar ajustes",
+  "loadingWeather": "Cargando el tiempo",
+  "pageNotFound": "Página no encontrada",
+  "pageNotFoundMessage": "Este pronóstico parece haberse salido del mapa.",
+  "goHome": "Ir al inicio"
 }

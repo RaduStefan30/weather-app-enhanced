@@ -27,5 +27,12 @@
   "dailyOutlook": "Daily outlook",
   "dayAtGlance": "The day at a glance",
   "hourlyForecast": "Hourly forecast",
-  "averageTemperature": "Average temperature"
+  "averageTemperature": "Average temperature",
+  "settings": "Settings",
+  "openSettings": "Open settings",
+  "closeSettings": "Close settings",
+  "loadingWeather": "Loading weather",
+  "pageNotFound": "Page not found",
+  "pageNotFoundMessage": "This forecast seems to have drifted off the map.",
+  "goHome": "Go home"
 }

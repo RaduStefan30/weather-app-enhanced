@@ -1,15 +1,18 @@
 import './ErrorPage.scss';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ErrorPage = () => {
+  const { t } = useTranslation();
   return (
-    <div className="error-page">
+    <main className="error-page page">
+      <p className="error-eyebrow">{t('pageNotFound')}</p>
       <div className="error-number">404</div>
-      <div className="error-message">Oops! Page not found.</div>
+      <h1 className="error-message">{t('pageNotFoundMessage')}</h1>
       <Link className="error-home-link" to={'/'}>
-        Go Home
+        {t('goHome')}
       </Link>
-    </div>
+    </main>
   );
 };
 
