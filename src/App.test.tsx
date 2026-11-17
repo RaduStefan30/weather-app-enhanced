@@ -14,6 +14,7 @@ const mockGetIP = api.getIP as jest.MockedFunction<typeof api.getIP>;
 
 describe('App Component', () => {
   beforeEach(() => {
+    window.scrollTo = jest.fn();
     mockGetIP.mockResolvedValue(GENERIC_IP);
     mockFetchWeatherData.mockResolvedValue(weatherDataMock);
   });

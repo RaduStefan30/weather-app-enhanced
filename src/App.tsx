@@ -14,6 +14,7 @@ import { fetchWeather, getIP } from './api/api';
 import Footer from './components/Footer/Footer';
 import './App.scss';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 const router = createBrowserRouter([
   { path: "/background-preview", element: <BackgroundPreview /> },
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <div className="app">
+        <ScrollToTop />
         <Header />
         <Outlet />
         <Footer />
