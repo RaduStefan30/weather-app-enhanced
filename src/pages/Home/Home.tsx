@@ -6,17 +6,28 @@ import Search from '../../components/Search/Search';
 import './Home.scss';
 import { WeatherStateContext } from '../../contexts/WeatherContext/WeatherContext';
 import GlobalWeather from '../../components/GlobalWeather/GlobalWeather';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
   const { data } = useContext(WeatherStateContext);
+  const { t } = useTranslation();
 
   return (
     <div className="home page">
       <WeatherBackground code={data?.current.condition.code} isDay={data?.current.is_day ?? true} />
-      <Search />
-      <Recent />
-      <LocalWeather />
-      <GlobalWeather />
+      <main className="home__shell">
+        <section className="home__intro" aria-labelledby="home-title">
+          <div className="home__intro-copy">
+            <p className="home__eyebrow">{t('localForecast')}</p>
+            <h1 id="home-title">{t('homeTitle')}</h1>
+            <p className="home__lede">{t('homeLede')}</p>
+          </div>
+          <Search />
+        </section>
+        <Recent />
+        <LocalWeather />
+        <GlobalWeather />
+      </main>
     </div>
   );
 };

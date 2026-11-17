@@ -1,14 +1,14 @@
 .card {
-  background: $primary-dark-half;
-  padding: 1.4rem 1.8rem;
+  background: rgba($paper, 0.92);
+  padding: 1.6rem 1.8rem;
   border-radius: $border-radius-small;
-  min-height: 6.4rem;
-  margin: $margin-small auto;
+  min-height: 7.2rem;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
-  border: 1px solid rgba($paper, 0.08);
+  border: 1px solid rgba($paper, 0.7);
   transition: transform 0.2s ease, box-shadow 0.2s ease,
     background-color 0.2s ease;
   gap: 0.2rem;
@@ -17,12 +17,12 @@
   &:hover,
   &:focus-visible {
     box-shadow: $box-shadow-1;
-    background: rgba($ink-deep, 0.94);
+    background: $paper;
     transform: translateY(-0.2rem);
   }
 
   &__location {
-    color: $primary-light;
+    color: $ink-deep;
     font-size: $font-size-small;
   }
 
@@ -36,7 +36,7 @@
 
     &-value {
       font-size: $font-size-medium;
-      color: $primary-light;
+      color: $ink-deep;
       font-weight: $font-weight-semi-bold;
     }
   }

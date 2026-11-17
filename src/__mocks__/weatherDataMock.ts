@@ -22,6 +22,8 @@ export const weatherDataMock: WeatherData = {
     humidity: 0,
     wind_kph: 0,
     wind_mph: 0,
+    pressure_mb: 1013,
+    pressure_in: 29.91,
     is_day: false,
   },
   forecast: {

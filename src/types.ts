@@ -9,6 +9,8 @@ export type WeatherData = {
     temp_f: number;
     wind_kph: number;
     wind_mph: number;
+    pressure_mb: number;
+    pressure_in: number;
     condition: Condition;
     is_day: boolean;
   };

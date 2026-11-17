@@ -3,11 +3,14 @@ import { fetchWeather } from '../../api/api';
 import './RecentSearches.scss';
 import RecentCard from './RecentCard/RecentCard';
 import { getSearchesFromLocalStorage } from '../../utils/utils';
+import { useTranslation } from 'react-i18next';
 
 const Recent = () => {
+  const { t } = useTranslation();
   const [recentSearches, setRecentSearches] = useState<ReactElement[]>([]);
   useEffect(() => {
     const searches = getSearchesFromLocalStorage();
+    if (!searches.length) return;
 
     const fetchData = async () => {
       const searchResults = await Promise.all(
@@ -29,10 +32,18 @@ const Recent = () => {
     fetchData();
   }, []);
 
+  if (!recentSearches.length) return null;
+
   return (
-    <div className={`recent-container grid-${recentSearches.length}`}>
-      {recentSearches}
-    </div>
+    <section className="recent-section" aria-labelledby="recent-title">
+      <div className="recent-section__heading">
+        <p>{t('savedPlaces')}</p>
+        <h2 id="recent-title">{t('recentlyViewed')}</h2>
+      </div>
+      <div className={`recent-container grid-${recentSearches.length}`}>
+        {recentSearches}
+      </div>
+    </section>
   );
 };
 
