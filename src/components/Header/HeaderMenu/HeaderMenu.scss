@@ -9,7 +9,7 @@
     border: 0;
     background: rgba($ink-deep, 0.72);
     backdrop-filter: blur(0.8rem);
-    z-index: 100;
+    z-index: 200;
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -33,7 +33,7 @@
     border: 1px solid rgba($ink, 0.12);
     border-radius: $border-radius-medium;
     box-shadow: 0 2.4rem 7rem rgba(5, 23, 23, 0.35);
-    z-index: 101;
+    z-index: 201;
     opacity: 0;
     visibility: hidden;
     transform: translateY(-1.2rem) scale(0.98);
@@ -49,6 +49,35 @@
 
     &.closed {
       pointer-events: none;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.6rem;
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    padding: 0;
+    color: $paper;
+    background: $ink;
+    border: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 2.8rem;
+    line-height: 1;
+    transition: $default-transition;
+
+    &:hover {
+      background: $ink-deep;
+      transform: rotate(6deg);
+    }
+
+    &:focus-visible {
+      outline: 0.3rem solid $ochre;
+      outline-offset: 0.3rem;
     }
   }
 
@@ -139,6 +168,11 @@
       width: calc(100vw - 2rem);
       max-height: calc(100dvh - 8.6rem);
       padding: 2.4rem 2rem;
+    }
+
+    &__close {
+      top: 1.2rem;
+      right: 1.2rem;
     }
 
     &__languages {

@@ -1,4 +1,5 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import './HeaderMenu.scss';
 import Toggle from '../../Toggle/Toggle';
 import { useTranslation } from 'react-i18next';
@@ -22,6 +23,7 @@ const HeaderMenu = ({
   onClose: () => void;
 }) => {
   const { i18n, t } = useTranslation();
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   const changeLanguage = (lng: string) => {
     void i18n.changeLanguage(lng);
@@ -31,19 +33,23 @@ const HeaderMenu = ({
     if (!isMenuOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    const app = document.querySelector('.app');
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
     };
     document.body.style.overflow = 'hidden';
+    app?.setAttribute('inert', '');
     document.addEventListener('keydown', closeOnEscape);
+    closeButtonRef.current?.focus();
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      app?.removeAttribute('inert');
       document.removeEventListener('keydown', closeOnEscape);
     };
   }, [isMenuOpen, onClose]);
 
-  return (
+  return createPortal(
     <>
       <button
         type="button"
@@ -61,6 +67,15 @@ const HeaderMenu = ({
         aria-hidden={!isMenuOpen}
         aria-labelledby="settings-title"
       >
+        <button
+          ref={closeButtonRef}
+          type="button"
+          className="header-menu__close"
+          aria-label={t('closeSettings')}
+          onClick={onClose}
+        >
+          <span aria-hidden="true">×</span>
+        </button>
         <p className="header-menu__eyebrow">{t('settings')}</p>
         <h2 id="settings-title" className="header-menu__title">
           {t('units')}
@@ -86,7 +101,8 @@ const HeaderMenu = ({
           ))}
         </div>
       </section>
-    </>
+    </>,
+    document.body
   );
 };
 
