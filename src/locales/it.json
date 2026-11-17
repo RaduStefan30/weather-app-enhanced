@@ -34,5 +34,21 @@
   "loadingWeather": "Caricamento meteo",
   "pageNotFound": "Pagina non trovata",
   "pageNotFoundMessage": "Queste previsioni sembrano essere uscite dalla mappa.",
-  "goHome": "Vai alla home"
+  "goHome": "Vai alla home",
+  "nextHours": "Prossime ore",
+  "highLow": "Massima / minima",
+  "rainChance": "Probabilità di pioggia",
+  "maxWind": "Vento massimo",
+  "sunrise": "Alba",
+  "sunset": "Tramonto",
+  "uvIndex": "Indice UV",
+  "airQuality": "Qualità dell’aria",
+  "airQualityGood": "Buona",
+  "airQualityModerate": "Moderata",
+  "airQualitySensitive": "Gruppi sensibili",
+  "airQualityUnhealthy": "Insalubre",
+  "airQualityVeryUnhealthy": "Molto insalubre",
+  "airQualityHazardous": "Pericolosa",
+  "weatherAlert": "Allerta meteo",
+  "expires": "Scade"
 }

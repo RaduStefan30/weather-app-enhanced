@@ -34,5 +34,21 @@
   "loadingWeather": "Chargement de la météo",
   "pageNotFound": "Page introuvable",
   "pageNotFoundMessage": "Ces prévisions semblent avoir quitté la carte.",
-  "goHome": "Accueil"
+  "goHome": "Accueil",
+  "nextHours": "Prochaines heures",
+  "highLow": "Maximale / minimale",
+  "rainChance": "Risque de pluie",
+  "maxWind": "Vent maximal",
+  "sunrise": "Lever du soleil",
+  "sunset": "Coucher du soleil",
+  "uvIndex": "Indice UV",
+  "airQuality": "Qualité de l’air",
+  "airQualityGood": "Bonne",
+  "airQualityModerate": "Modérée",
+  "airQualitySensitive": "Groupes sensibles",
+  "airQualityUnhealthy": "Mauvaise",
+  "airQualityVeryUnhealthy": "Très mauvaise",
+  "airQualityHazardous": "Dangereuse",
+  "weatherAlert": "Alerte météo",
+  "expires": "Expire"
 }

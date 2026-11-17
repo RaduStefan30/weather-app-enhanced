@@ -12,6 +12,7 @@ jest.mock('react-i18next', () => ({
       ({ savedPlaces: 'Saved places', recentlyViewed: 'Recently viewed' })[
         key
       ] ?? key,
+    i18n: { resolvedLanguage: 'en', language: 'en' },
   }),
 }));
 jest.mock('../../utils/utils');
@@ -41,6 +42,6 @@ describe('RecentSearches', () => {
 
     expect(await screen.findByText('London')).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: 'Recently viewed' })).toBeInTheDocument();
-    expect(mockFetchWeather).toHaveBeenCalledWith('London');
+    expect(mockFetchWeather).toHaveBeenCalledWith('London', 'en');
   });
 });

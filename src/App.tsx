@@ -16,6 +16,8 @@ import './App.scss';
 import ErrorPage from './pages/ErrorPage/ErrorPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { preloadWeatherBackgrounds } from './utils/weatherBackground';
+import { useTranslation } from 'react-i18next';
+import WeatherAlerts from './components/WeatherAlerts/WeatherAlerts';
 
 const router = createBrowserRouter([
   { path: "/background-preview", element: <BackgroundPreview /> },
@@ -25,6 +27,7 @@ const router = createBrowserRouter([
       <div className="app">
         <ScrollToTop />
         <Header />
+        <WeatherAlerts />
         <Outlet />
         <Footer />
       </div>
@@ -48,6 +51,9 @@ const router = createBrowserRouter([
 
 const App = () => {
   const [state, dispatch] = useReducer(weatherReducer, initialState);
+  const { i18n } = useTranslation();
+  const weatherLanguage = (i18n.resolvedLanguage ?? i18n.language ?? 'en')
+    .split('-')[0];
 
   useEffect(() => {
     const fetchIP = async () => {
@@ -64,7 +70,7 @@ const App = () => {
 
     const fetchData = async () => {
       dispatch({ type: 'FETCH_INIT' });
-      const data = await fetchWeather(state.location);
+      const data = await fetchWeather(state.location, weatherLanguage);
       if (!data) {
         return dispatch({
           type: 'FETCH_FAILURE',
@@ -83,7 +89,7 @@ const App = () => {
     };
 
     fetchData();
-  }, [state.location]);
+  }, [state.location, weatherLanguage]);
 
   return (
     <WeatherStateContext.Provider value={state}>

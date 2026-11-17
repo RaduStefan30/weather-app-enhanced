@@ -31,6 +31,16 @@ const WeatherDetails = () => {
   const isCurrentDay =
     activeDay?.date === data.location.localtime.split(' ')[0];
   const isDay = isCurrentDay ? data.current.is_day : true;
+  const currentHour = Number(
+    data.location.localtime.split(' ')[1]?.split(':')[0] ?? 0
+  );
+  const upcomingHours = isCurrentDay
+    ? activeDay.hour.filter((hour) => {
+        const hourValue = Number(hour.time.split(' ')[1]?.split(':')[0] ?? 0);
+        return hourValue >= currentHour;
+      })
+    : activeDay.hour;
+  const displayedHours = upcomingHours.length ? upcomingHours : activeDay.hour;
 
   return (
     <>
@@ -68,26 +78,29 @@ const WeatherDetails = () => {
 
         {activeDay && (
           <section
-            className="weather-details-summary"
+            className="weather-details-forecast"
             key={activeDay.date}
             aria-label={t('dailyOutlook')}
           >
-            <WeatherDetail details={activeDay} isDay={isDay} />
-          </section>
-        )}
-
-        {activeDay && (
-          <section className="weather-details-hourly-section">
-            <div className="weather-details-section-heading">
-              <p>{t('dayAtGlance')}</p>
-              <h2>{t('hourlyForecast')}</h2>
+            <div className="weather-details-summary">
+              <WeatherDetail
+                details={activeDay}
+                isDay={isDay}
+                airQuality={isCurrentDay ? data.current.air_quality : undefined}
+              />
             </div>
-            <div className="weather-details-hourly">
-              {activeDay.hour.map((hour) => (
-                <div className="weather-details-hourly-card" key={hour.time}>
-                  <WeatherHourly hour={hour} />
-                </div>
-              ))}
+            <div className="weather-details-hourly-pane">
+              <div className="weather-details-section-heading">
+                <p>{t('nextHours')}</p>
+                <h2>{t('hourlyForecast')}</h2>
+              </div>
+              <div className="weather-details-hourly">
+                {displayedHours.map((hour) => (
+                  <div className="weather-details-hourly-card" key={hour.time}>
+                    <WeatherHourly hour={hour} />
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         )}

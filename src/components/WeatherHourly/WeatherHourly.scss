@@ -38,4 +38,18 @@
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
   }
+
+  &__rain {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 1rem;
+    color: $sky;
+    font-size: 1.2rem;
+    font-weight: $font-weight-bold;
+
+    svg {
+      font-size: 1.5rem;
+    }
+  }
 }

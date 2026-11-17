@@ -34,5 +34,21 @@
   "loadingWeather": "Se încarcă vremea",
   "pageNotFound": "Pagina nu a fost găsită",
   "pageNotFoundMessage": "Această prognoză pare să fi ieșit de pe hartă.",
-  "goHome": "Acasă"
+  "goHome": "Acasă",
+  "nextHours": "Următoarele ore",
+  "highLow": "Maximă / minimă",
+  "rainChance": "Șanse de ploaie",
+  "maxWind": "Vânt maxim",
+  "sunrise": "Răsărit",
+  "sunset": "Apus",
+  "uvIndex": "Indice UV",
+  "airQuality": "Calitatea aerului",
+  "airQualityGood": "Bună",
+  "airQualityModerate": "Moderată",
+  "airQualitySensitive": "Grupuri sensibile",
+  "airQualityUnhealthy": "Nesănătoasă",
+  "airQualityVeryUnhealthy": "Foarte nesănătoasă",
+  "airQualityHazardous": "Periculoasă",
+  "weatherAlert": "Alertă meteo",
+  "expires": "Expiră"
 }

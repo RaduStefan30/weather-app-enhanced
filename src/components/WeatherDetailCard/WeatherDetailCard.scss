@@ -1,58 +1,107 @@
 @import '../../styles/abstracts/variables';
 
 .weather-detail-card {
-  display: grid;
-  min-height: 38rem;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: clamp(2.4rem, 4vw, 3.6rem);
 
-  &__visual,
-  &__reading {
+  &__overview {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: clamp(3rem, 7vw, 7rem);
-  }
-
-  &__visual {
-    min-height: 26rem;
-    background: rgba($sky, 0.2);
+    gap: clamp(1.6rem, 3vw, 2.8rem);
   }
 
   &__image {
-    width: clamp(15rem, 32vw, 28rem);
+    width: clamp(9rem, 13vw, 14rem);
+    height: clamp(9rem, 13vw, 14rem);
+    flex: 0 0 auto;
+    object-fit: contain;
     filter: drop-shadow(0 1.2rem 1.6rem rgba($ink-deep, 0.15));
   }
 
   &__reading {
-    align-items: flex-start;
-    flex-direction: column;
+    min-width: 0;
   }
 
-  &__label {
+  &__label,
+  &__metrics dt {
     color: $ochre;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: $font-weight-bold;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
+  &__temperature-range {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 0.8rem 0 0.5rem;
+
+    > span {
+      color: rgba($ink-deep, 0.32);
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 3rem;
+    }
+  }
+
   &__temp {
-    margin: $margin-small 0;
     font-family: 'Newsreader', Georgia, serif;
-    font-size: clamp(7rem, 16vw, 13rem);
-    letter-spacing: -0.07em;
-    line-height: 0.85;
+    font-size: clamp(3.8rem, 6vw, 5.8rem);
+    letter-spacing: -0.065em;
+    line-height: 0.9;
+
+    &--low {
+      color: rgba($ink-deep, 0.56);
+      font-size: clamp(2.8rem, 4vw, 4rem);
+    }
   }
 
   &__condition {
-    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    overflow: hidden;
+    font-size: clamp(1.6rem, 2vw, 2rem);
     font-weight: $font-weight-semi-bold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  @media (min-width: 720px) {
-    grid-template-columns: minmax(0, 1fr) minmax(32rem, 0.8fr);
+  &__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    margin-top: auto;
+    padding-top: 2.4rem;
 
-    &__visual {
-      border-right: 1px solid rgba($ink, 0.1);
+    > div {
+      min-width: 0;
+      padding: 1.2rem 1.4rem;
+      background: rgba($ink, 0.055);
+      border: 1px solid rgba($ink, 0.07);
+      border-radius: 1rem;
+    }
+
+    dd {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+      margin-top: 0.4rem;
+      font-family: 'Newsreader', Georgia, serif;
+      font-size: 1.9rem;
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    &__overview {
+      align-items: flex-start;
+    }
+
+    &__metrics {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 }

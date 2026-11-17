@@ -3,21 +3,25 @@ import { Suggestion, WeatherData } from '../types';
 import { GENERIC_IP } from '../utils/constants';
 
 const url = 'https://api.weatherapi.com/v1';
+const apiKey = import.meta.env?.VITE_SECRET_KEY ?? '';
 
 export const fetchSuggestions = async (
   location: string
 ): Promise<Array<Suggestion>> => {
   const response = await axios.get(
-    `${url}/search.json?key=${import.meta.env.VITE_SECRET_KEY}&q=${location}`
+    `${url}/search.json?key=${apiKey}&q=${location}`
   );
   return response.data;
 };
 
-export const fetchWeather = async (location: string): Promise<WeatherData> => {
+export const fetchWeather = async (
+  location: string,
+  language = 'en'
+): Promise<WeatherData> => {
   const response = await axios.get(
-    `${url}/forecast.json?key=${
-      import.meta.env.VITE_SECRET_KEY
-    }&q=${location}&days=3&aqi=yes&alerts=no`
+    `${url}/forecast.json?key=${apiKey}&q=${encodeURIComponent(
+      location
+    )}&days=3&aqi=yes&alerts=yes&lang=${language}`
   );
   return response.data;
 };
