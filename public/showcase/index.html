@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#173c3d">
+    <meta name="description" content="Watch Weather's before-and-after redesign on desktop and mobile, with illustrated landscapes, hourly forecasts, and settings.">
+    <meta property="og:title" content="Weather — A fresh outlook">
+    <meta property="og:description" content="The original app and its redesign. A 98-second film, from desktop to phone.">
+    <meta property="og:image" content="https://enhanced-weather-app.netlify.app/showcase/poster.webp">
+    <meta property="og:type" content="website">
+    <title>A fresh outlook — Weather</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; background: #eee5d1; color: #173c3d; font-family: system-ui, sans-serif; }
+      main { width: min(1200px, calc(100% - 40px)); margin: 0 auto; padding: 36px 0 48px; }
+      nav, footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; align-items: center; }
+      a { color: inherit; text-underline-offset: 4px; }
+      a:focus-visible, video:focus-visible { outline: 3px solid #9b6429; outline-offset: 5px; }
+      .brand { font-family: Georgia, serif; font-size: 22px; text-decoration: none; }
+      .brand::before { content: ''; display: inline-block; width: 14px; height: 14px; margin-right: 12px; border-radius: 50%; background: #e4b84e; }
+      .eyebrow { margin: 54px 0 14px; color: #815521; font-size: 12px; font-weight: 650; letter-spacing: .16em; text-transform: uppercase; }
+      h1 { margin: 0 0 16px; font: normal clamp(44px, 7vw, 80px)/1.05 Georgia, serif; letter-spacing: -.045em; }
+      .intro { max-width: 720px; margin: 0 0 28px; color: #476362; line-height: 1.6; }
+      video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #173c3d; border-radius: 12px; box-shadow: 0 18px 45px #173c3d24; }
+      .details { margin: 18px 0 32px; font-size: 13px; line-height: 1.7; color: #476362; }
+      footer { border-top: 1px solid #173c3d26; padding-top: 24px; font-size: 14px; }
+      .links { display: flex; flex-wrap: wrap; gap: 20px; }
+      @media (max-width: 520px) { main { width: calc(100% - 28px); padding-top: 24px; } .eyebrow { margin-top: 38px; } nav { font-size: 14px; } video { border-radius: 6px; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav aria-label="Main navigation">
+        <a class="brand" href="/">Weather</a>
+        <a href="https://github.com/RaduStefan30/weather-app-enhanced">View on GitHub ↗</a>
+      </nav>
+      <p class="eyebrow">A design evolution</p>
+      <h1>A fresh outlook.</h1>
+      <p class="intro">The original forecast and its redesign, from desktop to phone. Explore the illustrated landscapes, hourly outlook, city search, and settings in a short film.</p>
+      <video controls playsinline preload="none" poster="./poster.webp" aria-label="Weather app before-and-after trailer" aria-describedby="film-details">
+        <source src="./weather-trailer.mp4" type="video/mp4">
+        <track kind="captions" src="./captions.en.vtt" srclang="en" label="English">
+        Your browser does not support embedded video. <a href="./weather-trailer.mp4">Download the trailer</a>.
+      </video>
+      <p class="details" id="film-details">1:38 · 1080p · 60 fps · Original instrumental music, no spoken narration.<br>Recorded from the app with demonstration weather data. Includes desktop and mobile comparisons, search, forecasts, settings, alerts, and all eleven weather states.</p>
+      <footer>
+        <span>Created by Ranzascu Radu</span>
+        <div class="links"><a href="./weather-trailer.mp4" download>Download the film</a><a href="/">Explore the app ↗</a></div>
+      </footer>
+    </main>
+  </body>
+</html>
